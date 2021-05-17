@@ -160,10 +160,14 @@ mat-icon {
   }
 
 @media(max-width: 768px) {
+    .container {
+        padding-left: 0px;
+    }
 
     .header {
         padding-top: 20px;
         flex-direction: column;
+        padding-left: 10px;
     }
 
     .search-input {
