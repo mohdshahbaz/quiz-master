@@ -54,7 +54,8 @@ button {
 @media(max-width:768px) {
     .container {
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+        padding-left: 0px;
         height: auto;
     }
 }
