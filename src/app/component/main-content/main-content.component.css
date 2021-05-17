@@ -1,8 +1,7 @@
 .container {
     font-family: 'Roboto', sans-serif;
     padding-left: 50px;
-    width: 80vw;
-    height: 84vh;
+    height: 100vh;
     background-color: #F5F5F5;
     overflow: auto;
 }
@@ -160,4 +159,31 @@ mat-icon {
     background: #003030; 
   }
 
+@media(max-width: 768px) {
 
+    .header {
+        padding-top: 20px;
+        flex-direction: column;
+    }
+
+    .search-input {
+        margin-top: 10px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        /* margin: 0px; */
+    }
+
+    .card {
+        width: 180px;
+        margin-bottom: 10px;
+
+    }
+
+    .email {
+        margin: 0px;
+    }
+
+}

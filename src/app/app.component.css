@@ -2,3 +2,15 @@
     display: flex;
     flex-direction: row;
 }
+
+.left {
+    float: left;
+    width: 290px;
+}
+
+.right {
+    width: 100%;
+    overflow: auto;
+}
+
+

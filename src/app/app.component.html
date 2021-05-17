@@ -1,8 +1,10 @@
 <div class="container">
-  <app-sidenav></app-sidenav>
-  <div class="main-content">
-    <app-topnav></app-topnav>
-    <app-main-content></app-main-content>
+  <div class="left">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="right">
+    <app-topnav class='right-first'></app-topnav>
+    <app-main-content class='right-second'></app-main-content>
   </div>
 </div>
 <router-outlet></router-outlet>
