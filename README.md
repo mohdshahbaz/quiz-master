@@ -5,7 +5,7 @@ Build this app UI as an assignment for an Internship.
 ##  Getting Started
 - Clone this project using
 ```
-  https://github.com/mohdshahbaz/quiz-master.git
+  git clone https://github.com/mohdshahbaz/quiz-master.git
 ```
 - Install latest stable [node](https://nodejs.org/en/download/) version.
 - Install angular cli using
