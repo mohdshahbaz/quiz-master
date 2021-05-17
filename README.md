@@ -12,7 +12,12 @@ Build this app UI as an assignment for an Internship.
 ```
   npm install -g @angular/cli
 ```
-- Navigate to the project directory and run project using 
+- Navigate to project directory and install additional packages using
+```
+  npm install 
+```
+  
+- Run project using 
 ```
   ng serve -open
 ```
