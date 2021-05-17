@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80vw;
+    height: 100px;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    padding-left: 50px;
+    background-color: #F5F5F5;
+}
+
+.header-text {
+    background-color: #CAE4DB;
+    padding: 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.profile {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.profile-pic{
+    display: inline-block;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.profile-pic:hover {
+    cursor: pointer;
+}
+
+.bell-icon {
+    width: 12px;
+    background-color: #00303F;
+    padding: 10px;
+    border-radius: 50%;
+    border: 3px solid #00303F;
+    margin-right: 5px;
+}
+
+.bell-icon:hover {
+    cursor: pointer;
+}
+
+button {
+    display: inline-block;
+}
+

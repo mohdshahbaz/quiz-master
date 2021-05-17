@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="header">
+        <p class='header-text'>All Quiz Masters</p>
+        <div class="add-search">
+            <button class="add-button">Add Quiz Master</button>
+            <input class="search-input" type="text" placeholder="Search">
+        </div>
+    </div>
+
+
+    <div class="cards">
+        <div *ngFor="let i of [].constructor(30)">
+            <div class="card">
+                <div class="card-head">
+                    <h1 style="visibility: hidden;">Hid</h1>
+                    <img class="profile-avatar" src="../../../assets/profile-avatar.png" alt="">
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+                <div>
+                    <h3 class="email">Email ID: gameplayer@quizeee.com</h3>
+                </div>
+                <div class="password">
+                    <h3>Pasword</h3>
+                    <h3 class="psswd">*********</h3>
+                    <mat-icon>remove_red_eye</mat-icon>
+                </div>
+                <div class="actions">
+                    <button mat-icon-button class="delete-icon">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button class="edit-icon">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
