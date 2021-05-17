@@ -22,9 +22,12 @@ Build this app UI as an assignment for an Internship.
   ng serve -open
 ```
 
-## Screen-Shot
+## Desktop's screenshot
 
 ![screenshot](https://github.com/mohdshahbaz/quiz-master/blob/main/src/assets/screenshot.PNG)
+
+## Phone's screenshot
+<img src="https://github.com/mohdshahbaz/quiz-master/blob/main/src/assets/screenshot-phone.png" alt="phone-screenshot" width="300"/>
 
 ## Live version
 - [URL](https://quiz-master-ui.netlify.app/)
