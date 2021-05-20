@@ -1,0 +1,135 @@
+.container {
+    background-color: var(--bg-color);
+    height: 100vh;
+    overflow: auto;
+}
+
+.cancel-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    border-radius: 15px;
+    padding-top: 20px;
+    margin-left: -40px;
+}
+
+.btn-cancel {
+    background-color: var(--grey-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 30px 15px 30px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.cancel-icon {
+    margin-bottom: -10px !important;
+}
+
+.card {
+    background-color: var(--light-blue);
+    padding: 50px 50px 30px 50px;
+    border-radius: 20px;
+    margin: 20px 50px 100px 50px;
+
+}
+
+form > div:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+form > div:not(:last-child) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+    font-weight: 900;
+}
+
+form > div > input {
+    background-color: var(--primary-blue);
+    border-radius: 20px;
+    padding: 15px;
+    color: white;
+    width: 400px;
+}
+
+form > div > input::placeholder {
+    color: var(--yellow-color);
+    font-size: 0.8em;
+    font-weight: 200;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+form > div > input:focus {
+    outline: none;
+}
+
+.save {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+}
+
+.save input {
+    margin: 0px 5px 0 0;
+}
+
+.radio {
+    margin-left: 20px;
+    font-size: 0.8em;
+}
+
+.yes-text {
+    margin-right: 10px;
+    display: inline-flex;
+}
+
+.btn-save {
+    background-color: var(--yellow-color);
+    border: none;
+    border-radius: 20px;
+    padding: 15px 30px 15px 30px;
+    font-size: 0.8em;
+    color: black;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-size: 0.85em;
+    margin-left: 150px;
+}
+
+@media(max-width: 768px) {
+    form > div {
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: 0px !important;
+        width: 100% !important;
+    }
+
+    form > div > input {
+        width: 200px;
+        margin-top: 5px;
+    }
+
+    form > div > * {
+        margin-left: 0px;
+
+    }
+
+    .card {
+        padding: 20px 10px 10px 20px;
+        margin: 10px 10px 200px 10px;
+    }
+
+    .error{
+        margin-left: 0px;
+    }
+}

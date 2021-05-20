@@ -1,10 +1,9 @@
-<div class="container">
+<div class="container-fluid">
   <div class="left">
     <app-sidenav></app-sidenav>
   </div>
   <div class="right">
-    <app-topnav class='right-first'></app-topnav>
-    <app-main-content class='right-second'></app-main-content>
+    <app-topnav></app-topnav>
+    <router-outlet></router-outlet>
   </div>
 </div>
-<router-outlet></router-outlet>

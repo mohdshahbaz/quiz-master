@@ -1,0 +1,64 @@
+<div class="container">
+
+    <div class="cancel-btn">
+        <a [routerLink]="'/main-content'" class="btn btn-primary btn-cancel">
+            CANCEL</a>
+    </div>
+    
+    <div class="card">
+        
+        <form [formGroup]="addQuizForm">
+            <div>
+                Email ID    :<input type="text" formControlName="emailId" placeholder="Type your email" required>
+            </div>
+            <div *ngIf="addQuizFormControls.emailId.invalid && (addQuizFormControls.emailId.dirty || addQuizFormControls.emailId.touched)" class="error" role="alert">
+                <div *ngIf="addQuizFormControls.emailId.errors?.required">
+                    <em>Email Id is required.</em>
+                </div>
+                <div *ngIf="addQuizFormControls.emailId.errors?.pattern">
+                    <em>Enter valid email address.</em>
+                </div>
+            </div>
+            <div>
+                Password    :<input type="text" formControlName="password" placeholder="Type your password" required>
+            </div>
+            <div *ngIf="addQuizFormControls.password.invalid && (addQuizFormControls.password.dirty || addQuizFormControls.password.touched)" class="error" role="alert">
+                <div *ngIf="addQuizFormControls.password.errors?.required">
+                    <em>Password is required.</em> 
+                </div>
+                <div *ngIf="addQuizFormControls.password.errors?.pattern">
+                    <em>A minimum 8 characters password contains a combination of <strong>uppercase and lowercase letter</strong> and <strong>number</strong>.</em>
+                </div>
+            </div>
+            <div>
+                Duration    :<input type="month" formControlName="duration" required>
+            </div>
+            <div *ngIf="addQuizFormControls.duration.invalid && (addQuizFormControls.duration.dirty || addQuizFormControls.duration.touched)" class="error" role="alert">
+                <div *ngIf="addQuizFormControls.duration.errors?.required">
+                    <em>Duration is required.</em> 
+                </div>
+            </div>
+            <div>
+                Number of Quizzes   :<input type="number" formControlName="noOfQuizes">
+            </div>
+            <div *ngIf="addQuizFormControls.noOfQuizes.invalid && (addQuizFormControls.noOfQuizes.dirty || addQuizFormControls.noOfQuizes.touched)" class="error" role="alert">
+                <div *ngIf="addQuizFormControls.noOfQuizes.errors?.required">
+                    <em>No of Quizes is required.</em> 
+                </div>
+            </div>
+            <p style="font-weight: 900;">
+                Are you a Quizeee quiz master
+            </p>
+            <div class='save'>
+                <div class="radio">
+                    <input type="radio" formControlName="quizMasterCheckbox" class="yes-radio" value='yes'>
+                    <p class="yes-text">Yes</p>
+                    <input type="radio" formControlName="quizMasterCheckbox" value="no">No
+                </div>
+                <button type="submit" class='btn btn-primary btn-save'>save</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>

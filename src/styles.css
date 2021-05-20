@@ -1,4 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+:root {
+    --primary-blue: #00303F;
+    --secondary-blue: #466F75;
+    --light-blue: #CAE4DB;
+    --bg-color: #F5F5F5;
+    --yellow-color: #FEB423;
+    --brown-color: #CDAC81;
+    --grey-color: #A9A9A9;
+    
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00303f; 
+    border-radius: 10px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #003030; 
+}

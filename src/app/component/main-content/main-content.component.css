@@ -1,7 +1,7 @@
 .container {
     font-family: 'Roboto', sans-serif;
     padding-left: 50px;
-    height: 100vh;
+    height: 87vh;
     background-color: #F5F5F5;
     overflow: auto;
 }
@@ -29,6 +29,9 @@
     border: none;
     border-radius: 15px;
     margin-right: 10px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
 }
 
 .add-button:hover {

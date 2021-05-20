@@ -1,15 +1,15 @@
 <div class="container">
     <div class="header">
-        <img class="logo" src="../../../assets/logo.png" alt="logo">
+        <img class="logo" src="../../../assets/Image 7@1X.png" alt="logo">
         <h1 class="header-text">QUIZEEE</h1>
     </div>
     <div class="nav-links">
         <a href="#" class="admin">SUPER ADMIN</a>
-        <a href="#">USER MANAGEMENT</a>
-        <a href="#" class="selected">QUIZ MASTER MANAGEMENT</a>
-        <a href="#">AD MANAGEMENT</a>
-        <a href="#">DISPUTE MANAGEMENT</a>
-        <a href="#">REQUESTS</a>
-        <a href="#">NOTIFICATIONS</a>
+        <a href="#" routerLinkActive='selected'>USER MANAGEMENT</a>
+        <a [routerLink]="'/main-content'" routerLinkActive='selected'>QUIZ MASTER MANAGEMENT</a>
+        <a href="#" routerLinkActive='selected'>AD MANAGEMENT</a>
+        <a href="#" routerLinkActive='selected'>DISPUTE MANAGEMENT</a>
+        <a href="#" routerLinkActive='selected'>REQUESTS</a>
+        <a href="#" routerLinkActive='selected'>NOTIFICATIONS</a>
     </div>
 </div>

@@ -47,6 +47,14 @@
     cursor: pointer;
 }
 
+/* drop-down menu */
+.mat-menu-btn {
+    background-color: #00303F;
+    color: white;
+    border-radius: 15px;
+}
+
+
 button {
     display: inline-block;
 }

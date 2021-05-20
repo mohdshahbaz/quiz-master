@@ -1,6 +1,12 @@
-.container {
+.container-fluid {
     display: flex;
     flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .left {
@@ -10,7 +16,8 @@
 
 .right {
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
+    margin: 0;
 }
 
 
