@@ -107,6 +107,10 @@ form > div > input:focus {
 }
 
 @media(max-width: 768px) {
+    .container-fluid {
+        height: 66vh;
+    }
+
     form > div {
         flex-direction: column;
         justify-content: flex-start;
@@ -115,7 +119,7 @@ form > div > input:focus {
     }
 
     form > div > input {
-        width: 300px;
+        max-width: 250px;
         margin-top: 5px;
     }
 
@@ -126,7 +130,7 @@ form > div > input:focus {
 
     .card {
         padding: 20px 10px 10px 20px;
-        margin: 10px 10px 200px 10px;
+        margin: 10px 10px 10px 10px;
     }
 
     .error{

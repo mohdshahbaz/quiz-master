@@ -85,6 +85,11 @@
     flex: 1 1 auto;
   }
 
+.sidenav-container {
+    height: 100vh;
+    background-color: var(--bg-color);
+}
+
 .brand {
     background-color: #CAE4DB;
     padding: 15px;
@@ -97,6 +102,10 @@
     background-color: #00303F;
     color: white;
     border-radius: 15px;
+}
+
+.menu-btn {
+    margin: 20px 0 0 20px;
 }
 
 .profile {
