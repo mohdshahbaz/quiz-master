@@ -70,3 +70,66 @@
     margin-right: 0;
     text-align: center;
 }
+
+.sidenav-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.brand {
+    background-color: #CAE4DB;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.mat-menu-btn {
+    background-color: #00303F;
+    color: white;
+    border-radius: 15px;
+}
+
+.profile {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.profile-pic{
+    display: inline-block;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.profile-pic:hover {
+    cursor: pointer;
+}
+
+
+
+@media(max-width:768px) {
+    .sidenav-content > mat-toolbar {
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: flex-start;
+        padding-left: 0px;
+        height: auto;
+    }
+
+    .profile {
+        margin-left: 20px;
+        margin-top: -10px;
+    }
+}

@@ -1,9 +1,9 @@
-.container {
+.container-fluid {
     font-family: 'Roboto', sans-serif;
-    padding-left: 50px;
-    height: 87vh;
     background-color: #F5F5F5;
+    height: 100vh;
     overflow: auto;
+    padding-top: 20px;
 }
 
 .header {
@@ -18,9 +18,9 @@
     border-bottom: 2px solid black;
 }
 
-.add-search {
+/* .add-search {
     margin-right: 50px;
-}
+} */
 
 .add-button {
     background-color: #FFB51E;
@@ -163,7 +163,7 @@ mat-icon {
   }
 
 @media(max-width: 768px) {
-    .container {
+    .container-fluid {
         padding-left: 0px;
     }
 
@@ -184,7 +184,8 @@ mat-icon {
     }
 
     .card {
-        width: 180px;
+        min-width: 250px;
+        /* width: 250px; */
         margin-bottom: 10px;
 
     }

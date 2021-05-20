@@ -1,4 +1,4 @@
-.container {
+.container-fluid {
     background-color: var(--bg-color);
     height: 100vh;
     overflow: auto;
@@ -115,7 +115,7 @@ form > div > input:focus {
     }
 
     form > div > input {
-        width: 200px;
+        width: 300px;
         margin-top: 5px;
     }
 
