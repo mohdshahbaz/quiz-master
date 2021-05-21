@@ -15,6 +15,10 @@ import { AddQuizComponent } from './component/add-quiz/add-quiz.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MainNavComponent } from './component/main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     SidenavComponent,
     TopnavComponent,
     MainContentComponent,
-    AddQuizComponent
+    AddQuizComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     NgbModule,
     ReactiveFormsModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule,
+    MatDividerModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
