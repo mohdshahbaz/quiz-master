@@ -7,20 +7,20 @@
     
     <div class="card">
         
-        <form [formGroup]="addQuizForm">
+        <form [formGroup]="addQuizForm" (ngSubmit)="createQuizMaster()">
             <div>
-                Email ID    :<input type="text" formControlName="emailId" placeholder="Type your email" required>
+                Email ID    :<input type="text" formControlName="email" placeholder="Type your email" required>
             </div>
-            <div *ngIf="addQuizFormControls.emailId.invalid && (addQuizFormControls.emailId.dirty || addQuizFormControls.emailId.touched)" class="error" role="alert">
-                <div *ngIf="addQuizFormControls.emailId.errors?.required">
+            <div *ngIf="addQuizFormControls.email.invalid && (addQuizFormControls.email.dirty || addQuizFormControls.email.touched)" class="error" role="alert">
+                <div *ngIf="addQuizFormControls.email.errors?.required">
                     <em>Email Id is required.</em>
                 </div>
-                <div *ngIf="addQuizFormControls.emailId.errors?.pattern">
+                <div *ngIf="addQuizFormControls.email.errors?.pattern">
                     <em>Enter valid email address.</em>
                 </div>
             </div>
             <div>
-                Password    :<input type="text" formControlName="password" placeholder="Type your password" required>
+                Password    :<input type="password" formControlName="password" placeholder="Type your password" required>
             </div>
             <div *ngIf="addQuizFormControls.password.invalid && (addQuizFormControls.password.dirty || addQuizFormControls.password.touched)" class="error" role="alert">
                 <div *ngIf="addQuizFormControls.password.errors?.required">
@@ -31,7 +31,13 @@
                 </div>
             </div>
             <div>
-                Duration    :<input type="month" formControlName="duration" required>
+                Duration    :
+                <select formControlName="duration">
+                    <option [ngValue]="1">1 month</option>
+                    <option [ngValue]="2">2 month</option>
+                    <option [ngValue]="3">3 month</option>
+                    <option [ngValue]="4">4 month</option>
+                </select>
             </div>
             <div *ngIf="addQuizFormControls.duration.invalid && (addQuizFormControls.duration.dirty || addQuizFormControls.duration.touched)" class="error" role="alert">
                 <div *ngIf="addQuizFormControls.duration.errors?.required">
@@ -39,10 +45,10 @@
                 </div>
             </div>
             <div>
-                Number of Quizzes   :<input type="number" formControlName="noOfQuizes">
+                Number of Quizzes   :<input type="number" formControlName="noOfQuiz">
             </div>
-            <div *ngIf="addQuizFormControls.noOfQuizes.invalid && (addQuizFormControls.noOfQuizes.dirty || addQuizFormControls.noOfQuizes.touched)" class="error" role="alert">
-                <div *ngIf="addQuizFormControls.noOfQuizes.errors?.required">
+            <div *ngIf="addQuizFormControls.noOfQuiz.invalid && (addQuizFormControls.noOfQuiz.dirty || addQuizFormControls.noOfQuiz.touched)" class="error" role="alert">
+                <div *ngIf="addQuizFormControls.noOfQuiz.errors?.required">
                     <em>No of Quizes is required.</em> 
                 </div>
             </div>
@@ -51,11 +57,11 @@
             </p>
             <div class='save'>
                 <div class="radio">
-                    <input type="radio" formControlName="quizMasterCheckbox" class="yes-radio" value='yes'>
+                    <input type="radio" formControlName="quizMaster" class="yes-radio" value='1'>
                     <p class="yes-text">Yes</p>
-                    <input type="radio" formControlName="quizMasterCheckbox" value="no">No
+                    <input type="radio" formControlName="quizMaster" value="2">No
                 </div>
-                <button type="submit" class='btn btn-primary btn-save'>save</button>
+                <button type="submit" class='btn btn-primary btn-save' [disabled]='!addQuizForm.valid'>save</button>
             </div>
         </form>
 

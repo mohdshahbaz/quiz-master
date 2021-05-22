@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { QuizMasterService } from 'src/app/services/quiz-master.service';
 
 @Component({
   selector: 'app-add-quiz',
@@ -9,35 +10,35 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class AddQuizComponent implements OnInit {
 
   addQuizForm: FormGroup;
-  
-  // addQuizForm = new FormGroup({
-  //     emailId: new FormControl(),
-  //     password: new FormControl(),
-  //     duration: new FormControl(),
-  //     noOfQuizes: new FormControl(),
-  //     quizMasterCheckbox: new FormControl()
-  // });
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private quizMasterService: QuizMasterService
   ) { }
 
   ngOnInit(
     ): void {
 
       this.addQuizForm = this.fb.group({
-        name: ['', Validators.required],
-        password: ['', [Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{7,}'),
-                    ]],
-        emailId: ['', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')],
+        email: ['', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')],
+        password: ['', Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{7,}')],
         duration: ['', Validators.required],
-        noOfQuizes: ['', Validators.required],
-        quizMasterCheckbox: ['', Validators.required]
+        noOfQuiz: ['', Validators.required],
+        quizMaster: ['', Validators.required]
       });
     }
 
     get addQuizFormControls(): any {
       return this.addQuizForm['controls'];
    }
-    
+
+   createQuizMaster() {
+     debugger;
+    const data = this.addQuizForm.value;
+
+    this.quizMasterService.createQuizMaster(data).subscribe(res => {
+      console.log(res);
+    })
+  }
+   
 }

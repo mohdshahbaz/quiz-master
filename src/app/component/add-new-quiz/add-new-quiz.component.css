@@ -1,0 +1,118 @@
+.container {
+    height: calc(100vh - 64px);
+    margin: auto;
+    overflow: auto;
+}
+
+.card {
+    margin: 50px;
+    padding: 20px;
+    background-color: var(--light-blue);
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px;
+}
+
+
+form > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form > div > input , .form-select, form > div > div > input {
+    background-color: var(--primary-blue);
+    color: var(--yellow-color);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.form-select {
+    width: 200px;
+    padding: 15px;
+}
+
+select {
+    font-size: 0.9em;
+    font-weight: 100;
+}
+
+.btn {
+    background-color: var(--yellow-color);
+    color: black;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 15px;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+.ml-1 {
+    margin-left: 5px;
+}
+.ml-2 {
+    margin-left: 10px;
+}
+.ml-3 {
+    margin-left: 15px;
+}
+
+.mt-1 {
+    margin-top: 5px;
+}
+.mt-3 {
+    margin-top: 10px;
+}
+.mt-3 {
+    margin-top: 15px;
+}
+
+input:focus {
+    outline: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+@media(max-width: 768px) {
+    .container {
+        height: calc(100vh - 174.781px);
+    }
+
+    form {
+        grid: none;
+        grid-template-columns: auto;
+    }
+
+    form > div {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    form > div > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    form > div > div:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        margin-bottom: 10px;
+    }
+
+    .form-select {
+        width: auto;
+    }
+}

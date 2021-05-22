@@ -10,7 +10,6 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MainContentComponent } from './component/main-content/main-content.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddQuizComponent } from './component/add-quiz/add-quiz.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -19,6 +18,13 @@ import {MatListModule} from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MainNavComponent } from './component/main-nav/main-nav.component';
+import { AddNewQuizComponent } from './component/add-new-quiz/add-new-quiz.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,8 @@ import { MainNavComponent } from './component/main-nav/main-nav.component';
     TopnavComponent,
     MainContentComponent,
     AddQuizComponent,
-    MainNavComponent
+    MainNavComponent,
+    AddNewQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,12 @@ import { MainNavComponent } from './component/main-nav/main-nav.component';
     MatToolbarModule,
     MatListModule,
     MatDividerModule,
-    LayoutModule
+    LayoutModule,
+    NgxMaterialTimepickerModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

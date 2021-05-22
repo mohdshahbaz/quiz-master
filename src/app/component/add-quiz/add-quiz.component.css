@@ -1,6 +1,6 @@
 .container-fluid {
     background-color: var(--bg-color);
-    height: 100vh;
+    height: calc(100vh - 64px);
     overflow: auto;
 }
 
@@ -48,12 +48,16 @@ form > div:not(:last-child) {
     font-weight: 900;
 }
 
-form > div > input {
+form > div > input, select {
     background-color: var(--primary-blue);
     border-radius: 20px;
     padding: 15px;
     color: white;
     width: 400px;
+}
+
+select:focus {
+    outline: none;
 }
 
 form > div > input::placeholder {

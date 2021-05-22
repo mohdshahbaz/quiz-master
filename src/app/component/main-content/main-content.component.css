@@ -164,7 +164,7 @@ mat-icon {
 
 @media(max-width: 768px) {
     .main-content-container {
-        height: 66vh;
+        height: calc(100vh - 174.781px);
     }
 
     .header {

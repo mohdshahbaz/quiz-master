@@ -10,7 +10,7 @@
 
 
     <div class="cards">
-        <div *ngFor="let i of [].constructor(30)">
+        <div *ngFor="let quizMaster of quizMasters">
             <div class="card">
                 <div class="card-head">
                     <h1 style="visibility: hidden;">Hid</h1>
@@ -18,11 +18,11 @@
                     <mat-icon>more_vert</mat-icon>
                 </div>
                 <div>
-                    <h3 class="email">Email ID: gameplayer@quizeee.com</h3>
+                    <h3 class="email">Email ID: {{quizMaster.email}}</h3>
                 </div>
                 <div class="password">
                     <h3>Pasword</h3>
-                    <h3 class="psswd">*********</h3>
+                    <h3 class="psswd">{{quizMaster.password}}</h3>
                     <mat-icon>remove_red_eye</mat-icon>
                 </div>
                 <div class="actions">
