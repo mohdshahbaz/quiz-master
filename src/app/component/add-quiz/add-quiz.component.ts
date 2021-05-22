@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class AddQuizComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private quizMasterService: QuizMasterService
+    private quizMasterService: QuizMasterService,
+    private router: Router
   ) { }
 
   ngOnInit(
@@ -39,6 +41,8 @@ export class AddQuizComponent implements OnInit {
     this.quizMasterService.createQuizMaster(data).subscribe(res => {
       console.log(res);
     })
+
+    this.router.navigate(['/main-content']);
   }
    
 }

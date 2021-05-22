@@ -112,7 +112,7 @@ form > div > input:focus {
 
 @media(max-width: 768px) {
     .container-fluid {
-        height: 66vh;
+        height: calc(100vh - 174.781px);
     }
 
     form > div {
@@ -122,7 +122,7 @@ form > div > input:focus {
         width: 100% !important;
     }
 
-    form > div > input {
+    form > div > input, select {
         max-width: 250px;
         margin-top: 5px;
     }
