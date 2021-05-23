@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
 
 @Component({
@@ -10,7 +11,9 @@ export class MainContentComponent implements OnInit {
 
   quizMasters:any = [];
 
-  constructor(private quizMasterService: QuizMasterService) { }
+  constructor(private quizMasterService: QuizMasterService,
+        private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.getQuizMasters();

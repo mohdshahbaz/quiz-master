@@ -1,90 +1,89 @@
 <div class="container">
     <div class="card">
-        <form>
+        <form [formGroup]="addNewQuizForm">
             <div>
                 Select Category: 
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="select-dropdown" formControlName="selectCategory" aria-label="Default select example">
+                    <option [ngValue]="1">One</option>
+                    <option [ngValue]="2">Two</option>
+                    <option [ngValue]="3">Three</option>
                 </select>
             </div>
             <div>
                 Select Sub Category: 
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="select-dropdown" formControlName="selectSubCategory" aria-label="Default select example">
+                    <option [ngValue]="1">One</option>
+                    <option [ngValue]="2">Two</option>
+                    <option [ngValue]="3">Three</option>
                   </select>
             </div>
             <div>
                 Area of Interest:
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="select-dropdown" formControlName="areaOfInterest" aria-label="Default select example">
+                    <option [ngValue]="1">One</option>
+                    <option [ngValue]="2">Two</option>
+                    <option [ngValue]="3">Three</option>
                 </select>
             </div>
             <div>
                 <div>
                     Start Time:
-                    <input type="time" class="ml-2">
+                    <input type="time" formControlName="startTime">
                 </div>
                 <div>
                     Start Date:
-                    <input type="date" class="ml-2">
+                    <input type="date" formControlName="startDate">
                 </div>
             </div>
             <div>
                 Total Slots:
-                <input type="number">
+                <input type="number" formControlName="totalSlots" min="1">
+
             </div>
             <div>
                 <div>
                     End Time:
-                    <input type="time" class="ml-2">
-                </div>
+                    <input type="time" formControlName="endTime">
+                    </div>
                 <div>
                     End Date:
-                    <input type="date" class="ml-2">
+                    <input type="date" formControlName="endDate">
+                    <div *ngIf="addNewQuizFormControls.endTime.errors?.dateRange"> 
+                        Age should be a number
+                    </div>
                 </div>
             </div>
             <div>
                 Number of Qns:
-                <input type="number">
+                <input type="number" formControlName="numberOfQns" min="1">
             </div>
             <div>
                 Difficulty:
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="select-dropdown" forControlName="difficulty" aria-label="Default select example">
+                    <option [ngValue]="1">One</option>
+                    <option [ngValue]="2">Two</option>
+                    <option [ngValue]="3">Three</option>
                 </select>
             </div>
             <div>
                 Time per qns:
-                <input type="time">
+                <input type="time" formControlName="timePerQns" class="time-per-ques">
             </div>
             <div>
                 Prize Pool:
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="select-dropdown" formControlName="prizePool" aria-label="Default select example">
+                    <option [ngValue]="1">One</option>
+                    <option [ngValue]="2">Two</option>
+                    <option [ngValue]="3">Three</option>
                 </select>
             </div>
             <div>
                 Entry Amount:
-                <input type="number">
+                <input type="number" formControlName="entryAmount" min="1">
             </div>
             <div>
                 Winning Prize:
-                <input type="number">
+                <input type="number" formControlName="winningPrize" min="1">
             </div>
             <div></div>
             <div style="justify-content: flex-end;">

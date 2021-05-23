@@ -1,6 +1,6 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-new-quiz',
@@ -22,7 +22,7 @@ export class AddNewQuizComponent implements OnInit {
       areaOfInterest: ['', Validators.required],
       startTime: ['', Validators.required],
       startDate: ['', Validators.required],
-      endTime: [''],
+      endTime: ['', Validators.required],
       endDate: [''],
       totalSlots: ['', Validators.required],
       numberOfQns: ['', Validators.required],
@@ -31,10 +31,27 @@ export class AddNewQuizComponent implements OnInit {
       prizePool: ['', Validators.required],
       entryAmount: ['', Validators.required],
       winningPrize: ['', Validators.required]
-    });
+    }, 
+    // {
+    //   Validators: [this.dateLessThan('endDate', 'startDate')]
+    //   }
+    );
   }
 
   get addNewQuizFormControls(): any {
     return this.addNewQuizForm['controls'];
+ }
+
+ dateLessThan(from: string, to: string) {
+  return (group: FormGroup): {[key: string]: any} => {
+    let f = group.controls[from];
+    let t = group.controls[to];
+    if (f.value > t.value) {
+      return {
+        dates: "Date from should be less than Date to"
+      };
+    }
+    return {};
+  }
  }
 }

@@ -26,16 +26,16 @@ form > div {
     align-items: center;
 }
 
-form > div > input , .form-select, form > div > div > input {
+form > div > input , .select-dropdown, form > div > div > input {
     background-color: var(--primary-blue);
     color: var(--yellow-color);
     border-radius: 20px;
     padding: 10px;
 }
 
-.form-select {
-    width: 200px;
-    padding: 15px;
+.select-dropdown {
+    width: 180px;
+    padding: 14px;
 }
 
 select {
@@ -82,6 +82,10 @@ input:focus {
     filter: invert(1);
 }
 
+.time-per-ques {
+    width: 180px;
+}
+
 @media(max-width: 768px) {
     .container {
         height: calc(100vh - 174.781px);
@@ -112,7 +116,11 @@ input:focus {
         margin-bottom: 10px;
     }
 
-    .form-select {
-        width: auto;
+    .select-dropdown {
+        width: 100%;
     }
+
+    form > div > input, form > div > div, form > div > div > input {
+        width: 100% !important;
+    } 
 }

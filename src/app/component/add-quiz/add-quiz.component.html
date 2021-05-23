@@ -37,6 +37,12 @@
                     <option [ngValue]="2">2 month</option>
                     <option [ngValue]="3">3 month</option>
                     <option [ngValue]="4">4 month</option>
+                    <option [ngValue]="5">5 month</option>
+                    <option [ngValue]="6">6 month</option>
+                    <option [ngValue]="7">7 month</option>
+                    <option [ngValue]="8">8 month</option>
+                    <option [ngValue]="9">9 month</option>
+                    <option [ngValue]="10">10 month</option>
                 </select>
             </div>
             <div *ngIf="addQuizFormControls.duration.invalid && (addQuizFormControls.duration.dirty || addQuizFormControls.duration.touched)" class="error" role="alert">
@@ -45,7 +51,7 @@
                 </div>
             </div>
             <div>
-                Number of Quizzes   :<input type="number" formControlName="noOfQuiz">
+                Number of Quizzes   :<input type="number" formControlName="noOfQuiz" min="1">
             </div>
             <div *ngIf="addQuizFormControls.noOfQuiz.invalid && (addQuizFormControls.noOfQuiz.dirty || addQuizFormControls.noOfQuiz.touched)" class="error" role="alert">
                 <div *ngIf="addQuizFormControls.noOfQuiz.errors?.required">
