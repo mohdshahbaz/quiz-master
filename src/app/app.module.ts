@@ -9,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MainContentComponent } from './component/main-content/main-content.component';
 import { AddQuizComponent } from './component/add-quiz/add-quiz.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
@@ -23,6 +23,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { SelectAgeDialogComponent } from './component/select-age-dialog/select-age-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RequestCategoryDialogComponent } from './component/request-category-dialog/request-category-dialog.component';
+import { QuizQuestionsListComponent } from './component/quiz-questions-list/quiz-questions-list.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,10 @@ import { HttpClientModule } from '@angular/common/http';
     MainContentComponent,
     AddQuizComponent,
     MainNavComponent,
-    AddNewQuizComponent
+    AddNewQuizComponent,
+    SelectAgeDialogComponent,
+    RequestCategoryDialogComponent,
+    QuizQuestionsListComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    FormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,9 +4,8 @@
             <div>
                 Select Category: 
                 <select class="select-dropdown" formControlName="selectCategory" aria-label="Default select example">
-                    <option [ngValue]="1">One</option>
-                    <option [ngValue]="2">Two</option>
-                    <option [ngValue]="3">Three</option>
+                    <option value="General knowledge">General Knowledge</option>
+                    <option value="Science">Science</option>
                 </select>
             </div>
             <div>
@@ -15,7 +14,8 @@
                     <option [ngValue]="1">One</option>
                     <option [ngValue]="2">Two</option>
                     <option [ngValue]="3">Three</option>
-                  </select>
+                </select>
+                <button class="btn btn-primary" (click)="openRequestCategoryDialog()">Request Category</button>
             </div>
             <div>
                 Area of Interest:
@@ -37,7 +37,7 @@
             </div>
             <div>
                 Total Slots:
-                <input type="number" formControlName="totalSlots" min="1">
+                <input type="number" formControlName="totalSlots" min="1" oninput="validity.valid||(value='');">
 
             </div>
             <div>
@@ -55,7 +55,7 @@
             </div>
             <div>
                 Number of Qns:
-                <input type="number" formControlName="numberOfQns" min="1">
+                <input type="number" formControlName="numberOfQns" min="1" oninput="validity.valid||(value='');">
             </div>
             <div>
                 Difficulty:
@@ -71,24 +71,33 @@
             </div>
             <div>
                 Prize Pool:
-                <select class="select-dropdown" formControlName="prizePool" aria-label="Default select example">
-                    <option [ngValue]="1">One</option>
-                    <option [ngValue]="2">Two</option>
-                    <option [ngValue]="3">Three</option>
+                <select class="select-dropdown" formControlName="prizePool" label="Default select example">
+                    <option value="" selected disabled>Total Winning Percentage</option>
+                    <option [ngValue]="1">10%</option>
+                    <option [ngValue]="2">20%</option>
+                    <option [ngValue]="3">30%</option>
+                    <option [ngValue]="4">40%</option>
+                    <option [ngValue]="5">50%</option>
+                    <option [ngValue]="6">60%</option>
+                    <option [ngValue]="7">70%</option>
+                    <option [ngValue]="8">80%</option>
+                    <option [ngValue]="9">90%</option>
+                    <option [ngValue]="10">100%</option>
                 </select>
             </div>
             <div>
                 Entry Amount:
-                <input type="number" formControlName="entryAmount" min="1">
+                <input type="number" formControlName="entryAmount" min="1" oninput="validity.valid||(value='');">
             </div>
             <div>
                 Winning Prize:
-                <input type="number" formControlName="winningPrize" min="1">
+                <input type="number" formControlName="winningPrize" min="1" oninput="validity.valid||(value='');">
             </div>
             <div></div>
             <div style="justify-content: flex-end;">
-                <button class="btn btn-primary">ADD ACCESS</button>
-                <button class="btn btn-primary">ADD QUESTIONS</button>
+                <button class="btn btn-primary" (click)="openSelectAgeDialog()">SELECT AGE</button>
+                <button class="btn btn-primary" (click)="setSelectCategoryValue()" [routerLink]="'/public-quiz-question'">ADD QUESTIONS</button>
+                <button class="btn btn-primary" type="submit">SUBMIT</button>
             </div>
         </form>
     </div>

@@ -19,6 +19,10 @@ export class MainContentComponent implements OnInit {
     this.getQuizMasters();
   }
 
+  // ngAfterViewInit(): void {
+  //   this.getQuizMasters();
+  // }
+
   getQuizMasters() {
     this.quizMasterService.getAllQuizMasters().subscribe(res => {
       debugger;

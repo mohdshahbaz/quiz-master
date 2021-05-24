@@ -1,0 +1,15 @@
+<h1 mat-dailog-title>Select Age Group</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Start Age</mat-label>
+        <input type="number" matInput [(ngModel)]="data.startAge" min="0" oninput="validity.valid||(value='');">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>End Age</mat-label>
+        <input type="number" matInput [(ngModel)]="data.endAge">
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onCancelClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    </div>
+</div>
