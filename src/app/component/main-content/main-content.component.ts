@@ -25,8 +25,9 @@ export class MainContentComponent implements OnInit {
 
   getQuizMasters() {
     this.quizMasterService.getAllQuizMasters().subscribe(res => {
-      debugger;
+      // debugger;
       this.quizMasters = res['quizMasters'];
+      console.log("Quiz Masters : ", this.quizMasters)
     })
   }
 

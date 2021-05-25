@@ -6,7 +6,7 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>End Age</mat-label>
-        <input type="number" matInput [(ngModel)]="data.endAge">
+        <input type="number" matInput [(ngModel)]="data.endAge" min="0" oninput="validity.valid||(value='');">
     </mat-form-field>
     <div mat-dialog-actions>
         <button mat-button (click)="onCancelClick()">Cancel</button>

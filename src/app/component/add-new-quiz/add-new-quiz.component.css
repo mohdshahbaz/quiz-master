@@ -26,6 +26,13 @@ form > div {
     align-items: center;
 }
 
+form > div > div {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 form > div > input , .select-dropdown, form > div > div > input {
     background-color: var(--primary-blue);
     color: var(--yellow-color);
@@ -38,9 +45,25 @@ form > div > input , .select-dropdown, form > div > div > input {
     padding: 14px;
 }
 
+form > div > div > input {
+    width: 160px;
+}
+
+.select-dropdown:focus {
+    outline: none;
+}
+
 select {
     font-size: 0.9em;
     font-weight: 100;
+}
+
+input::placeholder {
+    color: var(--yellow-color);
+}
+
+.custom-width {
+    width: 420px;
 }
 
 .btn {
@@ -123,4 +146,16 @@ input:focus {
     form > div > input, form > div > div, form > div > div > input {
         width: 100% !important;
     } 
+
+    .custom-width {
+        width: auto;
+    }
+
+   .rqt-ctg-btn {
+    margin-top: 10px;
+   }
+
+   .btn {
+       width: 100%;
+   }
 }

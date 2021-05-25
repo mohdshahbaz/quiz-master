@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectAgeDialogComponent } from '../select-age-dialog/select-age-dialog.component';
 import { RequestCategoryDialogComponent } from '../request-category-dialog/request-category-dialog.component';
 import { SelectAgeGroupService } from '../../services/select-age-group.service';
+import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questions-dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-new-quiz',
@@ -17,54 +19,39 @@ export class AddNewQuizComponent implements OnInit {
   startAge: number;
   endAge: number;
   requestedCategory: string;
+  selectedQuestionsId = [];
+  age;
 
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private selectAgeGroupService: SelectAgeGroupService
+    private selectAgeGroupService: SelectAgeGroupService,
+    private toastr: ToastrService
   ) { 
 
   }
 
   ngOnInit(): void {
     this.addNewQuizForm = this.fb.group({
-      selectCategory: ['', Validators.required],
-      selectSubCategory: ['', Validators.required],
+      quizCategory: ['', Validators.required],
+      quizSubCategory: ['', Validators.required],
       areaOfInterest: ['', Validators.required],
       startTime: ['', Validators.required],
       startDate: ['', Validators.required],
       endTime: ['', Validators.required],
       endDate: [''],
-      totalSlots: ['', Validators.required],
-      numberOfQns: ['', Validators.required],
-      difficulty: ['', Validators.required],
-      timePerQns: ['', Validators.required],
+      slots: ['', Validators.required],
+      noOfQuestions: ['', Validators.required],
+      difficultyLevel: ['', Validators.required],
+      timePerQues: ['', Validators.required],
       prizePool: ['', Validators.required],
       entryAmount: ['', Validators.required],
-      winningPrize: ['', Validators.required]
-    }, 
-    // {
-    //   Validators: [this.dateLessThan('endDate', 'startDate')]
-    //   }
-    );
-    console.log(this.addNewQuizForm.controls['selectCategory'].value);
+      winningPrize: ['', Validators.required],
+    });
   }
 
   get addNewQuizFormControls(): any {
     return this.addNewQuizForm['controls'];
- }
-
- dateLessThan(from: string, to: string) {
-  return (group: FormGroup): {[key: string]: any} => {
-    let f = group.controls[from];
-    let t = group.controls[to];
-    if (f.value > t.value) {
-      return {
-        dates: "Date from should be less than Date to"
-      };
-    }
-    return {};
-  }
  }
 
 openSelectAgeDialog() {
@@ -75,7 +62,10 @@ openSelectAgeDialog() {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log(result);
+    this.age = {
+      startAge: result['startAge'],
+      endAge: result['endAge']
+    }
   })
 }
 
@@ -89,11 +79,42 @@ openRequestCategoryDialog() {
   dialogRef.afterClosed().subscribe(result => {
     console.log(result);
   })
+}
 
+openAddQuestionsDialog() {
+  const dialogRef = this.dialog.open(AddQuestionsDialogComponent, {
+    width: '300px',
+    data: {selectedQuestionsId: this.selectedQuestionsId, selectedCategory: this.addNewQuizForm.controls['quizCategory'].value}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    this.selectedQuestionsId = result['selectedQuestionsId'];
+  })
 }
 
   setSelectCategoryValue() {
-    this.selectAgeGroupService.setOption('selectCategory', this.addNewQuizForm.controls['selectCategory'].value)
+    this.selectAgeGroupService.setOption('selectCategory', this.addNewQuizForm.controls['quizCategory'].value)
+  }
+
+  addNewQuiz() {
+    let postData = this.addNewQuizForm.value;
+    postData['prizePool'] = [{"rankNo":1,"prize":"1200"},{"rankNo":2,"prize":"900"},{"rankNo":3,"prize":"500"}];
+    postData['questions'] = this.selectedQuestionsId;
+    postData['age'] = this.age;
+    postData['quizMasterId'] = 105;
+    postData['quizTitle'] = "A new Science quiz";
+    debugger;
+    if(this.addNewQuizForm.controls ['noOfQuestions'].value == this.selectedQuestionsId.length 
+          && this.age && (Date.parse(postData['startDate']) < Date.parse(postData['endDate'])) ) {
+      console.log(this.addNewQuizForm.value);
+    } else if(!this.age) {
+      this.toastr.error('Enter correct age group!');
+    } else if(Date.parse(postData['startDate']) > Date.parse(postData['endDate']))  {
+      this.toastr.error('Enter valid end date!')
+    }
+    else {
+      this.toastr.error('Selected questions should be equal to no of questions entered!');
+    }
   }
 
 }

@@ -26,8 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelectAgeDialogComponent } from './component/select-age-dialog/select-age-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RequestCategoryDialogComponent } from './component/request-category-dialog/request-category-dialog.component';
-import { QuizQuestionsListComponent } from './component/quiz-questions-list/quiz-questions-list.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AddQuestionsDialogComponent } from './component/add-questions-dialog/add-questions-dialog.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AddNewQuizComponent,
     SelectAgeDialogComponent,
     RequestCategoryDialogComponent,
-    QuizQuestionsListComponent
+    AddQuestionsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HttpClientModule,
     MatDialogModule,
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

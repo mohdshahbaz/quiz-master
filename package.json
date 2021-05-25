@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.11",
+    "@angular/animations": "^11.2.14",
     "@angular/cdk": "~11.2.11-sha-b5ee92fbe",
     "@angular/common": "~11.2.11",
     "@angular/compiler": "~11.2.11",
@@ -28,6 +28,7 @@
     "ngx-bootstrap": "^6.2.0",
     "ngx-dates-picker": "^9.0.2",
     "ngx-material-timepicker": "^5.5.3",
+    "ngx-toastr": "^14.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

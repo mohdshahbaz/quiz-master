@@ -39,8 +39,12 @@ export class AddQuizComponent implements OnInit {
     const data = this.addQuizForm.value;
 
     this.quizMasterService.createQuizMaster(data).subscribe(res => {
+      if(res["status"])
+      {
+        
+    this.router.navigate(['/main-content']);
+      }
     });
 
-    this.router.navigate(['/main-content']);
   }
 }
