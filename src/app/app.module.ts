@@ -8,7 +8,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MainContentComponent } from './component/main-content/main-content.component';
-import { AddQuizComponent } from './component/add-quiz/add-quiz.component';
+import { AddQuizMasterComponent } from './component/add-quiz-master/add-quiz-master.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -29,17 +29,24 @@ import { RequestCategoryDialogComponent } from './component/request-category-dia
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddQuestionsDialogComponent } from './component/add-questions-dialog/add-questions-dialog.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CreateNewGroupComponent } from './component/create-new-group/create-new-group.component';
+import { AllUsersComponent } from './component/all-users/all-users.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort'
 
 @NgModule({
   declarations: [
     AppComponent,
     MainContentComponent,
-    AddQuizComponent,
+    AddQuizMasterComponent,
     MainNavComponent,
     AddNewQuizComponent,
     SelectAgeDialogComponent,
     RequestCategoryDialogComponent,
-    AddQuestionsDialogComponent
+    AddQuestionsDialogComponent,
+    CreateNewGroupComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,10 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
     FormsModule,
     MatCheckboxModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
+import { QuizzesService } from 'src/app/services/quizzes.service';
 
 @Component({
   selector: 'app-add-questions-dialog',
@@ -11,6 +12,7 @@ export class AddQuestionsDialogComponent implements OnInit {
   questions: any;
 
   constructor(private quizMasterService: QuizMasterService,
+    private quizzesService: QuizzesService,
     public dialogRef: MatDialogRef<AddQuestionsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data
     ) { }
@@ -26,7 +28,7 @@ export class AddQuestionsDialogComponent implements OnInit {
       categoryName: this.data.selectedCategory
     }
 
-    this.quizMasterService.getQuestions(postData).subscribe(result => {
+    this.quizzesService.getQuestions(postData).subscribe(result => {
       if(result['status']) {
         this.questions = result['questions'];
       }

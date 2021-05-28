@@ -20,8 +20,4 @@ export class QuizMasterService {
     return this.http.post(this.serverUrl + '/create-quiz-master', data);
   }
 
-  getQuestions(data) {
-    return this.http.post(this.serverUrl + '/get-questions-by-category', data);
-  }
-
 }

@@ -51,7 +51,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-image: url("/../../../assets/Ellipse\ 742@1X.png");
+  background-image: url("/../../../assets/bg-image.png");
   background-position: 25% 0%;
   padding: 10px;
   background-repeat: no-repeat;
@@ -96,6 +96,7 @@
   margin-left: 0;
   margin-right: 0;
   text-align: center;
+  width: 100%;
 }
 
 .sidenav-content {

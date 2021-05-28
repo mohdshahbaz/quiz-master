@@ -1,0 +1,35 @@
+.container-fluid {
+    height: calc(100vh - 63.993);
+    overflow: auto;
+    padding: 50px;
+}
+
+.btn {
+    padding: 20px;
+    width: 120px;
+    background-color: var(--yellow-color);
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 0.8em;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+
+table {
+    width: 100%;
+    font-weight: 500;
+}
+
+.filter {
+    padding: 10px;
+}
+
+.materialng-table {
+    margin: 20px;
+}
+
+@media(max-width:768px) {
+    .container-fluid{
+        height: cal(100vh - 174.781px);
+    }
+}

@@ -1,0 +1,19 @@
+.checkbox {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.title {
+    background-color: var(--light-blue);
+    color: black;
+    padding: 15px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+button {
+    background-color: var(--yellow-color);
+    color: var(--primary-blue);
+    width: 90px;
+    border-radius: 20px;
+}

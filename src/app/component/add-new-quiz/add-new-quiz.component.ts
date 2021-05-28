@@ -1,4 +1,4 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { analyzeAndValidateNgModules, NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,11 +16,11 @@ import { ToastrService } from 'ngx-toastr';
 export class AddNewQuizComponent implements OnInit {
   
   addNewQuizForm: FormGroup;
-  startAge: number;
-  endAge: number;
+  startAge: number = null;
+  endAge: number = null;
   requestedCategory: string;
   selectedQuestionsId = [];
-  age;
+  age = null;
 
   constructor(
     private fb: FormBuilder,
@@ -83,12 +83,14 @@ openRequestCategoryDialog() {
 
 openAddQuestionsDialog() {
   const dialogRef = this.dialog.open(AddQuestionsDialogComponent, {
-    width: '300px',
+    width: '100%',
+    height: '100%',
     data: {selectedQuestionsId: this.selectedQuestionsId, selectedCategory: this.addNewQuizForm.controls['quizCategory'].value}
   });
 
   dialogRef.afterClosed().subscribe(result => {
     this.selectedQuestionsId = result['selectedQuestionsId'];
+    console.log(this.selectedQuestionsId);
   })
 }
 
@@ -104,17 +106,18 @@ openAddQuestionsDialog() {
     postData['quizMasterId'] = 105;
     postData['quizTitle'] = "A new Science quiz";
     debugger;
-    if(this.addNewQuizForm.controls ['noOfQuestions'].value == this.selectedQuestionsId.length 
-          && this.age && (Date.parse(postData['startDate']) < Date.parse(postData['endDate'])) ) {
-      console.log(this.addNewQuizForm.value);
-    } else if(!this.age) {
-      this.toastr.error('Enter correct age group!');
-    } else if(Date.parse(postData['startDate']) > Date.parse(postData['endDate']))  {
+
+    if((Date.parse(postData['startDate'])) > (Date.parse(postData['endDate']))) {
       this.toastr.error('Enter valid end date!')
-    }
-    else {
+    } else if(this.age == null) {
+      this.toastr.error('Enter correct age group!');
+    } else if(this.addNewQuizForm.get('noOfQuestions').value != this.selectedQuestionsId.length) {
       this.toastr.error('Selected questions should be equal to no of questions entered!');
+    } else {
+      console.log(this.addNewQuizForm.value);
+      this.toastr.success('Quiz added succesfully!');
+      this.addNewQuizForm.reset();
+      this.age = null;
     }
   }
-
 }

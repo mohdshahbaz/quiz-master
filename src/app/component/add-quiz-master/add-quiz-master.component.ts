@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
 
 @Component({
-  selector: 'app-add-quiz',
+  selector: 'app-add-quiz-master',
   templateUrl: './add-quiz.component.html',
   styleUrls: ['./add-quiz.component.css']
 })
-export class AddQuizComponent implements OnInit {
+export class AddQuizMasterComponent implements OnInit {
 
   addQuizForm: FormGroup;
 

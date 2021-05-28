@@ -1,10 +1,14 @@
-<h1 mat-dailog-title>Select Questions</h1>
-<div mat-dialog-content>
-    <div *ngFor="let question of questions">
-        <mat-checkbox color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)">{{question.quesText}}</mat-checkbox>
+<div class="dialog-container">
+    <h1 mat-dailog-title class="title">Select Questions</h1>
+    <div mat-dialog-content>
+        <div *ngFor="let question of questions">
+            <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)">{{question.quesText}}</mat-checkbox>
+        </div>
+        <div class="spacer"></div>
+        <div mat-dialog-actions>
+            <button mat-button (click)="onCancelClick()">Cancel</button>
+            <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+        </div>
     </div>
-    <div mat-dialog-actions>
-        <button mat-button (click)="onCancelClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-    </div>
+
 </div>

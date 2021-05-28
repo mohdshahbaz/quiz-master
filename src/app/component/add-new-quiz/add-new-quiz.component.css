@@ -1,4 +1,4 @@
-.container {
+/* .container {
     height: calc(100vh - 64px);
     margin: auto;
     overflow: auto;
@@ -158,4 +158,135 @@ input:focus {
    .btn {
        width: 100%;
    }
+} */
+
+.container-fluid {
+    height: calc(100vh - 64px);
+    overflow: auto;
 }
+
+.outer-card {
+    margin-top: 10px;
+    background-color: var(--light-blue);
+    border-radius: 20px;
+}
+
+.inner-card-1, .inner-card-2 {
+    margin: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    padding: 30px;
+    justify-content: space-between;
+    height: 580px;
+    width: 580px;
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.inner-card-1 > div, .inner-card-2 > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner-card-1 > div > input, select {
+    width: 250px;
+}
+
+.inner-card-2 > div > input {
+    width: 250px;
+}
+
+.inner-card-2 > div > div:first-child {
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner-card-2 > div > div:last-child {
+    width: 265px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner-card-2 > div > select {
+    width: 120px;
+}
+
+input, select {
+    background-color: var(--primary-blue);
+    color: var(--yellow-color);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+input::placeholder, select::placeholder {
+    color: var(--yellow-color);
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 25px;
+    background-color: var(--yellow-color);
+    color: var(--primary-blue);
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 0.8em;
+    width: 150px;
+}
+
+@media(max-width: 768px) {
+    .container-fluid {
+        height: calc(100vh - 174.781px);
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    .inner-card-1, .inner-card-2 {
+        width: auto;
+        height: auto;
+    }
+
+    .inner-card-1 > div, .inner-card-2 > div {
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .inner-card-2 > div > div {
+        flex-direction: column;
+    }
+
+    select, input, .btn {
+       width: 220px !important;
+    }
+
+    .rqst-ctg-btn {
+        margin-top: 10px;
+    }
+
+    .action-btn > * {
+        margin: 10px;
+    }
+}
+
