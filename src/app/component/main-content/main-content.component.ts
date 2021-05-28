@@ -10,6 +10,7 @@ import { QuizMasterService } from 'src/app/services/quiz-master.service';
 export class MainContentComponent implements OnInit {
 
   quizMasters:any = [];
+  query = '';
 
   constructor(private quizMasterService: QuizMasterService,
         private router: Router

@@ -85,6 +85,8 @@ openAddQuestionsDialog() {
   const dialogRef = this.dialog.open(AddQuestionsDialogComponent, {
     width: '100%',
     height: '100%',
+    maxHeight: '100vh',
+    maxWidth: '100vw',
     data: {selectedQuestionsId: this.selectedQuestionsId, selectedCategory: this.addNewQuizForm.controls['quizCategory'].value}
   });
 

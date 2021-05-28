@@ -15,17 +15,8 @@
     margin-left: 10px;
 }
 
-table {
-    width: 100%;
-    font-weight: 500;
-}
-
-.filter {
-    padding: 10px;
-}
-
-.materialng-table {
-    margin: 20px;
+.table {
+    margin-top: 50px;
 }
 
 @media(max-width:768px) {

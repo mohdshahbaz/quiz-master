@@ -16,12 +16,5 @@ export class QuizzesService {
     return this.http.post(this.serverUrl + '/get-questions-by-category', data);
   }
 
-  getAllUsers() {
-    return this.http.get(this.serverUrl + '/get-all-users');
-  }
-
-  getAllStudentGroups() {
-    return this.http.get(this.serverUrl + '/get-all-student-groups');
-  }
 
 }

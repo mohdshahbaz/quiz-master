@@ -3,13 +3,16 @@
     <div class="header container">
         <p class='header-text'>All Users</p>
         <div class="add-search">
-            <input class="search-input" type="text" placeholder="Search">
+            <div class="form-group">
+
+                <input class="search-input" type="text" placeholder="Search" [(ngModel)]="query">
+            </div>
         </div>
     </div>
 
 
     <div class="cards">
-        <div *ngFor="let user of users">
+        <div *ngFor="let user of users | filter: query">
             <div class="card">
                 <div class="card-head">
                     <h1 style="visibility: hidden;">Hid</h1>
@@ -17,12 +20,12 @@
                     <mat-icon>more_vert</mat-icon>
                 </div>
                 <div>
-                    <h3 class="email">Email ID: {{user.email}}</h3>
+                    <h3 class="username">Username: <span style="font-weight: bold;">{{user.username}}</span></h3>
+                    <h3 class="email">Email ID: <span style="font-weight: bold;">{{user.email}}</span></h3>
                 </div>
                 <div class="password">
-                    <h3>Phone</h3>
+                    <h3>Phone : </h3>
                     <h3 class="psswd">{{user.phone}}</h3>
-                    <mat-icon>remove_red_eye</mat-icon>
                 </div>
                 <div class="actions">
                     <!-- <button mat-icon-button class="delete-icon">
@@ -35,6 +38,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="sticky-btn">
+        <button type="button" class="btn btn-sticky">Submit Group</button>
     </div>
 
 </div>

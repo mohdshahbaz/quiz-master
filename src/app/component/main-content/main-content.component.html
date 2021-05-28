@@ -4,13 +4,13 @@
         <p class='header-text'>All Quiz Masters</p>
         <div class="add-search">
             <a [routerLink]="'/add-quiz-master'" class='add-button'>Add Quiz Master</a>
-            <input class="search-input" type="text" placeholder="Search">
+            <input class="search-input" type="text" placeholder="Search" [(ngModel)]="query">
         </div>
     </div>
 
 
     <div class="cards">
-        <div *ngFor="let quizMaster of quizMasters">
+        <div *ngFor="let quizMaster of quizMasters | filter: query">
             <div class="card">
                 <div class="card-head">
                     <h1 style="visibility: hidden;">Hid</h1>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizzesService } from 'src/app/services/quizzes.service';
+import { StudentGroupService } from 'src/app/services/student-group.service';
 
 @Component({
   selector: 'app-all-users',
@@ -9,9 +9,11 @@ import { QuizzesService } from 'src/app/services/quizzes.service';
 export class AllUsersComponent implements OnInit {
 
   users = [];
+  public filter: any = '';
+  query = '';
 
   constructor(
-    private quizzesService: QuizzesService
+    private studentGroupService: StudentGroupService 
   ) { }
 
   ngOnInit(): void {
@@ -19,7 +21,7 @@ export class AllUsersComponent implements OnInit {
   }
 
   getAllUsers() {
-    this.quizzesService.getAllUsers().subscribe(result => {
+    this.studentGroupService.getAllUsers().subscribe(result => {
       if(result['status']) {
         this.users = result['users'];
       }

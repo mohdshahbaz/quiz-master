@@ -34,6 +34,8 @@ import { AllUsersComponent } from './component/all-users/all-users.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'
+import { DataTablesModule } from "angular-datatables";
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { MatSortModule } from '@angular/material/sort'
     RequestCategoryDialogComponent,
     AddQuestionsDialogComponent,
     CreateNewGroupComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { MatSortModule } from '@angular/material/sort'
     ToastrModule.forRoot(),
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
