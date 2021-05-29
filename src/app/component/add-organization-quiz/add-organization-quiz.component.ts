@@ -1,27 +1,28 @@
-import { analyzeAndValidateNgModules, NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ValidatorFn, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { SelectAgeDialogComponent } from '../select-age-dialog/select-age-dialog.component';
-import { RequestCategoryDialogComponent } from '../request-category-dialog/request-category-dialog.component';
-import { SelectAgeGroupService } from '../../services/select-age-group.service';
-import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questions-dialog.component';
 import { ToastrService } from 'ngx-toastr';
+import { SelectAgeGroupService } from 'src/app/services/select-age-group.service';
+import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questions-dialog.component';
+import { RequestCategoryDialogComponent } from '../request-category-dialog/request-category-dialog.component';
+import { SelectAgeDialogComponent } from '../select-age-dialog/select-age-dialog.component';
+import { SelectGroupDialogComponent } from '../select-group-dialog/select-group-dialog.component';
 
 @Component({
-  selector: 'app-add-new-quiz',
-  templateUrl: './add-new-quiz.component.html',
-  styleUrls: ['./add-new-quiz.component.css']
+  selector: 'app-add-organization-quiz',
+  templateUrl: './add-organization-quiz.component.html',
+  styleUrls: ['./add-organization-quiz.component.css']
 })
-export class AddNewQuizComponent implements OnInit {
-  
+export class AddOrganizationQuizComponent implements OnInit {
+
   addNewQuizForm: FormGroup;
   startAge: number = null;
   endAge: number = null;
   requestedCategory: string;
   selectedQuestionsId = [];
+  selectedGroupsId = [];
   age = null;
-  quizMasterId = "105";
+  quizMasterId = "131";
 
   constructor(
     private fb: FormBuilder,
@@ -39,15 +40,11 @@ export class AddNewQuizComponent implements OnInit {
       areaOfInterest: ['', Validators.required],
       startTime: ['', Validators.required],
       startDate: ['', Validators.required],
-      endTime: [''],
-      endDate: [''],
-      slots: ['', Validators.required],
+      endTime: ['', Validators.required],
+      endDate: ['', Validators.required],
       noOfQuestions: ['', Validators.required],
       difficultyLevel: ['', Validators.required],
       timePerQues: ['', Validators.required],
-      prizePool: ['', Validators.required],
-      entryAmount: ['', Validators.required],
-      winningPrize: ['', Validators.required],
     });
   }
 
@@ -55,18 +52,17 @@ export class AddNewQuizComponent implements OnInit {
     return this.addNewQuizForm['controls'];
  }
 
-openSelectAgeDialog() {
-  debugger;
-  const dialogRef = this.dialog.open(SelectAgeDialogComponent, {
-    width: '250px',
-    data: {starAge: this.startAge, endAge: this.endAge}
+ openSelectGroupDialog() {
+  const dialogRef = this.dialog.open(SelectGroupDialogComponent, {
+    width: '100%',
+    height: '100%',
+    data: {selectedGroupsId: this.selectedGroupsId 
+  }
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    this.age = {
-      startAge: result['startAge'],
-      endAge: result['endAge']
-    }
+    this.selectedGroupsId = result['selectedGroupsId'];
+    console.log(this.selectedGroupsId);
   })
 }
 
@@ -88,9 +84,9 @@ openAddQuestionsDialog() {
     height: '100%',
     maxHeight: '100vh',
     maxWidth: '100vw',
-    data: {selectedQuestionsId: this.selectedQuestionsId,
-      selectedCategory: this.addNewQuizForm.controls['quizCategory'].value,
-      }
+    data: {selectedQuestionsId: this.selectedQuestionsId, 
+    selectedCategory: this.addNewQuizForm.controls['quizCategory'].value,
+  }
   });
 
   dialogRef.afterClosed().subscribe(result => {
@@ -110,12 +106,13 @@ openAddQuestionsDialog() {
     postData['age'] = this.age;
     postData['quizMasterId'] = 105;
     postData['quizTitle'] = "A new Science quiz";
+    postData['access'] = this.selectedGroupsId;
     debugger;
 
     if((Date.parse(postData['startDate'])) > (Date.parse(postData['endDate']))) {
       this.toastr.error('Enter valid end date!')
-    } else if(this.age == null) {
-      this.toastr.error('Enter correct age group!');
+    } else if(this.selectedGroupsId == null) {
+      this.toastr.error('Select group!');
     } else if(this.addNewQuizForm.get('noOfQuestions').value != this.selectedQuestionsId.length) {
       this.toastr.error('Selected questions should be equal to no of questions entered!');
     } else {
@@ -125,4 +122,5 @@ openAddQuestionsDialog() {
       this.age = null;
     }
   }
+
 }

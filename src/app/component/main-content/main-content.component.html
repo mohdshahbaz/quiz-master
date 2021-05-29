@@ -10,7 +10,7 @@
 
 
     <div class="cards">
-        <div *ngFor="let quizMaster of quizMasters | filter: query">
+        <div *ngFor="let quizMaster of quizMasters | emailFilter: query">
             <div class="card">
                 <div class="card-head">
                     <h1 style="visibility: hidden;">Hid</h1>
@@ -21,9 +21,12 @@
                     <h3 class="email">Email ID: {{quizMaster.email}}</h3>
                 </div>
                 <div class="password">
-                    <h3>Pasword</h3>
-                    <h3 class="psswd">{{quizMaster.password}}</h3>
-                    <mat-icon>remove_red_eye</mat-icon>
+                    <!-- <h3>Pasword</h3> -->
+                    <!-- <h3 class="psswd">{{quizMaster.password}}</h3> -->
+                    <show-hide-password size="sm"  [btnOutline]="false" class="show-hide-psswd">
+                        <input type="password" name="..." value='{{quizMaster.password}}' >
+                      </show-hide-password>
+                    <!-- <mat-icon>remove_red_eye</mat-icon> -->
                 </div>
                 <div class="actions">
                     <button mat-icon-button class="delete-icon">

@@ -5,6 +5,7 @@ import { MainContentComponent } from './component/main-content/main-content.comp
 import { AddNewQuizComponent } from './component/add-new-quiz/add-new-quiz.component';
 import { CreateNewGroupComponent } from './component/create-new-group/create-new-group.component';
 import { AllUsersComponent } from './component/all-users/all-users.component';
+import { AddOrganizationQuizComponent } from './component/add-organization-quiz/add-organization-quiz.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'all-users',
     component: AllUsersComponent
+  },
+  {
+    path: 'add-organization-quiz',
+    component: AddOrganizationQuizComponent
   }
 ];
 

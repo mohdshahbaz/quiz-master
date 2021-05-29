@@ -38,7 +38,7 @@ export class CreateNewGroupComponent implements OnInit  {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 5
     };
     this.studentGroupService.getAllStudentGroups()
       .subscribe(data => {

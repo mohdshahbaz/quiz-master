@@ -1,0 +1,36 @@
+.checkbox {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.title {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    padding: 15px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+button {
+    background-color: var(--yellow-color);
+    color: var(--primary-blue);
+    width: 90px;
+    border-radius: 20px;
+}
+
+.questions > * {
+    margin: 10px;
+    font-size: 1.3em;
+}
+
+::ng-deep .dialog-container .mat-dialog-content {
+    height: 100% !important;
+    height: 100vh !important;
+    max-height: cal(100vh - 62px);
+    color: var(--primary-blue);
+    
+}
+
+::ng-deep .mat-dialog-container {
+    background-color: var(--bg-color);
+}

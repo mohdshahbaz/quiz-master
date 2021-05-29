@@ -21,4 +21,8 @@ export class StudentGroupService {
     return this.http.get(this.serverUrl + '/get-all-student-groups');
   }
 
+  getStudentGroupByQuizMasterId(id) {
+    return this.http.get(this.serverUrl + '/get-student-groups-by-quizMaster/' + id);
+  }
+
 }

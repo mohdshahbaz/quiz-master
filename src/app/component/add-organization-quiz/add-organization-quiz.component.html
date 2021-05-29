@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="card outer-card">
+        <form [formGroup]="addNewQuizForm" (submit)="addNewQuiz()">
+            <div class="card inner-card-1">
+                <div>
+                    Select Category: 
+                    <select class="select-dropdown" formControlName="quizCategory">
+                        <option [ngValue]="'General knowledge'">General Knowledge</option>
+                        <option [ngValue]="'Science'">Science</option>
+                    </select>
+                </div>
+
+                <div>
+                    Area of Interest:
+                    <select class="select-dropdown" formControlName="areaOfInterest">
+                        <option [ngValue]="'Physics'">Physics</option>
+                        <option [ngValue]="'Chemistry'">Chemistry</option>
+                        <option [ngValue]="'Math'">Math</option>
+                    </select>
+                </div>
+                
+                <div class='custom-width'>
+                    Difficulty:
+                    <select class="select-dropdown" formControlName="difficultyLevel">
+                        <option [ngValue]="'easy'">easy</option>
+                        <option [ngValue]="'medium'">medium</option>
+                        <option [ngValue]="'hard'">hard</option>
+                    </select>
+                </div>
+                
+                <div>
+                    Number of Qns:
+                    <input type="number" formControlName="noOfQuestions" min="1" oninput="validity.valid||(value='');">
+                </div>
+                <div></div>
+            </div>
+
+            <div class="card inner-card-2">
+                <div>
+                    Select Sub Category: 
+                    <select class="select-dropdown" formControlName="quizSubCategory">
+                        <option [ngValue]="'Physics'">Physics</option>
+                        <option [ngValue]="'Chemistry'">Chemistry</option>
+                        <option [ngValue]="'Math'">Math</option>
+                    </select>
+                    <button type="button" class="btn btn-primary rqst-ctg-btn" (click)="openRequestCategoryDialog()">Request Category</button>
+                </div>
+                <div>
+                    <div>
+                        Start Time:
+                        <input type="time" formControlName="startTime">
+                    </div>
+                    <div>
+                        Start Date:
+                        <input type="date" formControlName="startDate">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        End Time:
+                        <input type="time" formControlName="endTime">
+                        </div>
+                    <div>
+                        End Date:
+                        <input type="date" formControlName="endDate">
+                        <div *ngIf="addNewQuizFormControls.endTime.errors?.dateRange"> 
+                            Age should be a number
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    Time per qns:
+                    <input type="number" formControlName="timePerQues" class="time-per-ques" min="1" oninput="validity.valid||(value='');" placeholder="Time in seconds">
+                </div>
+                <div></div>
+                <div class="action-btn">
+                    <button type="button" class="btn btn-primary" (click)="openSelectGroupDialog()">SELECT GROUP</button>
+                    <button type="button" class="btn btn-primary" (click)="openAddQuestionsDialog()">ADD QUESTIONS</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="!addNewQuizForm.valid">SUBMIT</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>

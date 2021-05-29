@@ -35,7 +35,11 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'
 import { DataTablesModule } from "angular-datatables";
-import { FilterPipe } from './pipes/filter.pipe';
+import { UsernameFilterPipe } from './pipes/username-filter.pipe';
+import { EmailFilterPipe } from './pipes/email-filter.pipe';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { AddOrganizationQuizComponent } from './component/add-organization-quiz/add-organization-quiz.component';
+import { SelectGroupDialogComponent } from './component/select-group-dialog/select-group-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,10 @@ import { FilterPipe } from './pipes/filter.pipe';
     AddQuestionsDialogComponent,
     CreateNewGroupComponent,
     AllUsersComponent,
-    FilterPipe
+    UsernameFilterPipe,
+    EmailFilterPipe,
+    AddOrganizationQuizComponent,
+    SelectGroupDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +84,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    DataTablesModule
+    DataTablesModule,
+    ShowHidePasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent]

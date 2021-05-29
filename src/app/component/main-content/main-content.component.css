@@ -117,6 +117,25 @@
     margin-top: -5px;
 }
 
+.show-hide-psswd {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 10px;
+    width: 150px;
+}
+
+.show-hide-psswd > input {
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.show-hide-psswd > input:focus {
+    outline: none;
+}
+
 .actions {
     display: flex;
     justify-content: center;
@@ -192,6 +211,10 @@ mat-icon {
 
     .email {
         margin: 0px;
+    }
+
+    .show-hide-psswd {
+        margin-top: 10px;
     }
 
 }

@@ -12,7 +12,7 @@
 
 
     <div class="cards">
-        <div *ngFor="let user of users | filter: query">
+        <div *ngFor="let user of users | usernameFilter: query">
             <div class="card">
                 <div class="card-head">
                     <h1 style="visibility: hidden;">Hid</h1>
