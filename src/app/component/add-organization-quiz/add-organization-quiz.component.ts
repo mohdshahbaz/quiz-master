@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { SelectAgeGroupService } from 'src/app/services/select-age-group.service';
+import { QuizMasterService } from 'src/app/services/quiz-master.service';
 import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questions-dialog.component';
 import { RequestCategoryDialogComponent } from '../request-category-dialog/request-category-dialog.component';
 import { SelectAgeDialogComponent } from '../select-age-dialog/select-age-dialog.component';
@@ -27,7 +27,7 @@ export class AddOrganizationQuizComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private selectAgeGroupService: SelectAgeGroupService,
+    private quizMasterService: QuizMasterService,
     private toastr: ToastrService
   ) { 
 
@@ -69,12 +69,31 @@ export class AddOrganizationQuizComponent implements OnInit {
 openRequestCategoryDialog() {
   debugger;
   const dialogRef = this.dialog.open(RequestCategoryDialogComponent, {
-    width: '250px',
+    width: '300px',
     data: {requestedCategory: this.requestedCategory}
   });
 
   dialogRef.afterClosed().subscribe(result => {
     console.log(result);
+    this.createCategory(result);
+  })
+}
+
+createCategory(data) {
+  const postData = {
+    quizMasterId: this.quizMasterId,
+    category: data.requestedCategory,
+    subCategory: data.requestedSubCategory,
+    areaOfInterest: data.areaOfInterest,
+    masterType: 1,
+    isSelected: 0
+  }
+  console.log(postData);
+  this.quizMasterService.createNewRequest(postData).subscribe(res => {
+    console.log(res);
+    if(res['status']) {
+      this.toastr.success('successfully requested category!');
+    }
   })
 }
 
@@ -95,32 +114,28 @@ openAddQuestionsDialog() {
   })
 }
 
-  setSelectCategoryValue() {
-    this.selectAgeGroupService.setOption('selectCategory', this.addNewQuizForm.controls['quizCategory'].value)
-  }
+addNewQuiz() {
+  let postData = this.addNewQuizForm.value;
+  postData['prizePool'] = [{"rankNo":1,"prize":"1200"},{"rankNo":2,"prize":"900"},{"rankNo":3,"prize":"500"}];
+  postData['questions'] = this.selectedQuestionsId;
+  postData['age'] = this.age;
+  postData['quizMasterId'] = 105;
+  postData['quizTitle'] = "A new Science quiz";
+  postData['access'] = this.selectedGroupsId;
+  debugger;
 
-  addNewQuiz() {
-    let postData = this.addNewQuizForm.value;
-    postData['prizePool'] = [{"rankNo":1,"prize":"1200"},{"rankNo":2,"prize":"900"},{"rankNo":3,"prize":"500"}];
-    postData['questions'] = this.selectedQuestionsId;
-    postData['age'] = this.age;
-    postData['quizMasterId'] = 105;
-    postData['quizTitle'] = "A new Science quiz";
-    postData['access'] = this.selectedGroupsId;
-    debugger;
-
-    if((Date.parse(postData['startDate'])) > (Date.parse(postData['endDate']))) {
-      this.toastr.error('Enter valid end date!')
-    } else if(this.selectedGroupsId == null) {
-      this.toastr.error('Select group!');
-    } else if(this.addNewQuizForm.get('noOfQuestions').value != this.selectedQuestionsId.length) {
-      this.toastr.error('Selected questions should be equal to no of questions entered!');
-    } else {
-      console.log(this.addNewQuizForm.value);
-      this.toastr.success('Quiz added succesfully!');
-      this.addNewQuizForm.reset();
-      this.age = null;
-    }
+  if((Date.parse(postData['startDate'])) > (Date.parse(postData['endDate']))) {
+    this.toastr.error('Enter valid end date!')
+  } else if(this.selectedGroupsId == null) {
+    this.toastr.error('Select group!');
+  } else if(this.addNewQuizForm.get('noOfQuestions').value != this.selectedQuestionsId.length) {
+    this.toastr.error('Selected questions should be equal to no of questions entered!');
+  } else {
+    console.log(this.addNewQuizForm.value);
+    this.toastr.success('Quiz added succesfully!');
+    this.addNewQuizForm.reset();
+    this.age = null;
   }
+}
 
 }

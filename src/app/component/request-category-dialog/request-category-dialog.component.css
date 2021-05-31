@@ -1,0 +1,30 @@
+mat-form-field {
+    width: 250px;
+}
+
+.title {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    padding: 10px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+button {
+    background-color: var(--yellow-color);
+    color: var(--primary-blue);
+    width: 90px;
+    border-radius: 20px;
+}
+
+::ng-deep .dialog-container .mat-dialog-content {
+    height: 100% !important;
+    height: 100vh !important;
+    color: var(--primary-blue);
+    
+}
+
+::ng-deep .mat-dialog-content {
+    height: fit-content;
+    overflow: visible;
+}

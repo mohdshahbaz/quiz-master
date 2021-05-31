@@ -40,6 +40,8 @@ import { EmailFilterPipe } from './pipes/email-filter.pipe';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { AddOrganizationQuizComponent } from './component/add-organization-quiz/add-organization-quiz.component';
 import { SelectGroupDialogComponent } from './component/select-group-dialog/select-group-dialog.component';
+import { NonSelectedRequestsComponent } from './component/non-selected-requests/non-selected-requests.component';
+import { SelectedRequestsComponent } from './component/selected-requests/selected-requests.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { SelectGroupDialogComponent } from './component/select-group-dialog/sele
     UsernameFilterPipe,
     EmailFilterPipe,
     AddOrganizationQuizComponent,
-    SelectGroupDialogComponent
+    SelectGroupDialogComponent,
+    NonSelectedRequestsComponent,
+    SelectedRequestsComponent
   ],
   imports: [
     BrowserModule,

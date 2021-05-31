@@ -1,0 +1,41 @@
+<div class="container">
+    
+    <div class="table">
+
+        <table datatable [dtOptions]='dtOptions' [dtTrigger]="dtTrigger" class="row-border hover">
+           
+            <thead>
+                <tr>
+                    <th>Quiz Master Id</th>
+                    <th>Category</th>
+                    <th>Sub-Category</th>
+                    <th>Area of Interest</th>
+                    <th>Master Type</th>
+                    <th>Date of Request</th>
+                    <th></th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let request of requests">
+                    <td>{{ request.quizMasterId }}</td>
+                    <td>{{ request.category }}</td>
+                    <td>
+                        <div *ngFor="let category of request.subCategory">
+                            {{ category }}
+                        </div>
+                    </td>
+                    <td>{{ request.areaOfInterest }}</td>
+                    <td>{{ request.masterType }}</td>
+                    <td>{{ request.creationTimeStamp | date }}</td>
+                    <td>
+                        <button type="button" class="btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

@@ -6,6 +6,8 @@ import { AddNewQuizComponent } from './component/add-new-quiz/add-new-quiz.compo
 import { CreateNewGroupComponent } from './component/create-new-group/create-new-group.component';
 import { AllUsersComponent } from './component/all-users/all-users.component';
 import { AddOrganizationQuizComponent } from './component/add-organization-quiz/add-organization-quiz.component';
+import { NonSelectedRequestsComponent } from './component/non-selected-requests/non-selected-requests.component';
+import { SelectedRequestsComponent } from './component/selected-requests/selected-requests.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'add-organization-quiz',
     component: AddOrganizationQuizComponent
+  },
+  {
+    path: 'nonSelected-requests',
+    component: NonSelectedRequestsComponent
+  },
+  {
+    path: 'selected-requests',
+    component: SelectedRequestsComponent
   }
 ];
 

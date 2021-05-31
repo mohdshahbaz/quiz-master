@@ -1,11 +1,19 @@
-<h1 mat-dailog-title>Request Category</h1>
+<h1 mat-dailog-title class="title">Request Category</h1>
 <div mat-dialog-content>
     <mat-form-field>
         <mat-label>Enter Category</mat-label>
-        <input matInput [(ngModel)]="data.requestedCategory">
+        <input matInput [(ngModel)]="data.requestedCategory" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Enter Comma separated Sub-Category</mat-label>
+        <input matInput [(ngModel)]="data.requestedSubCategory">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Area of Interest</mat-label>
+        <input matInput [(ngModel)]="data.areaOfInterest">
     </mat-form-field>
     <div mat-dialog-actions>
         <button mat-button (click)="onCancelClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
     </div>
 </div>
