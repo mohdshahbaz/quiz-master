@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
+import { RequestCategoryService } from 'src/app/services/request-category.service';
 
 @Component({
   selector: 'app-selected-requests',
@@ -14,7 +15,7 @@ export class SelectedRequestsComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
 
   constructor(
-    private quizMasterService: QuizMasterService
+    private requestCategoryService: RequestCategoryService
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class SelectedRequestsComponent implements OnInit {
   }
 
   getAllSelectedRequests() {
-    this.quizMasterService.getAllSelectedRequests().subscribe(res => {
+    this.requestCategoryService.getAllSelectedRequests().subscribe(res => {
       this.requests = res['allRequests'];
       this.dtTrigger.next();
     });

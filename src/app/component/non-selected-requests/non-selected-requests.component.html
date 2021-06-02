@@ -1,6 +1,6 @@
 <div class="container">
     <div class="div">
-        <button type="button" class="btn" (click)="openRequestCategoryDialog()">Request Category</button>
+        <button type="button" class="btn" (click)="openRequestCategoryDialog()">Add Category</button>
     </div>
 
     <div class="table">
@@ -32,7 +32,7 @@
                     <td>{{ request.masterType }}</td>
                     <td>{{ request.creationTimeStamp | date }}</td>
                     <td>
-                        <button type="button" class="btn">Add</button>
+                        <button type="button" (click)="addRequestedCategory(request.requestId)" class="btn">Add</button>
                     </td>
                 </tr>
             </tbody>

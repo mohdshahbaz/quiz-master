@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
+import { RequestCategoryService } from 'src/app/services/request-category.service';
 import { RequestCategoryDialogComponent } from '../request-category-dialog/request-category-dialog.component';
 
 @Component({
@@ -19,7 +20,7 @@ export class NonSelectedRequestsComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private quizMasterService: QuizMasterService,
+    private requestCategoryService: RequestCategoryService,
     private toastr: ToastrService,
     private router: Router
   ) { }
@@ -33,7 +34,7 @@ export class NonSelectedRequestsComponent implements OnInit {
   }
 
   getAllNonSelectedRequests() {
-    this.quizMasterService.getAllNonSelectedRequests().subscribe(res => {
+    this.requestCategoryService.getAllNonSelectedRequests().subscribe(res => {
       this.requests = res['allRequests'];
       this.dtTrigger.next();
     });
@@ -59,17 +60,28 @@ export class NonSelectedRequestsComponent implements OnInit {
       quizMasterId: "105",
       category: data.requestedCategory,
       subCategory: data.requestedSubCategory,
-      areaOfInteres: data.areaOfInterest,
+      areaOfInterest: data.areaOfInterest,
       masterType: 1,
       isSelected: 1
     }
 
-    this.quizMasterService.createQuizMaster(postData).subscribe(res => {
+    this.requestCategoryService.createNewRequest(postData).subscribe(res => {
+      console.log(res);
       if(res['status']) {
         this.toastr.success('successfully added category!');
+        this.router.navigate(['/selected-requests']);
       }
     });
-    this.router.navigate(['/selected-requests']);
+  }
+
+  addRequestedCategory(requestId) {
+    console.log(requestId);
+    this.requestCategoryService.addRequestedCategory(requestId).subscribe(res => {
+      if(res['status']) {
+        this.toastr.success('Successfully added Category!');
+        this.router.navigate(['/selected-requests']);
+      }
+    })
   }
 
 }

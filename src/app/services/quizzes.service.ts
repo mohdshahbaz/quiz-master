@@ -16,5 +16,12 @@ export class QuizzesService {
     return this.http.post(this.serverUrl + '/get-questions-by-category', data);
   }
 
+  getQuizzesByQuizMasterId(id) {
+    return this.http.get(this.serverUrl + '/quizee-master-all-quizes/' + id);
+  }
+
+  editPublicQuiz(id) {
+    return this.http.get(this.serverUrl + '/get-quizee-master-quiz/' + id);
+  }
 
 }

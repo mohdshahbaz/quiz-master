@@ -8,6 +8,8 @@ import { AllUsersComponent } from './component/all-users/all-users.component';
 import { AddOrganizationQuizComponent } from './component/add-organization-quiz/add-organization-quiz.component';
 import { NonSelectedRequestsComponent } from './component/non-selected-requests/non-selected-requests.component';
 import { SelectedRequestsComponent } from './component/selected-requests/selected-requests.component';
+import { ShowAllQuizzesComponent } from './component/show-all-quizzes/show-all-quizzes.component';
+import { EditPublicQuizComponent } from './component/edit-public-quiz/edit-public-quiz.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
   {
     path: 'selected-requests',
     component: SelectedRequestsComponent
+  },
+  {
+    path: 'all-quizzes/:quizMasterId',
+    component: ShowAllQuizzesComponent
+  },
+  {
+    path: 'edit-public-quiz/:quizId',
+    component: EditPublicQuizComponent
   }
 ];
 

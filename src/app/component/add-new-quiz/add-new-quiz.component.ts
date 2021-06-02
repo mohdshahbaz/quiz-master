@@ -8,6 +8,7 @@ import { SelectAgeGroupService } from '../../services/select-age-group.service';
 import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questions-dialog.component';
 import { ToastrService } from 'ngx-toastr';
 import { QuizMasterService } from '../../services/quiz-master.service';
+import { RequestCategoryService } from 'src/app/services/request-category.service';
 
 @Component({
   selector: 'app-add-new-quiz',
@@ -28,7 +29,7 @@ export class AddNewQuizComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     private toastr: ToastrService,
-    private quizMasterService: QuizMasterService
+    private requestCategoryService: RequestCategoryService
   ) { 
 
   }
@@ -95,7 +96,7 @@ createCategory(data) {
     isSelected: 0
   }
   console.log(postData);
-  this.quizMasterService.createNewRequest(postData).subscribe(res => {
+  this.requestCategoryService.createNewRequest(postData).subscribe(res => {
     console.log(res);
     if(res['status']) {
       this.toastr.success('successfully requested category!');

@@ -19,17 +19,4 @@ export class QuizMasterService {
     debugger;
     return this.http.post(this.serverUrl + '/create-quiz-master', data);
   }
-
-  createNewRequest(data) {
-    return this.http.post(this.serverUrl + '/create-new-request', data)
-  }
-
-  getAllNonSelectedRequests() {
-    return this.http.get(this.serverUrl + '/get-all-nonSelected-requests');
-  }
-
-  getAllSelectedRequests() {
-    return this.http.get(this.serverUrl + '/get-all-selected-requests');
-  }
-
 }

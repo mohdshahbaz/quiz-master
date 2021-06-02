@@ -42,6 +42,9 @@ import { AddOrganizationQuizComponent } from './component/add-organization-quiz/
 import { SelectGroupDialogComponent } from './component/select-group-dialog/select-group-dialog.component';
 import { NonSelectedRequestsComponent } from './component/non-selected-requests/non-selected-requests.component';
 import { SelectedRequestsComponent } from './component/selected-requests/selected-requests.component';
+import { ShowAllQuizzesComponent } from './component/show-all-quizzes/show-all-quizzes.component';
+import { EditPublicQuizComponent } from './component/edit-public-quiz/edit-public-quiz.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,9 @@ import { SelectedRequestsComponent } from './component/selected-requests/selecte
     AddOrganizationQuizComponent,
     SelectGroupDialogComponent,
     NonSelectedRequestsComponent,
-    SelectedRequestsComponent
+    SelectedRequestsComponent,
+    ShowAllQuizzesComponent,
+    EditPublicQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +96,7 @@ import { SelectedRequestsComponent } from './component/selected-requests/selecte
     DataTablesModule,
     ShowHidePasswordModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

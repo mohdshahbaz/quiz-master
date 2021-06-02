@@ -1,0 +1,42 @@
+<div class="container-fluid">
+
+    <div class="table">
+
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+
+            <thead>
+                <tr>
+                    <th>Quiz Id</th>
+                    <th>Quiz Title</th>
+                    <th>Quiz Category</th>
+                    <th>Start Date</th>
+                    <th>Start Time</th>
+                    <th>Total Questions</th>
+                    <th>Date Of Creation</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let quiz of quizzes">
+                    <td>{{quiz.quizId}}</td>
+                    <td>{{quiz.quizTitle}}</td>
+                    <td>{{quiz.quizCategory}}</td>
+                    <td>{{quiz.startDate}}</td>
+                    <td>{{quiz.startTime}}</td>
+                    <td>{{quiz.noOfQuestions}}</td>
+                    <td>{{quiz.creationTimeStamp}}</td>
+                    <td>
+                        <button mat-icon-button (click)="openEditQuizPage(quiz.quizId)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+</div>

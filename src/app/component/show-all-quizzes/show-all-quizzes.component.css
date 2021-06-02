@@ -1,0 +1,15 @@
+.container-fluid {
+    height: calc(100vh - 64px);
+    overflow: auto;
+}
+
+.table {
+    margin-top: 40px;
+}
+
+@media(max-width: 768px) {
+
+    .container-fluid {
+        height: calc(100vh - 174.781px);
+    }
+}

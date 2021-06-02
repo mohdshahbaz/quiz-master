@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
+import { RequestCategoryService } from 'src/app/services/request-category.service';
 import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questions-dialog.component';
 import { RequestCategoryDialogComponent } from '../request-category-dialog/request-category-dialog.component';
 import { SelectAgeDialogComponent } from '../select-age-dialog/select-age-dialog.component';
@@ -27,7 +28,7 @@ export class AddOrganizationQuizComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private quizMasterService: QuizMasterService,
+    private requestCategoryService: RequestCategoryService,
     private toastr: ToastrService
   ) { 
 
@@ -89,7 +90,7 @@ createCategory(data) {
     isSelected: 0
   }
   console.log(postData);
-  this.quizMasterService.createNewRequest(postData).subscribe(res => {
+  this.requestCategoryService.createNewRequest(postData).subscribe(res => {
     console.log(res);
     if(res['status']) {
       this.toastr.success('successfully requested category!');
