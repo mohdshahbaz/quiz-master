@@ -2,7 +2,7 @@
     <h1 mat-dailog-title class="title">Select Questions</h1>
     <div mat-dialog-content>
         <div *ngFor="let question of questions" class="questions">
-            <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)">{{question.quesText}}</mat-checkbox>
+            <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)" [checked]="toggleCheckbox(question.questionId)">{{question.quesText}}</mat-checkbox>
         </div>
         <div class="spacer"></div>
         <div mat-dialog-actions>

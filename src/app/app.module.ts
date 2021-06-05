@@ -45,6 +45,9 @@ import { SelectedRequestsComponent } from './component/selected-requests/selecte
 import { ShowAllQuizzesComponent } from './component/show-all-quizzes/show-all-quizzes.component';
 import { EditPublicQuizComponent } from './component/edit-public-quiz/edit-public-quiz.component';
 import { DatePipe } from '@angular/common';
+import { EditAssignedQuizComponent } from './component/edit-assigned-quiz/edit-assigned-quiz.component';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,9 @@ import { DatePipe } from '@angular/common';
     NonSelectedRequestsComponent,
     SelectedRequestsComponent,
     ShowAllQuizzesComponent,
-    EditPublicQuizComponent
+    EditPublicQuizComponent,
+    EditAssignedQuizComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +101,7 @@ import { DatePipe } from '@angular/common';
     DataTablesModule,
     ShowHidePasswordModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

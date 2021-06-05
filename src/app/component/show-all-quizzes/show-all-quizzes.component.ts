@@ -43,12 +43,17 @@ export class ShowAllQuizzesComponent implements OnInit {
   getQuizzes(quizMasterId) {
     this.quizzesService.getQuizzesByQuizMasterId(quizMasterId).subscribe(res => {
       this.quizzes = res['quizzes'];
+      console.log(this.quizzes);
       this.dtTrigger.next();
     });
   }
 
-  openEditQuizPage(id) {
-    this.router.navigate(['/edit-public-quiz/' + id]);
+  openEditQuizPage(id, type) {
+    if(type == 'assigned') {
+      this.router.navigate(['/edit-assigned-quiz/' + id]);
+    } else {
+      this.router.navigate(['/edit-public-quiz/' + id]);
+    }
   }
 
 }

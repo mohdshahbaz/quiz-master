@@ -25,4 +25,8 @@ export class StudentGroupService {
     return this.http.get(this.serverUrl + '/get-student-groups-by-quizMaster/' + id);
   }
 
+  createStudentsGroup(data) {
+    return this.http.post(this.serverUrl  + '/create-students-group', data);
+  }
+
 }

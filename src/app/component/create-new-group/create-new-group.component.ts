@@ -5,6 +5,7 @@ import {MatSort} from '@angular/material/sort';
 import { StudentGroupService } from 'src/app/services/student-group.service';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface student {
   username: string
@@ -26,13 +27,16 @@ export class CreateNewGroupComponent implements OnInit  {
 
   dtOptions: DataTables.Settings = {};
   groups: any[] = [];
+  groupName;
 
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private httpClient: HttpClient,
-      private studentGroupService: StudentGroupService
+  constructor(
+      private httpClient: HttpClient,
+      private studentGroupService: StudentGroupService,
+      private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -49,8 +53,13 @@ export class CreateNewGroupComponent implements OnInit  {
       });
   }
 
+  navigateToAllUsers() {
+    this.router.navigateByUrl('/all-users', { state: { groupName:  this.groupName}});
+  }
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
+
 }

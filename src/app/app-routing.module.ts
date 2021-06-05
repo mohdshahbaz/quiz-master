@@ -10,49 +10,71 @@ import { NonSelectedRequestsComponent } from './component/non-selected-requests/
 import { SelectedRequestsComponent } from './component/selected-requests/selected-requests.component';
 import { ShowAllQuizzesComponent } from './component/show-all-quizzes/show-all-quizzes.component';
 import { EditPublicQuizComponent } from './component/edit-public-quiz/edit-public-quiz.component';
+import { EditAssignedQuizComponent } from './component/edit-assigned-quiz/edit-assigned-quiz.component';
+import { LoginComponent } from './component/login/login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: 'add-quiz-master',
-    component: AddQuizMasterComponent
+    component: AddQuizMasterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'main-content',
-    component: MainContentComponent
+    component: MainContentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-new-quiz',
-    component: AddNewQuizComponent
+    component: AddNewQuizComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'create-new-group',
-    component: CreateNewGroupComponent
+    component: CreateNewGroupComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'all-users',
-    component: AllUsersComponent
+    component: AllUsersComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-organization-quiz',
-    component: AddOrganizationQuizComponent
+    component: AddOrganizationQuizComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'nonSelected-requests',
-    component: NonSelectedRequestsComponent
+    component: NonSelectedRequestsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'selected-requests',
-    component: SelectedRequestsComponent
+    component: SelectedRequestsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'all-quizzes/:quizMasterId',
-    component: ShowAllQuizzesComponent
+    component: ShowAllQuizzesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-public-quiz/:quizId',
-    component: EditPublicQuizComponent
+    component: EditPublicQuizComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-assigned-quiz/:quizId',
+    component: EditAssignedQuizComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

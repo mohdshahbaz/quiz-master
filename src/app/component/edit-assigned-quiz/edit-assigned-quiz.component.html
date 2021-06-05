@@ -7,24 +7,18 @@
                     <select class="select-dropdown" formControlName="quizCategory">
                         <option [ngValue]="'general knowledge'">General Knowledge</option>
                         <option [ngValue]="'science'">Science</option>
-                        <option [ngValue]="'Maths'">Maths</option>
+                        <option [ngValue]="'maths'">Maths</option>
                     </select>
                 </div>
 
                 <div>
                     Area of Interest:
                     <select class="select-dropdown" formControlName="areaOfInterest">
-                        <option [ngValue]="'physics'">physics</option>
-                        <option [ngValue]="'chemistry'">Chemistry</option>
-                        <option [ngValue]="'maths'">Maths</option>
+                        <option [ngValue]="'physics'">Physics</option>
+                        <option [ngValue]="'Chemistry'">Chemistry</option>
+                        <option [ngValue]="'Maths'">Maths</option>
                         <option [ngValue]="'science'">Science</option>
                     </select>
-                </div>
-                
-                <div>
-                    Total Slots:
-                    <input type="number" formControlName="slots" min="1" oninput="validity.valid||(value='');">
-    
                 </div>
                 
                 <div class='custom-width'>
@@ -35,29 +29,12 @@
                         <option [ngValue]="'hard'">hard</option>
                     </select>
                 </div>
-
-                <div class='custom-width'>
-                    Prize Pool:
-                    <select class="select-dropdown" formControlName="prizePool">
-                        <option value="" selected disabled>Total Winning Percentage</option>
-                        <option [ngValue]="1">10%</option>
-                        <option [ngValue]="2">20%</option>
-                        <option [ngValue]="3">30%</option>
-                        <option [ngValue]="4">40%</option>
-                        <option [ngValue]="5">50%</option>
-                        <option [ngValue]="6">60%</option>
-                        <option [ngValue]="7">70%</option>
-                        <option [ngValue]="8">80%</option>
-                        <option [ngValue]="9">90%</option>
-                        <option [ngValue]="10">100%</option>
-                    </select>
-                </div>
                 
-                <div class="custom-width">
-                    Winning Prize:
-                    <input type="number" formControlName="winningPrize" min="1" oninput="validity.valid||(value='');">
+                <div>
+                    Number of Qns:
+                    <input type="number" formControlName="noOfQuestions" min="1" oninput="validity.valid||(value='');">
                 </div>
-
+                <div></div>
             </div>
 
             <div class="card inner-card-2">
@@ -66,7 +43,7 @@
                     <select class="select-dropdown" formControlName="quizSubCategory">
                         <option [ngValue]="'physics'">Physics</option>
                         <option [ngValue]="'Chemistry'">Chemistry</option>
-                        <option [ngValue]="'Maths'">Maths</option>
+                        <option [ngValue]="'Math'">Math</option>
                     </select>
                     <button type="button" class="btn btn-primary rqst-ctg-btn" (click)="openRequestCategoryDialog()">Request Category</button>
                 </div>
@@ -94,20 +71,12 @@
                     </div>
                 </div>
                 <div>
-                    Number of Qns:
-                    <input type="number" formControlName="noOfQuestions" min="1" oninput="validity.valid||(value='');">
-                </div>
-                <div>
                     Time per qns:
                     <input type="number" formControlName="timePerQues" class="time-per-ques" min="1" oninput="validity.valid||(value='');" placeholder="Time in seconds">
                 </div>
-                <div>
-                    Entry Amount:
-                    <input type="number" formControlName="entryAmount" min="1" oninput="validity.valid||(value='');">
-                </div>
                 <div></div>
                 <div class="action-btn">
-                    <button type="button" class="btn btn-primary" (click)="openSelectAgeDialog()">SELECT AGE</button>
+                    <button type="button" class="btn btn-primary" (click)="openSelectGroupDialog()">SELECT GROUP</button>
                     <button type="button" class="btn btn-primary" (click)="openAddQuestionsDialog()">ADD QUESTIONS</button>
                     <button class="btn btn-primary" type="submit" [disabled]="!addNewQuizForm.valid">SUBMIT</button>
                 </div>

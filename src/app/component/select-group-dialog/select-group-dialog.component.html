@@ -2,7 +2,7 @@
     <h1 mat-dailog-title class="title">Select Groups</h1>
     <div mat-dialog-content>
         <div *ngFor="let group of groups" class="questions">
-            <mat-checkbox class="checkbox" color="primary" [value]="group.groupId" (change)="onCheckboxChange($event)">{{group.groupName}}</mat-checkbox>
+            <mat-checkbox class="checkbox" color="primary" [value]="group.groupId" (change)="onCheckboxChange($event)" [checked]=toggleCheckbox(group.groupId)>{{group.groupName}}</mat-checkbox>
         </div>
         <div class="spacer"></div>
         <div mat-dialog-actions>

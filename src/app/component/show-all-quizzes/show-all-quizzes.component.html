@@ -22,12 +22,12 @@
                     <td>{{quiz.quizId}}</td>
                     <td>{{quiz.quizTitle}}</td>
                     <td>{{quiz.quizCategory}}</td>
-                    <td>{{quiz.startDate}}</td>
+                    <td>{{quiz.startDate | date}}</td>
                     <td>{{quiz.startTime}}</td>
                     <td>{{quiz.noOfQuestions}}</td>
-                    <td>{{quiz.creationTimeStamp}}</td>
+                    <td>{{quiz.creationTimeStamp | date}}</td>
                     <td>
-                        <button mat-icon-button (click)="openEditQuizPage(quiz.quizId)">
+                        <button mat-icon-button (click)="openEditQuizPage(quiz.quizId, quiz.type)">
                             <mat-icon>edit</mat-icon>
                         </button>
                     </td>

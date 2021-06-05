@@ -17,11 +17,15 @@ export class QuizzesService {
   }
 
   getQuizzesByQuizMasterId(id) {
-    return this.http.get(this.serverUrl + '/quizee-master-all-quizes/' + id);
+    return this.http.get(this.serverUrl + '/all-quizzes-by-quiz-master/' + id);
   }
 
-  editPublicQuiz(id) {
+  getSinglePublicQuiz(id) {
     return this.http.get(this.serverUrl + '/get-quizee-master-quiz/' + id);
+  }
+
+  getSingleAssignedQuiz(id) {
+    return this.http.get(this.serverUrl + '/get-organization-master-quiz/' + id);
   }
 
 }

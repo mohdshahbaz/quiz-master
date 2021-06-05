@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { data } from 'jquery';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
 import { QuizzesService } from 'src/app/services/quizzes.service';
 
@@ -19,7 +20,7 @@ export class AddQuestionsDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestions();
-    this.data.selectedQuestionsId = [];
+    console.log(this.data.selectedQuestionsId);
   }
 
   getQuestions() {
@@ -42,6 +43,10 @@ export class AddQuestionsDialogComponent implements OnInit {
     } else {
        this.data.selectedQuestionsId = this.data.selectedQuestionsId.filter(x => x != e.source.value);
     }
+  }
+
+  toggleCheckbox(id) {
+    return (this.data.selectedQuestionsId.indexOf(id) != -1) ? true : false;
   }
 
   onCancelClick() {

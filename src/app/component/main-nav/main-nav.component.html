@@ -1,56 +1,48 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar class="header-toolbar">
-      <div class="header">
-          <img class="logo" src="../../../assets/Image 7@1X.png" alt="logo">
-          <h1 class="header-text">QUIZEEE</h1>
-      </div>
-      
-    </mat-toolbar>
-    <div class="container">
-      <div class="nav-links">
-          <a href="#" class="admin">SUPER ADMIN</a>
-          <a href="#" routerLinkActive='selected'>USER MANAGEMENT</a>
-          <a [routerLink]="'/main-content'" routerLinkActive='selected'>QUIZ MASTER MANAGEMENT</a>
-          <a [routerLink]="'/add-new-quiz'" routerLinkActive='selected'>ADD NEW QUIZ</a>
-          <a [routerLink]="'/add-organization-quiz'" routerLinkActive='selected'>ADD ORGANIZATION QUIZ</a>
-          <a [routerLink]="'/create-new-group'" routerLinkActive='selected'>CREATE NEW GROUP</a>
-          <a [routerLink]="'/selected-requests'" routerLinkActive='selected'>CATEGORY</a>
-          <a href="#" routerLinkActive='selected'>AD MANAGEMENT</a>
-          <a href="#" routerLinkActive='selected'>DISPUTE MANAGEMENT</a>
-          <a [routerLink]="'/nonSelected-requests'" routerLinkActive='selected'>REQUESTS</a>
-          <a href="#" routerLinkActive='selected'>NOTIFICATIONS</a>
-      </div>
-  </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar class="top-toolbar">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar class="header-toolbar">
+            <div class="header">
+                <img class="logo" src="../../../assets/Image 7@1X.png" alt="logo">
+                <h1 class="header-text">QUIZEEE</h1>
+            </div>
+
+        </mat-toolbar>
+        <div class="container">
+            <div class="nav-links">
+                <a href="#" class="admin">SUPER ADMIN</a>
+                <a href="#" routerLinkActive='selected'>USER MANAGEMENT</a>
+                <a [routerLink]="'/main-content'" routerLinkActive='selected'>QUIZ MASTER MANAGEMENT</a>
+                <a [routerLink]="'/add-new-quiz'" routerLinkActive='selected'>ADD NEW QUIZ</a>
+                <a [routerLink]="'/add-organization-quiz'" routerLinkActive='selected'>ADD ORGANIZATION QUIZ</a>
+                <a [routerLink]="'/create-new-group'" routerLinkActive='selected'>CREATE NEW GROUP</a>
+                <a [routerLink]="'/selected-requests'" routerLinkActive='selected'>CATEGORY</a>
+                <a href="#" routerLinkActive='selected'>AD MANAGEMENT</a>
+                <a href="#" routerLinkActive='selected'>DISPUTE MANAGEMENT</a>
+                <a [routerLink]="'/nonSelected-requests'" routerLinkActive='selected'>REQUESTS</a>
+                <a href="#" routerLinkActive='selected'>NOTIFICATIONS</a>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar class="top-toolbar">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <h3 class="brand">QUIZ MASTER MANAGEMENT</h3>
-        <span class="example-spacer"></span>
-        <div class="profile">
+            <h3 class="brand">QUIZ MASTER MANAGEMENT</h3>
+            <span class="example-spacer"></span>
+            <div class="profile">
 
-          <button mat-button class='mat-menu-btn' [matMenuTriggerFor]="menu">Karen Cook
+                <button mat-button class='mat-menu-btn' [matMenuTriggerFor]="menu">Karen Cook
               <mat-icon>keyboard_arrow_down</mat-icon>
           </button>
-          <mat-menu class="mat-menu" #menu="matMenu">
-              <button mat-menu-item class='profile-btn'><mat-icon class='profile-icon'>account_circle</mat-icon>Profile</button>
-              <button mat-menu-item><mat-icon>exit_to_app</mat-icon>Logout</button>
-          </mat-menu>
-  
-          <img class='profile-pic' src="../../../assets/profile-pic.png" alt="profile pic">
-        </div>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
+                <mat-menu class="mat-menu" #menu="matMenu">
+                    <button mat-menu-item class='profile-btn'><mat-icon class='profile-icon'>account_circle</mat-icon>Profile</button>
+                    <button mat-menu-item (click)="logout($event.target)"><mat-icon>exit_to_app</mat-icon>Logout</button>
+                </mat-menu>
+
+                <img class='profile-pic' src="../../../assets/profile-pic.png" alt="profile pic">
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
 </mat-sidenav-container>

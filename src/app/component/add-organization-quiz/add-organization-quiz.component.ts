@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { QuizMasterService } from 'src/app/services/quiz-master.service';
 import { RequestCategoryService } from 'src/app/services/request-category.service';
 import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questions-dialog.component';
 import { RequestCategoryDialogComponent } from '../request-category-dialog/request-category-dialog.component';
-import { SelectAgeDialogComponent } from '../select-age-dialog/select-age-dialog.component';
 import { SelectGroupDialogComponent } from '../select-group-dialog/select-group-dialog.component';
 
 @Component({
@@ -30,7 +28,7 @@ export class AddOrganizationQuizComponent implements OnInit {
     public dialog: MatDialog,
     private requestCategoryService: RequestCategoryService,
     private toastr: ToastrService
-  ) { 
+  ) {
 
   }
 
@@ -51,92 +49,94 @@ export class AddOrganizationQuizComponent implements OnInit {
 
   get addNewQuizFormControls(): any {
     return this.addNewQuizForm['controls'];
- }
-
- openSelectGroupDialog() {
-  const dialogRef = this.dialog.open(SelectGroupDialogComponent, {
-    width: '100%',
-    height: '100%',
-    data: {selectedGroupsId: this.selectedGroupsId 
   }
-  });
 
-  dialogRef.afterClosed().subscribe(result => {
-    this.selectedGroupsId = result['selectedGroupsId'];
-    console.log(this.selectedGroupsId);
-  })
-}
+  openSelectGroupDialog() {
+    const dialogRef = this.dialog.open(SelectGroupDialogComponent, {
+      width: '100%',
+      height: '100%',
+      data: {
+        selectedGroupsId: this.selectedGroupsId
+      }
+    });
 
-openRequestCategoryDialog() {
-  debugger;
-  const dialogRef = this.dialog.open(RequestCategoryDialogComponent, {
-    width: '300px',
-    data: {requestedCategory: this.requestedCategory}
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    console.log(result);
-    this.createCategory(result);
-  })
-}
-
-createCategory(data) {
-  const postData = {
-    quizMasterId: this.quizMasterId,
-    category: data.requestedCategory,
-    subCategory: data.requestedSubCategory,
-    areaOfInterest: data.areaOfInterest,
-    masterType: 1,
-    isSelected: 0
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedGroupsId = result['selectedGroupsId'];
+      console.log(this.selectedGroupsId);
+    })
   }
-  console.log(postData);
-  this.requestCategoryService.createNewRequest(postData).subscribe(res => {
-    console.log(res);
-    if(res['status']) {
-      this.toastr.success('successfully requested category!');
+
+  openRequestCategoryDialog() {
+    debugger;
+    const dialogRef = this.dialog.open(RequestCategoryDialogComponent, {
+      width: '300px',
+      data: { requestedCategory: this.requestedCategory }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.createCategory(result);
+    })
+  }
+
+  createCategory(data) {
+    const postData = {
+      quizMasterId: this.quizMasterId,
+      category: data.requestedCategory,
+      subCategory: data.requestedSubCategory,
+      areaOfInterest: data.areaOfInterest,
+      masterType: 1,
+      isSelected: 0
     }
-  })
-}
-
-openAddQuestionsDialog() {
-  const dialogRef = this.dialog.open(AddQuestionsDialogComponent, {
-    width: '100%',
-    height: '100%',
-    maxHeight: '100vh',
-    maxWidth: '100vw',
-    data: {selectedQuestionsId: this.selectedQuestionsId, 
-    selectedCategory: this.addNewQuizForm.controls['quizCategory'].value,
+    console.log(postData);
+    this.requestCategoryService.createNewRequest(postData).subscribe(res => {
+      console.log(res);
+      if (res['status']) {
+        this.toastr.success('successfully requested category!');
+      }
+    })
   }
-  });
 
-  dialogRef.afterClosed().subscribe(result => {
-    this.selectedQuestionsId = result['selectedQuestionsId'];
-    console.log(this.selectedQuestionsId);
-  })
-}
+  openAddQuestionsDialog() {
+    const dialogRef = this.dialog.open(AddQuestionsDialogComponent, {
+      width: '100%',
+      height: '100%',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      data: {
+        selectedQuestionsId: this.selectedQuestionsId,
+        selectedCategory: this.addNewQuizForm.controls['quizCategory'].value,
+      }
+    });
 
-addNewQuiz() {
-  let postData = this.addNewQuizForm.value;
-  postData['prizePool'] = [{"rankNo":1,"prize":"1200"},{"rankNo":2,"prize":"900"},{"rankNo":3,"prize":"500"}];
-  postData['questions'] = this.selectedQuestionsId;
-  postData['age'] = this.age;
-  postData['quizMasterId'] = 105;
-  postData['quizTitle'] = "A new Science quiz";
-  postData['access'] = this.selectedGroupsId;
-  debugger;
-
-  if((Date.parse(postData['startDate'])) > (Date.parse(postData['endDate']))) {
-    this.toastr.error('Enter valid end date!')
-  } else if(this.selectedGroupsId == null) {
-    this.toastr.error('Select group!');
-  } else if(this.addNewQuizForm.get('noOfQuestions').value != this.selectedQuestionsId.length) {
-    this.toastr.error('Selected questions should be equal to no of questions entered!');
-  } else {
-    console.log(this.addNewQuizForm.value);
-    this.toastr.success('Quiz added succesfully!');
-    this.addNewQuizForm.reset();
-    this.age = null;
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedQuestionsId = result['selectedQuestionsId'];
+      console.log(this.selectedQuestionsId);
+    })
   }
-}
+
+  addNewQuiz() {
+    let postData = this.addNewQuizForm.value;
+    postData['prizePool'] = [{ "rankNo": 1, "prize": "1200" }, { "rankNo": 2, "prize": "900" }, { "rankNo": 3, "prize": "500" }];
+    postData['questions'] = this.selectedQuestionsId;
+    postData['age'] = this.age;
+    postData['quizMasterId'] = 105;
+    postData['quizTitle'] = "A new Science quiz";
+    postData['access'] = this.selectedGroupsId;
+    debugger;
+
+    if ((Date.parse(postData['startDate'])) > (Date.parse(postData['endDate']))) {
+      this.toastr.error('Enter valid end date!')
+    } else if (this.selectedGroupsId == null) {
+      this.toastr.error('Select group!');
+    } else if (this.addNewQuizForm.get('noOfQuestions').value != this.selectedQuestionsId.length) {
+      this.toastr.error('Selected questions should be equal to no of questions entered!');
+    } else {
+      console.log(this.addNewQuizForm.value);
+      this.toastr.success('Quiz added succesfully!');
+      this.addNewQuizForm.reset();
+      this.age = null;
+    }
+  }
 
 }

@@ -34,14 +34,14 @@
                     <button mat-icon-button class="edit-icon">
                         <mat-icon>edit</mat-icon>
                     </button> -->
-                    <button type="button" class="btn">Add User</button>
+                    <button type="button" class="btn" (click)="addStudent($event.target, user.userId)">Add User</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="sticky-btn">
-        <button type="button" class="btn btn-sticky">Submit Group</button>
+        <button class="btn btn-sticky" (click)="submitGroup()">Submit Group</button>
     </div>
 
 </div>

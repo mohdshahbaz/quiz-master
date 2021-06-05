@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { data } from 'jquery';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
 import { QuizzesService } from 'src/app/services/quizzes.service';
 import { StudentGroupService } from 'src/app/services/student-group.service';
@@ -12,7 +13,7 @@ import { AddQuestionsDialogComponent } from '../add-questions-dialog/add-questio
 })
 export class SelectGroupDialogComponent implements OnInit {
 
-  groups = [];
+  groups;
 
   constructor(
     private studentGroupService: StudentGroupService,
@@ -23,26 +24,29 @@ export class SelectGroupDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGroups();
-    this.data.selectedGroupsId = [];
+    console.log('selected gorups id: ' + this.data.selectedGroupsId);
   }
 
   getGroups() {
     const quizMasterId = 131;
-    debugger;
     this.studentGroupService.getStudentGroupByQuizMasterId(quizMasterId).subscribe(result => {
       if(result['status']) {
         this.groups = result['allGroups'];
+        console.log(this.groups);
       }
     });
   }
 
   onCheckboxChange(e) {
-   debugger;
     if (e.checked) {
       this.data.selectedGroupsId.push(e.source.value);
     } else {
        this.data.selectedGroupsId = this.data.selectedGroupsId.filter(x => x != e.source.value);
     }
+  }
+
+  toggleCheckbox(id) {
+    return (this.data.selectedGroupsId.indexOf(id) != -1) ? true : false;
   }
 
   onCancelClick() {

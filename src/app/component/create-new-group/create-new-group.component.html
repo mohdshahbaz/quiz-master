@@ -1,35 +1,33 @@
 <div class="container-fluid">
-    <mat-form-field>
-        <mat-label>Group Name</mat-label>
-        <input matInput type="text">
-      </mat-form-field>
+  <mat-form-field>
+    <mat-label>Group Name</mat-label>
+    <input matInput type="text" name="groupName" [(ngModel)]="groupName" required>
+  </mat-form-field>
 
-      <button type="button" class="btn" [routerLink]="'/all-users'">ADD USERS</button>
+  <button type="submit" class="btn" (click)="navigateToAllUsers()" [disabled]="!groupName">ADD USERS</button>
 
-      
-      
-      <div class="table">
+  <div class="table">
 
-        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
-          <thead>
-            <tr>
-              <th>Group ID</th>
-              <th>Group Name</th>
-              <th>Students</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let group of groups">
-              <td>{{ group.groupId }}</td>
-              <td>{{ group.groupName }}</td>
-              <td>
-                <div *ngFor="let student of group.students">
-                  {{ student.username }}
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>
+          <th>Group ID</th>
+          <th>Group Name</th>
+          <th>Students</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let group of groups">
+          <td>{{ group.groupId }}</td>
+          <td>{{ group.groupName }}</td>
+          <td>
+            <div *ngFor="let student of group.students">
+              {{ student.username }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      </div>
+  </div>
 </div>
