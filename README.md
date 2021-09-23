@@ -1,6 +1,6 @@
 # QuizMaster
 
-Build this app UI as an assignment for an Internship.
+It is a mobile app management web app.
 
 ##  Getting Started
 - Clone this project using
