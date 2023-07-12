@@ -14,7 +14,7 @@ export class DisputeDetailsComponent implements OnInit {
   constructor(public dialogRef:MatDialogRef<DisputeDetailsComponent> ,@Optional() @Inject(MAT_DIALOG_DATA) public data: any)
   {
     this.disputeDesc = data.disputeDesc;
-    this.disputeImage = "https://quizeee-app-api.herokuapp.com/api/download/"+data.disputeImage;
+    this.disputeImage = "https://quizeeeapp.onrender.com/api/download/"+data.disputeImage;
   }
 
   ngOnInit(): void {

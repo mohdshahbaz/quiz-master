@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PublicQuestionsService {
 
-  serverUrl = "https://quizeee-app-api.herokuapp.com/api";
+  serverUrl = "https://quizeeeapp.onrender.com/api";
   
   currentQues = new BehaviorSubject<number>(1);
 

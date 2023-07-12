@@ -32,7 +32,7 @@ export class ShowBannerComponent implements OnInit {
       if (result['status']) {
         result['banners'].forEach(singleBanner=>{      
           this.bannerImg = singleBanner.bannerImg;
-          singleBanner.bannerImg = "https://quizeee-app-api.herokuapp.com/api/download/"+singleBanner.bannerImg;         
+          singleBanner.bannerImg = "https://quizeeeapp.onrender.com/api/download/"+singleBanner.bannerImg;         
         });
 
         this.banners = result['banners'];

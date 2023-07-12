@@ -14,7 +14,7 @@ export class AuthService {
 
   isProfileImageChanged = new BehaviorSubject<boolean>(false);
 
-  serverUrl = "https://quizeee-app-api.herokuapp.com/api/";
+  serverUrl = "https://quizeeeapp.onrender.com/api/";
 
   constructor(
     private http: HttpClient

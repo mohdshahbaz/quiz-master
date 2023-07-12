@@ -45,7 +45,7 @@ export class ShowAllUsersComponent implements OnInit {
             user.profilePic = "";
           }
           else{
-            user.profilePic = "https://quizeee-app-api.herokuapp.com/api/download/"+user.profilePic;
+            user.profilePic = "https://quizeeeapp.onrender.com/api/download/"+user.profilePic;
           }
 
           if(user.dateOfBirth==null)

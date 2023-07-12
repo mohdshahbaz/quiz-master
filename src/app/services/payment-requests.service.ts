@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PaymentRequestsService {
 
-  serverUrl = "https://quizeee-app-api.herokuapp.com/api";
+  serverUrl = "https://quizeeeapp.onrender.com/api";
 
   constructor(private http: HttpClient) { }
 
