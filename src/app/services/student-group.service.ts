@@ -17,6 +17,10 @@ export class StudentGroupService {
     return this.http.get(this.serverUrl + '/get-all-users');
   }
 
+  getSingleUser(id) {
+    return this.http.get(this.serverUrl + '/get-user-details/'+id);
+  }
+
   getAllStudentGroups() {
     return this.http.get(this.serverUrl + '/get-all-student-groups');
   }
@@ -27,6 +31,19 @@ export class StudentGroupService {
 
   createStudentsGroup(data) {
     return this.http.post(this.serverUrl  + '/create-students-group', data);
+  }
+
+  getSingleGroupDetails(id)
+  {
+    return this.http.get(this.serverUrl + '/get-all-student-groups/' + id);
+  }
+
+  editStudentsGroup(data) {
+    return this.http.post(this.serverUrl  + '/edit-group-students', data);
+  }
+
+  editUserDetailsAdmin(data) {
+    return this.http.post(this.serverUrl  + '/edit-user-details-admin', data);
   }
 
 }

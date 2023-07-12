@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+    <div class="table">
+
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover text-center">
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Total Enrollments</th>
+                    <th>Performances</th>
+                    <th>Performance Chart</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let user of allStudents">
+                    <td >{{user.userId}}</td>
+                    <td >{{user.username | titlecase}}</td>
+                    <td >{{user.email}}</td>
+                    <td >{{user.phone}}</td>
+                    <td >{{user.totalEnrollments }}</td>
+                    <td ><button class="btn" routerLink="/single-student-performances/{{user.userId}}">View</button></td>
+                    <td ><button class="btn" routerLink="/student-performance-chart/{{user.userId}}">View</button></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 
+type = "ball-pulse-sync" [fullScreen] = "true">
+    <p style="font-size: 20px; color: white" > Loading Students... </p>
+</ngx-spinner>

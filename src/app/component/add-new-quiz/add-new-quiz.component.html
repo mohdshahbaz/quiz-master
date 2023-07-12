@@ -3,40 +3,54 @@
         <form [formGroup]="addNewQuizForm" (submit)="addNewQuiz()">
             <div class="card inner-card-1">
                 <div>
+                    Quiz Title: 
+                    <input type="text" formControlName="quizTitle" required placeholder="Enter Quiz Title....">
+                </div>
+
+                <div>
                     Select Category: 
-                    <select class="select-dropdown" formControlName="quizCategory">
-                        <option [ngValue]="'General knowledge'">General Knowledge</option>
-                        <option [ngValue]="'Science'">Science</option>
+                    <select class="select-dropdown"  formControlName="quizCategory" #mySelect [(ngModel)]="defaultCategory"
+                    (change)='onSelectedCategory(mySelect.value)'>
+                        <option [ngValue]="categ.category" *ngFor="let categ of allCategories">{{categ.category | titlecase}}</option>                     
+                    </select>
+                </div>
+
+                <div>
+                    Select Sub Category: 
+                    <select class="select-dropdown" formControlName="quizSubCategory" #mySelect1 [(ngModel)]="defaultSubCategory"
+                    (change)='onSelectedSubCategory(mySelect1.value)' >
+                        <option value="0" disabled *ngIf="allSubCategories.length==0">First Select Category</option>
+                        <option [ngValue]="subCateg.name" *ngFor="let subCateg of allSubCategories">{{subCateg.name | titlecase}}</option> 
                     </select>
                 </div>
 
                 <div>
                     Area of Interest:
-                    <select class="select-dropdown" formControlName="areaOfInterest">
-                        <option [ngValue]="'Physics'">Physics</option>
-                        <option [ngValue]="'Chemistry'">Chemistry</option>
-                        <option [ngValue]="'Math'">Math</option>
+                    <select class="select-dropdown" formControlName="areaOfInterest" #mySelect2 [(ngModel)]="defaultAOI"
+                    (change)='onSelectedAreaOfInterest(mySelect2.value)' >
+                        <option value="0" disabled *ngIf="allSubCategories.length==0">First Select SubCategory</option>
+                        <option [ngValue]="area" *ngFor="let area of allAreaOfInterest">{{area | titlecase}}</option> 
                     </select>
                 </div>
                 
                 <div>
                     Total Slots:
-                    <input type="number" formControlName="slots" min="1" oninput="validity.valid||(value='');">
+                    <input type="number" placeholder="Total slots...." (ngModelChange)="onTotalSlotsChange($event)" formControlName="slots" min="1" oninput="validity.valid||(value='');">
     
                 </div>
                 
-                <div class='custom-width'>
+                <!-- <div class='custom-width'>
                     Difficulty:
                     <select class="select-dropdown" formControlName="difficultyLevel">
                         <option [ngValue]="'easy'">easy</option>
                         <option [ngValue]="'medium'">medium</option>
                         <option [ngValue]="'hard'">hard</option>
                     </select>
-                </div>
+                </div> -->
 
                 <div class='custom-width'>
                     Prize Pool:
-                    <select class="select-dropdown" formControlName="prizePool">
+                    <select class="select-dropdown" formControlName="prizePool" disabled [ngModel]="defaultWinningPercentage">
                         <option value="" selected disabled>Total Winning Percentage</option>
                         <option [ngValue]="1">10%</option>
                         <option [ngValue]="2">20%</option>
@@ -53,43 +67,51 @@
                 
                 <div class="custom-width">
                     Winning Prize:
-                    <input type="number" formControlName="winningPrize" min="1" oninput="validity.valid||(value='');">
+                    <input type="number" placeholder="Winning Prize...." formControlName="winningPrize" [(ngModel)]="winningPrize" readonly min="0" oninput="validity.valid||(value='');">
                 </div>
 
             </div>
 
             <div class="card inner-card-2">
-                <div>
-                    Select Sub Category: 
-                    <select class="select-dropdown" formControlName="quizSubCategory">
-                        <option [ngValue]="'Physics'">Physics</option>
-                        <option [ngValue]="'Chemistry'">Chemistry</option>
-                        <option [ngValue]="'Math'">Math</option>
+                <div >
+                    <!-- Select Sub Category: 
+                    <select class="select-dropdown" formControlName="quizSubCategory" #mySelect1 [(ngModel)]="defaultSubCategory"
+                    (change)='onSelectedSubCategory(mySelect1.value)' >
+                        <option value="0" disabled *ngIf="allSubCategories.length==0">First Select Category</option>
+                        <option [ngValue]="subCateg.name" *ngFor="let subCateg of allSubCategories">{{subCateg.name | titlecase}}</option> 
+                    </select> -->
+                    Difficulty:
+                    <select class="select-dropdown" style="width: 180px;" formControlName="difficultyLevel">
+                        <option [ngValue]="'easy'">easy</option>
+                        <option [ngValue]="'medium'">medium</option>
+                        <option [ngValue]="'hard'">hard</option>
                     </select>
                     <button type="button" class="btn btn-primary rqst-ctg-btn" (click)="openRequestCategoryDialog()">Request Category</button>
                 </div>
                 <div>
+                    <div style="width: 330px;margin-right: 20px;">
+                        Start Date:
+                        <input type="date" formControlName="startDate">
+                    </div>
                     <div>
                         Start Time:
                         <input type="time" formControlName="startTime">
                     </div>
-                    <div>
-                        Start Date:
-                        <input type="date" formControlName="startDate">
-                    </div>
+                  
                 </div>
                 <div>
-                    <div>
-                        End Time:
-                        <input type="time" formControlName="endTime">
-                        </div>
-                    <div>
+                    <div style="width: 340px;margin-right: 20px;">
                         End Date:
                         <input type="date" formControlName="endDate">
                         <div *ngIf="addNewQuizFormControls.endTime.errors?.dateRange"> 
                             Age should be a number
                         </div>
                     </div>
+                    <div>
+                        End Time:
+                        <input type="time" formControlName="endTime">
+                    </div>
+                   
                 </div>
                 <div>
                     Number of Qns:
@@ -101,7 +123,7 @@
                 </div>
                 <div>
                     Entry Amount:
-                    <input type="number" formControlName="entryAmount" min="1" oninput="validity.valid||(value='');">
+                    <input type="number" (ngModelChange)="onFeeChange($event)" formControlName="entryAmount" min="0" oninput="validity.valid||(value='');">
                 </div>
                 <div></div>
                 <div class="action-btn">
@@ -115,3 +137,11 @@
         </form>
     </div>
 </div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Creating Quiz....</p>
+</ngx-spinner>

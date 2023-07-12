@@ -1,5 +1,8 @@
 <div class="dialog-container">
     <h1 mat-dailog-title class="title">Select Questions</h1>
+    <div *ngIf="!quesAvail">
+        <h3>**No Questions Available for this Category selection**</h3>
+    </div>
     <div mat-dialog-content>
         <div *ngFor="let question of questions" class="questions">
             <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)" [checked]="toggleCheckbox(question.questionId)">{{question.quesText}}</mat-checkbox>

@@ -12,8 +12,7 @@ export class RequestCategoryService {
     private http: HttpClient
   ) { }
 
-  createNewRequest(data) {
-    debugger;
+  createNewRequest(data) { 
     return this.http.post(this.serverUrl + '/create-new-request', data)
   }
 
@@ -28,4 +27,9 @@ export class RequestCategoryService {
   addRequestedCategory(selectedId) {
     return this.http.get(this.serverUrl + '/add-to-selection/' + selectedId);
   }
+
+  deleteRequestedCategory(selectedId) {
+    return this.http.get(this.serverUrl + '/delete-selected-request/' + selectedId);
+  }
+
 }

@@ -1,3 +1,14 @@
 .mat-dialog-content {
     overflow: visible;
 }
+
+input.ng-invalid.ng-touched
+{
+  border:1px solid red;
+}
+
+.errorDiv
+{
+	color:rgb(204, 81, 81);
+}
+

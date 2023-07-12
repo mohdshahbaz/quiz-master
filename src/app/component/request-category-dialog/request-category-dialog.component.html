@@ -1,5 +1,5 @@
-<h1 mat-dailog-title class="title">Request Category</h1>
-<div mat-dialog-content>
+<h1 mat-dailog-title class="title text-center">Request Category</h1>
+<!-- <div mat-dialog-content>
     <mat-form-field>
         <mat-label>Enter Category</mat-label>
         <input matInput [(ngModel)]="data.requestedCategory" required>
@@ -16,4 +16,29 @@
         <button mat-button (click)="onCancelClick()">Cancel</button>
         <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
     </div>
+</div> -->
+
+<div class="text-center mt-5">
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Enter Category" class="form-control" formControlName="category">
+        <hr>
+    <div  formArrayName="subCategory">
+        <div class="form-group row" *ngFor="let itemrow of categoryForm.controls.subCategory['controls']; let i=index"  [formGroupName]="i">
+         
+        <input type="text" placeholder="Enter Sub-Category" class="form-control"  id="name{{i}}" formControlName="name" >
+        <input type="text" placeholder="Comma Seperated Area Of Interest" class="form-control" id="areaOfInterest{{i}}" formControlName="areaOfInterest">
+        <button *ngIf="categoryForm.controls.subCategory['controls'].length > 1" (click)="deleteRow(i)" style="color: white;background-color: darkred;" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true">X</i></button>
+        </div>
+    </div>
+
+        <button type="button" (click)="addNewRow()" style="width: 200px;" class="btn btn-primary">Add New Sub-Category <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+
+        <hr>
+
+        <div>
+            <button mat-button type="button" (click)="onCancelClick()">Cancel</button>
+            <button mat-button [mat-dialog-close]="data" type="submit" cdkFocusInitial>Submit</button>
+        </div>
+
+    </form>
 </div>

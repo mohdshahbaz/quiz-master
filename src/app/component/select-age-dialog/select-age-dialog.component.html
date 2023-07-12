@@ -2,14 +2,23 @@
 <div mat-dialog-content>
     <mat-form-field>
         <mat-label>Start Age</mat-label>
-        <input type="number" matInput [(ngModel)]="data.startAge" min="0" oninput="validity.valid||(value='');">
+        <input type="number" matInput [(ngModel)]="data.start" min="0" oninput="validity.valid||(value='');" required #startAgeRef="ngModel">
     </mat-form-field>
+    <div *ngIf="startAgeRef.errors?.required  && startAgeRef.touched" class="errorDiv">
+        *Start Age is required!
+    </div>
     <mat-form-field>
         <mat-label>End Age</mat-label>
-        <input type="number" matInput [(ngModel)]="data.endAge" min="0" oninput="validity.valid||(value='');">
-    </mat-form-field>
+        <input type="number" matInput [(ngModel)]="data.end" min="0" oninput="validity.valid||(value='');" required #endAgeRef="ngModel">
+    </mat-form-field>   
+    <div *ngIf="endAgeRef.errors?.required  && endAgeRef.touched" class="errorDiv">
+        *End Age is required!
+    </div>
+    <div *ngIf="endAgeRef.touched && data.end <= data.start" class="errorDiv">
+        *End Age must be greater than Start Age
+    </div>
     <div mat-dialog-actions>
         <button mat-button (click)="onCancelClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+        <button mat-button [mat-dialog-close]="data" [disabled]="startAgeRef.errors?.required || endAgeRef.errors?.required || data.end <= data.start" cdkFocusInitial>Ok</button>
     </div>
 </div>

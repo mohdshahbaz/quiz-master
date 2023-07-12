@@ -28,11 +28,12 @@ export class SelectGroupDialogComponent implements OnInit {
   }
 
   getGroups() {
-    const quizMasterId = 131;
+    const quizMasterId = +JSON.parse(localStorage.getItem('quizMaster'))['quizMasterId'];
+    console.log(quizMasterId);
     this.studentGroupService.getStudentGroupByQuizMasterId(quizMasterId).subscribe(result => {
       if(result['status']) {
         this.groups = result['allGroups'];
-        console.log(this.groups);
+        console.log("Groups : ",this.groups);
       }
     });
   }

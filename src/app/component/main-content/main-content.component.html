@@ -2,12 +2,31 @@
 
     <div class="header container">
         <p class='header-text'>All Quiz Masters</p>
+
+        <div class="btn-group btn-group-toggle" style="border-radius: 35px;width: 250px;" data-toggle="buttons">
+            <label class="btn active  d-flex text-center" [ngClass]="{selectedClass: showPublicList==1,nonSelectedClass:showPublicList==0}" 
+                style="padding-left: 15%;align-items: center;color: white;">
+              <input type="radio"  name="options" id="option1" autocomplete="off" (click)="toggleMasterList(1)" checked> Public
+            </label>
+            <label class="btn d-flex" style="color: white;padding-left: 12%;align-items: center;" [ngClass]="{selectedClass: showPublicList==0,nonSelectedClass:showPublicList==1}">
+              <input type="radio" name="options" id="option2" (click)="toggleMasterList(0)" autocomplete="off"> Assigned
+            </label>
+          </div>
+
         <div class="add-search">
             <a [routerLink]="'/add-quiz-master'" class='add-button'>Add Quiz Master</a>
             <input class="search-input" type="text" placeholder="Search" [(ngModel)]="query">
         </div>
     </div>
 
+    <!-- spinnner element is defined with id loading -->
+    <div class="d-flex justify-content-center mt-5" *ngIf="isLoading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only" id="loading"></span>
+        </div>
+        <br>
+        Loading....
+    </div>
 
     <div class="cards">
         <div *ngFor="let quizMaster of quizMasters | emailFilter: query">
@@ -15,16 +34,27 @@
                 <div class="card-head">
                     <h1 style="visibility: hidden;">Hid</h1>
                     <img class="profile-avatar" src="../../../assets/profile-avatar.png" alt="">
-                    <mat-icon>more_vert</mat-icon>
+                    <!-- <mat-icon>more_vert</mat-icon> -->
+                    <div class="dropdown">
+                        <button type="button" class="menu float-right" style="background-color: transparent;" data-toggle="dropdown" >
+                            <!-- <i class="fas fa-ellipsis-h"></i> -->
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <div class="dropdown-menu ">
+                            <a routerLink="/master-details/{{quizMaster.quizMasterId}}" class="dropdown-item" style="cursor: pointer;" ><i class="fas fa-tag" aria-hidden="true" style="color: blue; font-size: 18px;"></i> &nbsp; View Details</a>
+                            <!-- <div class="dropdown-divider"></div> -->
+                            <!-- <a  class="dropdown-item" style="cursor: pointer;" ><i class="fas fa-trash" aria-hidden="true" style="color: red; font-size: 18px;"></i> &nbsp; Delete Post</a> -->
+                        </div>
+                    </div>
                 </div>
-                <div>
+                <div class="myEmail">
                     <h3 class="email">Email ID: {{quizMaster.email}}</h3>
                 </div>
                 <div class="password">
                     <!-- <h3>Pasword</h3> -->
                     <!-- <h3 class="psswd">{{quizMaster.password}}</h3> -->
-                    <show-hide-password size="sm"  [btnOutline]="false" class="show-hide-psswd">
-                        <input type="password" name="..." value='{{quizMaster.password}}' >
+                    <show-hide-password size="sm" [btnOutline]="false" class="show-hide-psswd">
+                        <input type="password" name="..." value='{{quizMaster.password}}' readonly>
                       </show-hide-password>
                     <!-- <mat-icon>remove_red_eye</mat-icon> -->
                 </div>
@@ -32,7 +62,7 @@
                     <button mat-icon-button class="delete-icon">
                         <mat-icon>delete</mat-icon>
                     </button>
-                    <button mat-icon-button class="edit-icon">
+                    <button routerLink="/edit-master-details/{{quizMaster.quizMasterId}}" mat-icon-button class="edit-icon">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </div>
@@ -41,3 +71,4 @@
     </div>
 
 </div>
+

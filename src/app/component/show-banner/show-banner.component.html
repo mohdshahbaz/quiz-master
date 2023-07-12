@@ -1,0 +1,70 @@
+<!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="wrapper ">
+    <div class="table2 mt-4" style="margin-bottom: 10px;" >                                           
+        <div class="row2">      
+          <div class="cell2">
+              <h2><u> AD Management </u></h2>      
+          </div>
+        
+        </div>                     
+      </div> 
+      
+      <!-- spinnner element is defined with id loading -->
+      <div class="d-flex justify-content-center mt-5" *ngIf="isLoading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only" id="loading"></span>
+        </div>
+        <br>
+        Loading....
+      </div>
+   
+    <div class="table shadow p-3 mb-5" *ngIf="!isLoading">
+      
+      <div class="row header" >
+        <div class="cell  pt-2">
+          S.No.
+         </div>    
+        <div class="cell" style="cursor: pointer;">
+         Banner URL
+        </div>
+        <div class="cell">
+            
+        </div>
+        <div class="cell">
+         Banner Status
+        </div>
+        <div class="cell">
+           
+        </div>
+      
+      </div>
+      
+      <div class="row" *ngFor="let banner of banners | nameFilter : filteredStatus | paginate: { itemsPerPage: 5, currentPage: p };let i = index;">
+      
+        <div class="cell" data-title="S.No."  >
+          {{i+1}}
+      </div>
+        <div class="cell" data-title="Banner URL"  >
+            {{ banner.bannerURL }}
+        </div>
+        <div class="cell" data-title=""  >
+            <img src={{banner.bannerImg}} alt="bannerImage" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY8pJJ7FACMZi09fmJKMEuoUrv0Go0Ik0vIA&usqp=CAU'" height="110px" width="120px">
+           
+        </div>
+        <div class="cell" data-title="Banner Status"  >
+            <mat-slide-toggle [checked]="banner.bannerStatus==1?true:false" (change)="toggle($event,banner.bannerId)"></mat-slide-toggle>
+           
+        </div>
+        <div class="cell" data-title="Edit">
+            <i routerLink="/edit-banner/{{banner.bannerId}}" class="fas fa-pen" style="font-size: 20px;cursor: pointer;"></i>
+        </div>
+             
+      </div>
+          
+    </div>
+</div> 
+
+<!-- pagination -->
+<pagination-controls *ngIf="!isLoading" (pageChange)="p=$event" style="margin-top: -10px;margin-bottom: 20px;"></pagination-controls>

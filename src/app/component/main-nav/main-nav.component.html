@@ -1,3 +1,4 @@
+<div *ngIf="isLoggedIn==true">
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
         <mat-toolbar class="header-toolbar">
@@ -9,17 +10,26 @@
         </mat-toolbar>
         <div class="container">
             <div class="nav-links">
-                <a href="#" class="admin">SUPER ADMIN</a>
-                <a href="#" routerLinkActive='selected'>USER MANAGEMENT</a>
-                <a [routerLink]="'/main-content'" routerLinkActive='selected'>QUIZ MASTER MANAGEMENT</a>
-                <a [routerLink]="'/add-new-quiz'" routerLinkActive='selected'>ADD NEW QUIZ</a>
-                <a [routerLink]="'/add-organization-quiz'" routerLinkActive='selected'>ADD ORGANIZATION QUIZ</a>
-                <a [routerLink]="'/create-new-group'" routerLinkActive='selected'>CREATE NEW GROUP</a>
-                <a [routerLink]="'/selected-requests'" routerLinkActive='selected'>CATEGORY</a>
-                <a href="#" routerLinkActive='selected'>AD MANAGEMENT</a>
-                <a href="#" routerLinkActive='selected'>DISPUTE MANAGEMENT</a>
-                <a [routerLink]="'/nonSelected-requests'" routerLinkActive='selected'>REQUESTS</a>
-                <a href="#" routerLinkActive='selected'>NOTIFICATIONS</a>
+                <a  class="admin" *ngIf="authUserTypeAdmin">SUPER ADMIN</a>
+                <a  class="admin mb-2" *ngIf="!authUserTypeAdmin">Quizeee Master</a>
+                
+                <a [routerLink]="'/show-all-users'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" class="mt-1">USER MANAGEMENT</a>
+                <a [routerLink]="'/main-content'" routerLinkActive='selected' *ngIf="authUserTypeAdmin">QUIZ MASTER MANAGEMENT</a>
+                <a [routerLink]="['/all-quizzes',quizMasterId]" routerLinkActive='selected' *ngIf="!authUserTypeAdmin">ALL QUIZZES</a>
+                <a [routerLink]="'/add-new-quiz'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && quizMasterPublic">ADD NEW QUIZ</a>
+                <a [routerLink]="'/add-organization-quiz'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">ADD ORGANIZATION QUIZ</a>
+                <a [routerLink]="'/create-new-group'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">CREATE NEW GROUP</a>
+                <a [routerLink]="'/all-master-questions'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin"> MASTER'S QUESTIONS</a>
+                <a [routerLink]="'/all-group-notifications'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">NOTIFICATIONS</a>
+                <a [routerLink]="'/all-students-performances'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">STUDENTS PERFORMANCE</a>
+                <a [routerLink]="'/selected-requests'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >CATEGORY</a>
+                <a [routerLink]="'/all-banner'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >AD MANAGEMENT</a>
+                <a [routerLink]="'/all-disputes'" routerLinkActive='selected' *ngIf="authUserTypeAdmin">DISPUTE MANAGEMENT</a>
+                <a [routerLink]="'/nonSelected-requests'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >CATEGORY REQUESTS</a>
+                <a [routerLink]="'/all-questions'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >QUESTIONS</a>                
+                <a [routerLink]="'/all-users-notifications'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >NOTIFICATIONS</a>
+                <a [routerLink]="'/all-payment-requests'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >PAYMENT REQUESTS</a>
+                
             </div>
         </div>
     </mat-sidenav>
@@ -28,21 +38,25 @@
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-            <h3 class="brand">QUIZ MASTER MANAGEMENT</h3>
+            <h3 class="brand mt-4">QUIZ MASTER MANAGEMENT</h3>
             <span class="example-spacer"></span>
-            <div class="profile">
+            <div class="profile mt-3">
 
-                <button mat-button class='mat-menu-btn' [matMenuTriggerFor]="menu">Karen Cook
+                <button mat-button class='mat-menu-btn' [matMenuTriggerFor]="menu">{{loggedInUser.name | titlecase}}
               <mat-icon>keyboard_arrow_down</mat-icon>
           </button>
                 <mat-menu class="mat-menu" #menu="matMenu">
-                    <button mat-menu-item class='profile-btn'><mat-icon class='profile-icon'>account_circle</mat-icon>Profile</button>
+                    <button routerLink="/show-profile" mat-menu-item class='profile-btn'><mat-icon class='profile-icon'>account_circle</mat-icon>Profile</button>
                     <button mat-menu-item (click)="logout($event.target)"><mat-icon>exit_to_app</mat-icon>Logout</button>
                 </mat-menu>
 
-                <img class='profile-pic' src="../../../assets/profile-pic.png" alt="profile pic">
+                <img class='profile-pic' src={{profileImage}} onerror="this.src='../../../assets/profile-pic.png'" alt="profile pic">
             </div>
         </mat-toolbar>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+</div>
+<div *ngIf="isLoggedIn==false">
+    <app-login></app-login>
+</div>

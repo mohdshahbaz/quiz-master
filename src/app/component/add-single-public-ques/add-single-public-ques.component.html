@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="container-fluid" *ngIf="updateMode">
+    <div class="card outer-card " *ngFor="let singleQues of questionsArr;let i = index;">
+        <form (submit)="addQuestion(form,i)" #form="ngForm">
+            <div class="card inner-card-1">
+                <h1 class="text-center"><u>Add Question {{(i+1)}}/{{questionsArr.length}}</u></h1>
+                <div>
+                    Question Name: 
+                    <input type="text" name="quesText" [(ngModel)]="singleQues.quesText" required placeholder="Enter Question Name....">
+                </div>
+
+                <div class="mt-2">
+                    Options:
+                    <input type="text" name="option1" [(ngModel)]="singleQues.options[0]" required placeholder="Enter Option 1....">
+                </div>
+                <div style="margin-top:1px;">
+                    <p></p>
+                    <input type="text" name="option2" [(ngModel)]="singleQues.options[1]" required placeholder="Enter Option 2....">
+                </div>
+                <div style="margin-top:1px;">
+                   <p></p>
+                    <input type="text" name="option3" [(ngModel)]="singleQues.options[2]" required placeholder="Enter Option 3....">
+                </div>
+                <div style="margin-top:1px;">
+                    <p></p>
+                     <input type="text" name="option4" [(ngModel)]="singleQues.options[3]" required placeholder="Enter Option 4....">
+                 </div>
+
+                <div class="mt-2">
+                    Question Image:
+                    <input type="file" (change)="selectImage($event)" name="quesImg" ngModel placeholder="Enter Option 4....">
+                </div>
+                
+                <div class='custom-width mt-2'>
+                    Solution:
+                    <input type="text" name="solution" [(ngModel)]="singleQues.solution" placeholder="Enter Solution Link/Text....">
+                </div>
+                
+                <div class="mt-2">
+                    Right Option:
+                    <select class="select-dropdown" name="rightOption" [(ngModel)]="singleQues.rightOption">
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                        <option value="3">4</option>
+                    </select>
+                </div>
+                <div></div>              
+                <div class=" text-center myBtn ">
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success">Update </button>
+                </div>
+            </div>  
+        </form>
+
+    </div>
+</div>
+
+
+<div class="container-fluid" *ngIf="isSaveQuesMode">
+    <div class="card outer-card " *ngFor="let singleQues of totalQuesArr;let i = index;">
+        <form (submit)="addQuestion(form,i)" #form="ngForm">
+            <div class="card inner-card-1">
+                <h1 class="text-center"><u>Add Question {{(i+1)}}/{{totalQuesArr.length}}</u></h1>
+                <div>
+                    Question Name: 
+                    <input type="text" name="quesText" ngModel required placeholder="Enter Question Name....">
+                </div>
+
+                <div class="mt-2">
+                    Options:
+                    <input type="text" name="option1" ngModel required placeholder="Enter Option 1....">
+                </div>
+                <div style="margin-top:1px;">
+                    <p></p>
+                    <input type="text" name="option2" ngModel required placeholder="Enter Option 2....">
+                </div>
+                <div style="margin-top:1px;">
+                   <p></p>
+                    <input type="text" name="option3" ngModel required placeholder="Enter Option 3....">
+                </div>
+                <div style="margin-top:1px;">
+                    <p></p>
+                     <input type="text" name="option4" ngModel required placeholder="Enter Option 4....">
+                 </div>
+
+                <div class="mt-2">
+                    Question Image:
+                    <input type="file" (change)="selectImage($event)" name="quesImg" ngModel placeholder="Enter Option 4....">
+                </div>
+                
+                <div class='custom-width mt-2'>
+                    Solution:
+                    <input type="text" name="solution" ngModel placeholder="Enter Solution Link/Text....">
+                </div>
+                
+                <div class="mt-2">
+                    Right Option:
+                    <select class="select-dropdown" name="rightOption" required [ngModel]="0">
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                        <option value="3">4</option>
+                    </select>
+                </div>
+                <div></div>              
+                <div class=" text-center myBtn ">
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success" >{{isSaveQuesMode?btnText[i]:'Submit And Return'}} </button>
+                    <!-- <button (click)="updateQues(i)" type="button" class="btn btn-success" *ngIf="questionsArr[i]!=undefined && questionsArr[i].quesText.length!=0">Update </button> -->
+                </div>
+            </div>  
+        </form>
+
+    </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Saving Question...</p>
+</ngx-spinner>

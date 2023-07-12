@@ -22,13 +22,17 @@
             <tbody>
                 <tr *ngFor="let request of requests">
                     <td>{{ request.quizMasterId }}</td>
-                    <td>{{ request.category }}</td>
+                    <td>{{ request.category | titlecase}}</td>
                     <td>
-                        <div *ngFor="let category of request.subCategory">
-                            {{ category }}
+                        <div *ngFor="let subCat of request.subCategory">
+                            {{ subCat.name | titlecase}}
                         </div>
                     </td>
-                    <td>{{ request.areaOfInterest }}</td>
+                    <td >
+                        <div *ngFor="let area of request.subCategory">
+                            {{ area.areaOfInterest }}
+                        </div>                      
+                    </td>
                     <td>{{ request.masterType }}</td>
                     <td>{{ request.creationTimeStamp | date }}</td>
                     <td>

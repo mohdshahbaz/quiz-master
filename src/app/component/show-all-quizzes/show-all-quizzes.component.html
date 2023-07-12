@@ -2,8 +2,7 @@
 
     <div class="table">
 
-        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
-
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover text-center">
             <thead>
                 <tr>
                     <th>Quiz Id</th>
@@ -12,7 +11,9 @@
                     <th>Start Date</th>
                     <th>Start Time</th>
                     <th>Total Questions</th>
+                    <th *ngIf="showPerformance==true">Performances</th>
                     <th>Date Of Creation</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -20,16 +21,22 @@
             <tbody>
                 <tr *ngFor="let quiz of quizzes">
                     <td>{{quiz.quizId}}</td>
-                    <td>{{quiz.quizTitle}}</td>
-                    <td>{{quiz.quizCategory}}</td>
+                    <td>{{quiz.quizTitle | titlecase}}</td>
+                    <td>{{quiz.quizCategory | titlecase}}</td>
                     <td>{{quiz.startDate | date}}</td>
                     <td>{{quiz.startTime}}</td>
                     <td>{{quiz.noOfQuestions}}</td>
+                    <td *ngIf="quiz.type=='assigned'">
+                        <button class="btn" (click)="showPerformances(quiz.quizId)">View</button>
+                    </td>
                     <td>{{quiz.creationTimeStamp | date}}</td>
                     <td>
                         <button mat-icon-button (click)="openEditQuizPage(quiz.quizId, quiz.type)">
                             <mat-icon>edit</mat-icon>
                         </button>
+                    </td>
+                    <td *ngIf="quiz.type=='assigned'">
+                        <button routerLink="/reschedule-assigned-quiz/{{quiz.quizId}}" style="background-color: transparent;border:none;margin-top: 10px;">Reschedule</button>
                     </td>
                 </tr>
             </tbody>
@@ -40,3 +47,16 @@
     </div>
 
 </div>
+
+<!-- For Custom Spinner -->
+<!-- <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />">
+</ngx-spinner> -->
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 
+type = "ball-pulse-sync" [fullScreen] = "true">
+    <p style="font-size: 20px; color: white" > Loading Quizzes... </p>
+</ngx-spinner>

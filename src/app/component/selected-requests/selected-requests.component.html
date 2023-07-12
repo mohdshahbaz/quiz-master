@@ -1,9 +1,7 @@
-<div class="container">
+<div class="container text-center">
     
-    <div class="table">
-
-        <table datatable [dtOptions]='dtOptions' [dtTrigger]="dtTrigger" class="row-border hover">
-           
+    <div class="table ">
+        <table datatable [dtOptions]='dtOptions' [dtTrigger]="dtTrigger" class="row-border hover">           
             <thead>
                 <tr>
                     <th>Quiz Master Id</th>
@@ -19,23 +17,31 @@
             <tbody>
                 <tr *ngFor="let request of requests">
                     <td>{{ request.quizMasterId }}</td>
-                    <td>{{ request.category }}</td>
+                    <td>{{ request.category | titlecase}}</td>
                     <td>
-                        <div *ngFor="let category of request.subCategory">
-                            {{ category }}
+                        <div *ngFor="let subCat of request.subCategory">
+                            {{ subCat.name | titlecase}}
                         </div>
                     </td>
-                    <td>{{ request.areaOfInterest }}</td>
-                    <td>{{ request.masterType }}</td>
+                    <td >
+                        <div *ngFor="let area of request.subCategory">
+                            {{ area.areaOfInterest}}
+                        </div>                      
+                    </td>
+                    <td>{{ (request.masterType!=2?((request.masterType==1?'Quiz Master':'Non-Master')):'Super Admin') }}</td>
                     <td>{{ request.creationTimeStamp | date }}</td>
                     <td>
-                        <button type="button" class="btn">Delete</button>
+                        <button type="button" (click)="deleteSelectedRequest(request.requestId)" class="btn">Delete</button>
                     </td>
                 </tr>
             </tbody>
-
         </table>
-
     </div>
-
 </div>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 
+template="<img src='../../../assets/loading-36.gif' height='200px' width='200px' />">
+    <p style="font-size: 20px; color: white;padding-top: 100px;" > Loading Categories... </p>
+</ngx-spinner>
+

@@ -46,7 +46,7 @@ export class NonSelectedRequestsComponent implements OnInit {
 
   openRequestCategoryDialog() {
     const dialogRef = this.dialog.open(RequestCategoryDialogComponent, {
-      width: '300px',
+      width: '400px',
       data: {}
     });
 
@@ -57,7 +57,7 @@ export class NonSelectedRequestsComponent implements OnInit {
 
   createCategory(data) {
     const postData = {
-      quizMasterId: "105",
+      quizMasterId: +JSON.parse(localStorage.getItem('quizMaster'))['quizMasterId'],
       category: data.requestedCategory,
       subCategory: data.requestedSubCategory,
       areaOfInterest: data.areaOfInterest,

@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="container-fluid text-center" >
+    <div class="card outer-card " >
+        <form (submit)="editUser(form)" #form="ngForm">
+            <div class="card inner-card-1">
+                <h1 class="text-center"><u>Edit User</u></h1>
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Name :  
+                    <input type="text" placeholder="Enter user name" name="username" [(ngModel)]="userDetails.username" required #userNameRef="ngModel">
+                </div>
+                <div *ngIf="userNameRef.errors?.required  && userNameRef.touched" class="errorDiv d-flex text-right " style="padding-left: 60%">
+                    *User Name is required!
+                 </div>  
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email : 
+                    <input type="email" placeholder="Enter valid email" name="email" [(ngModel)]="userDetails.email" email #emailRef="ngModel">
+                </div>
+                <div *ngIf="!emailRef.valid  && emailRef.touched && emailRef.value!=''" class="errorDiv" style="padding-left: 60%">
+                    *Enter Valid Email Format!
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone : 
+                    <input type="number" placeholder="Enter valid phone" name="phone" [(ngModel)]="userDetails.phone" pattern="^[3-9]\d{9}$" #phoneRef="ngModel">
+                </div>
+                <div *ngIf="!phoneRef.valid  && phoneRef.touched && phoneRef.value!=''" class="errorDiv" style="padding-left: 60%">
+                    *Enter valid Phone Number!
+                </div>
+
+                <div style="margin-top: -10px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Of Birth :
+                    <input type="date" placeholder="Enter no.of questions" name="dateOfBirth" [(ngModel)]="userDetails.dateOfBirth" required>
+                </div>
+          
+                <div class=" text-center myBtn ">
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success">Save Changes</button>
+                </div>
+            </div>  
+        </form>
+
+    </div>
+</div>
+
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+<p style="font-size: 20px; color: white">Saving Changes....</p>
+</ngx-spinner>

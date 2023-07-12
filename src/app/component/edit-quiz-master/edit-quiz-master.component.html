@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="container-fluid" >
+    <div class="card outer-card">
+        <form (submit)="editQuestion(form)" #form="ngForm">
+            <div class="card inner-card-1">
+                <h1 class="text-center mb-lg-3"><u>Edit Quiz Master </u></h1>
+                <input type="hidden" name="quizMasterId" [(ngModel)]="quizMasterId">
+                <div class="mt-1">
+                    <img class="myImg" name="quizMasterImage" ngModel src={{quizMasterDetails.quizMasterImage}} alt="questionImage" onerror="this.src='../../../assets/profile-avatar.png'" width="150">
+                  
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <i class="fas fa-pen" style="font-size: 18px; cursor: pointer;" ></i>
+                        </label>                      
+                        <input id="file-input" type="file" (change)="selectImage($event)" />
+                      </div>
+                </div>
+
+                <div class="mt-2">
+                    Master Name : 
+                    <input type="text" name="name" [(ngModel)]="quizMasterDetails.name" required placeholder="Enter Quiz Master Name....">
+                </div>
+
+                <div class="mt-2">
+                    Master Email : 
+                    <input type="email" name="email" [(ngModel)]="quizMasterDetails.email" required placeholder="Enter Quiz Master Email...." email #emailRef="ngModel">
+               
+                </div>
+                <div *ngIf="emailRef.errors?.required  && emailRef.touched" class="errorDiv">
+                    <label for=""></label>
+                    *Email is required!
+                </div>
+                <div *ngIf="!emailRef.valid  && emailRef.touched && emailRef.value!=''" class="errorDiv">
+                    <label for=""></label>
+                    *Enter Valid Email Format!
+                </div>
+
+
+                <div class="mt-2">
+                    Master Type :
+                    <select class="select-dropdown" name="quizMaster" required [ngModel]="quizMasterDetails.quizMaster">
+                        <option value="0">Assigned</option>
+                        <option value="1">Public</option>
+                    </select>
+                </div>
+
+                <div class="mt-2">
+                    Duration :
+                    <select class="select-dropdown" name="duration" required [ngModel]="quizMasterDetails.duration">
+                        <option value="-1" disabled>Select Duration</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                    
+                <div class='custom-width mt-2'>
+                    No. Of Quiz :
+                    <input type="number" name="noOfQuiz" required [(ngModel)]="quizMasterDetails.noOfQuiz" placeholder="Enter Number of Quizzes...." min="1" max="100" oninput="validity.valid||(value='');">
+                </div>
+                
+                <div class='custom-width mt-2'>
+                    Expiration Date :
+                    <input type="date" class="form-control" name="expirationTimestamp" [(ngModel)]="quizMasterDetails.expirationTimestamp" readonly style="background-color:  var(--primary-blue);
+                    color: var(--yellow-color);;">
+                </div>
+              
+                <div></div>              
+                <div class=" text-center myBtn ">
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success">Update </button>
+                </div>
+            </div>  
+        </form>
+
+    </div>
+</div>
+
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Saving Question...</p>
+</ngx-spinner>

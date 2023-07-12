@@ -218,3 +218,52 @@ mat-icon {
     }
 
 }
+
+input:read-only{
+    background-color: transparent;
+}
+
+.myEmail
+{
+    width: 292px;
+    margin-left: -20px;
+}
+
+@media(max-width: 650px) {
+    .myEmail
+    {
+        width: 250px;
+        margin-left: 2px;
+    }
+}
+
+.menu{
+    border: transparent;
+} 
+
+#loading{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 250px;
+    height: 250px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;   
+    animation: spin 2s linear infinite;
+}
+      
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.selectedClass{
+    background-color: #FFB51E;
+}
+
+.nonSelectedClass{
+    background-color:lightblue;
+}

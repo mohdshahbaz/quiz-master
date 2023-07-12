@@ -1,34 +1,50 @@
 <div class="container-fluid">
     <div class="card outer-card">
-        <form [formGroup]="addNewQuizForm" *ngIf="addNewQuizForm" (submit)="addNewQuiz()">
+        <form [formGroup]="addNewQuizForm" *ngIf="addNewQuizForm" (submit)="editAssignedQuiz()">
             <div class="card inner-card-1">
                 <div>
+                    Quiz Title: 
+                    <input type="text" formControlName="quizTitle" required placeholder="Enter Quiz Title....">
+                </div>
+
+                <div>
                     Select Category: 
-                    <select class="select-dropdown" formControlName="quizCategory">
-                        <option [ngValue]="'general knowledge'">General Knowledge</option>
-                        <option [ngValue]="'science'">Science</option>
-                        <option [ngValue]="'maths'">Maths</option>
+                    <select class="select-dropdown" formControlName="quizCategory" #mySelect [(ngModel)]="defaultCategory"
+                    (change)='onSelectedCategory(mySelect.value,1)' >
+                    <option value="-1" disabled>Select Category</option>
+                    <option [ngValue]="categ['category']" *ngFor="let categ of allCategories">{{categ["category"] | titlecase}}</option>                     
+                    </select>
+                </div>
+
+                <div>
+                    Select Sub Category: 
+                    <select class="select-dropdown" formControlName="quizSubCategory" #mySelect1 [(ngModel)]="defaultSubCategory"
+                    (change)='onSelectedSubCategory(mySelect1.value)'>                    
+                    <option value="-1" disabled>Select SubCategory</option>
+                    <!-- <option value="0" disabled *ngIf="allSubCategories.length==0">First Select Category</option> -->
+                        <option [ngValue]="subCateg.name" *ngFor="let subCateg of allSubCategories">{{subCateg.name | titlecase}}</option> 
                     </select>
                 </div>
 
                 <div>
                     Area of Interest:
-                    <select class="select-dropdown" formControlName="areaOfInterest">
-                        <option [ngValue]="'physics'">Physics</option>
-                        <option [ngValue]="'Chemistry'">Chemistry</option>
-                        <option [ngValue]="'Maths'">Maths</option>
-                        <option [ngValue]="'science'">Science</option>
+                    <select class="select-dropdown" formControlName="areaOfInterest" #mySelect2 [(ngModel)]="defaultAOI"
+                    (change)='onSelectedAreaOfInterest(mySelect2.value)' >
+                        <option value="-1" disabled>Select AreaOfInterest</option>
+                        <!-- <option value="0" disabled *ngIf="allAreaOfInterest.length==0">First Select SubCategory</option> -->
+                        <option [ngValue]="area" *ngFor="let area of allAreaOfInterest">{{area | titlecase}}</option> 
                     </select>
                 </div>
                 
-                <div class='custom-width'>
+                
+                <!-- <div class='custom-width'>
                     Difficulty:
                     <select class="select-dropdown" formControlName="difficultyLevel">
                         <option [ngValue]="'easy'">easy</option>
                         <option [ngValue]="'medium'">medium</option>
                         <option [ngValue]="'hard'">hard</option>
                     </select>
-                </div>
+                </div> -->
                 
                 <div>
                     Number of Qns:
@@ -38,36 +54,41 @@
             </div>
 
             <div class="card inner-card-2">
-                <div>
-                    Select Sub Category: 
-                    <select class="select-dropdown" formControlName="quizSubCategory">
+                <div >
+                    <!-- <select class="select-dropdown" formControlName="quizSubCategory">
                         <option [ngValue]="'physics'">Physics</option>
                         <option [ngValue]="'Chemistry'">Chemistry</option>
                         <option [ngValue]="'Math'">Math</option>
+                    </select> -->
+                    Difficulty:
+                    <select class="select-dropdown" style="width: 180px;" formControlName="difficultyLevel">
+                        <option [ngValue]="'easy'">easy</option>
+                        <option [ngValue]="'medium'">medium</option>
+                        <option [ngValue]="'hard'">hard</option>
                     </select>
                     <button type="button" class="btn btn-primary rqst-ctg-btn" (click)="openRequestCategoryDialog()">Request Category</button>
                 </div>
                 <div>
+                    <div style="width: 330px;margin-right: 20px;">
+                        Start Date:
+                        <input type="date" formControlName="startDate">
+                    </div>
                     <div>
                         Start Time:
                         <input type="time" formControlName="startTime">
                     </div>
-                    <div>
-                        Start Date:
-                        <input type="date" formControlName="startDate">
-                    </div>
                 </div>
                 <div>
-                    <div>
-                        End Time:
-                        <input type="time" formControlName="endTime">
-                        </div>
-                    <div>
+                    <div style="width: 340px;margin-right: 20px;">
                         End Date:
                         <input type="date" formControlName="endDate">
                         <div *ngIf="addNewQuizFormControls.endTime.errors?.dateRange"> 
                             Age should be a number
                         </div>
+                    </div>
+                    <div>
+                        End Time:
+                        <input type="time" formControlName="endTime">
                     </div>
                 </div>
                 <div>

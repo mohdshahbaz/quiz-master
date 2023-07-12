@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="newQues">
+    <button class="btn" type="button" routerLink="/add-question-details"> Add New Question</button>
+</div>
+<div class="container text-center" style="z-index: 100;">
+    <div class="table">
+        <table datatable [dtOptions]='dtOptions' [dtTrigger]="dtTrigger" class="row-border hover">           
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>QuestionID</th>
+                    <th>Question</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>                    
+                </tr>
+            </thead>            
+            <tbody>
+                <tr *ngFor="let publicQues of allQuizMasterQuestions;let i = index;">
+                    <td>{{ (i+1) }}</td>
+                    <td>{{ publicQues.questionId }}</td>
+                    <td>{{ publicQues.quesText}}</td>
+                    <td>{{ publicQues.quizCategory | titlecase}}</td>
+                    <td style="font-weight: 500;">{{ (publicQues.questionStatus!=0?'USED':'UNUSED')}}</td>
+                    <td (click)="showQuestionDetails(publicQues.questionId)"><a  style="color: darkblue;font-weight: 500;cursor: pointer;">View</a></td>
+                    <td><i (click)="editQuestion(publicQues.questionId)" class="fas fa-pen" style="color: darkgreen;cursor: pointer;"></i></td>
+                    <td><i (click)="deleteQuestion(publicQues.questionId,publicQues.questionStatus)" class="fas fa-trash" style="cursor: pointer;color: darkred;"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading Questions....</p>
+</ngx-spinner>

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
+import {ChartsModule} from 'ng2-charts';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MainContentComponent } from './component/main-content/main-content.component';
@@ -48,6 +49,43 @@ import { DatePipe } from '@angular/common';
 import { EditAssignedQuizComponent } from './component/edit-assigned-quiz/edit-assigned-quiz.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './component/login/login.component';
+import { AddNewQuestionComponent } from './component/add-new-question/add-new-question.component';
+import { NotAuthorizedComponent } from './component/not-authorized/not-authorized.component';
+import { EditStudentGroupComponent } from './component/edit-student-group/edit-student-group.component';
+import { AllDisputesComponent } from './component/all-disputes/all-disputes.component';
+import { DisputeDetailsComponent } from './component/dispute-details/dispute-details.component';
+import { AllQuestionsComponent } from './component/all-questions/all-questions.component';
+import { NotificationsSuperAdminComponent } from './component/notifications-super-admin/notifications-super-admin.component';
+import { NotificationsAssignedQuizMasterComponent } from './component/notifications-assigned-quiz-master/notifications-assigned-quiz-master.component';
+import { AllQuestionsQuizMasterComponent } from './component/all-questions-quiz-master/all-questions-quiz-master.component';
+import { AllPaymentRequestsComponent } from './component/all-payment-requests/all-payment-requests.component';
+import { SpinnerComponent } from './component/spinner/spinner.component';
+import { LoadingSpinnerComponent } from './component/loading-spinner/loading-spinner.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { AddPublicQuesDetailsComponent } from './component/add-public-ques-details/add-public-ques-details.component';
+import { AddSinglePublicQuesComponent } from './component/add-single-public-ques/add-single-public-ques.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { EditPublicQuestionComponent } from './component/edit-public-question/edit-public-question.component';
+import { ShowQuestionDetailsComponent } from './component/show-question-details/show-question-details.component';
+import { ShowAllUsersComponent } from './component/show-all-users/show-all-users.component';
+import { NameFilterPipe } from './name-filter.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
+import { ShowQuizMasterDetailsComponent } from './component/show-quiz-master-details/show-quiz-master-details.component';
+import { EditQuizMasterComponent } from './component/edit-quiz-master/edit-quiz-master.component';
+import { ViewGroupStudentsComponent } from './component/view-group-students/view-group-students.component';
+import { AddEditBannerComponent } from './component/add-edit-banner/add-edit-banner.component';
+import { StudentPerformanceComponent } from './component/student-performance/student-performance.component';
+import { QuizUsersPerformanceComponent } from './component/quiz-users-performance/quiz-users-performance.component';
+import { SingleStudentPerformanceComponent } from './component/single-student-performance/single-student-performance.component';
+import { PerformanceChartComponent } from './component/performance-chart/performance-chart.component';
+import { ShowBannerComponent } from './component/show-banner/show-banner.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { EditUserComponent } from './component/edit-user/edit-user.component';
+import { RescheduleAssignedQuizComponent } from './component/reschedule-assigned-quiz/reschedule-assigned-quiz.component';
+//Installed Using : 
+// >npm i ngx-spinner@v11.0.2
+
 
 @NgModule({
   declarations: [
@@ -70,7 +108,38 @@ import { LoginComponent } from './component/login/login.component';
     ShowAllQuizzesComponent,
     EditPublicQuizComponent,
     EditAssignedQuizComponent,
-    LoginComponent
+    LoginComponent,
+    AddNewQuestionComponent,
+    NotAuthorizedComponent,
+    EditStudentGroupComponent,
+    AllDisputesComponent,
+    DisputeDetailsComponent,
+    AllQuestionsComponent,
+    NotificationsSuperAdminComponent,
+    NotificationsAssignedQuizMasterComponent,
+    AllQuestionsQuizMasterComponent,
+    AllPaymentRequestsComponent,
+    SpinnerComponent,
+    LoadingSpinnerComponent,
+    ProfileComponent,
+    AddPublicQuesDetailsComponent,
+    AddSinglePublicQuesComponent,
+    EditPublicQuestionComponent,
+    ShowQuestionDetailsComponent,
+    ShowAllUsersComponent,
+    NameFilterPipe,
+    EditProfileComponent,
+    ShowQuizMasterDetailsComponent,
+    EditQuizMasterComponent,
+    ViewGroupStudentsComponent,
+    AddEditBannerComponent,
+    StudentPerformanceComponent,
+    QuizUsersPerformanceComponent,
+    SingleStudentPerformanceComponent,
+    PerformanceChartComponent,
+    ShowBannerComponent,
+    EditUserComponent,
+    RescheduleAssignedQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +149,8 @@ import { LoginComponent } from './component/login/login.component';
     MatButtonModule,
     MatIconModule,
     NgbModule,
+    ChartsModule,
+    MatSlideToggleModule,
     ReactiveFormsModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -90,11 +161,14 @@ import { LoginComponent } from './component/login/login.component';
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
+    NgxSpinnerModule,
+    NgxPaginationModule,
     HttpClientModule,
     MatDialogModule,
     FormsModule,
     MatCheckboxModule,
     ToastrModule.forRoot(),
+    // NgxSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,

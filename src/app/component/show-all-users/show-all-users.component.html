@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="wrapper ">
+    <div class="table2 mt-3" style="margin-bottom: -10px;" >                                           
+        <div class="row2">      
+          <div class="cell2">
+              <h2>All Users</h2>      
+          </div>
+          <div class="cell2" >
+            <input type="text" [(ngModel)]="filteredStatus" class="form-control"  placeholder="Find User by Name....">
+          </div>    
+          <div class="cell2" >
+              <!-- <button (click)="newFaculties()" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true" ></i> New Coaches</button> -->
+          </div>       
+                         
+        </div>                     
+      </div> 
+      
+      <!-- spinnner element is defined with id loading -->
+      <div class="d-flex justify-content-center mt-5" *ngIf="isLoading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only" id="loading"></span>
+        </div>
+        <br>
+        Loading....
+      </div>
+   
+    <div class="table shadow p-3 mb-5" *ngIf="!isLoading">
+      
+      <div class="row header" >
+        <div class="cell  pt-2">
+          S.No.
+         </div>    
+        <div class="cell" (click)="sort('userId')" style="cursor: pointer;">
+         User ID
+        </div>
+        <div class="cell">
+            
+        </div>
+        <div class="cell">
+         User Name
+        </div>
+        <div class="cell">
+           Email
+        </div>
+        <div class="cell">
+            Phone
+        </div>
+        <div class="cell">
+          DOB 
+      </div>
+      <div class="cell">
+        Quiz Played 
+     </div>
+     <div class="cell">
+
+     </div>
+      
+      </div>
+      
+      <div class="row" *ngFor="let user of users | nameFilter : filteredStatus | paginate: { itemsPerPage: 5, currentPage: p };let i = index;">
+      
+        <div class="cell" data-title="S.No."  >
+          {{i+1}}
+      </div>
+        <div class="cell" data-title="User ID"  >
+            {{ user.userId }}
+        </div>
+        <div class="cell" data-title=""  >
+            <img src={{user.profilePic}} alt="userImage"  onerror="this.src='https://ik.imagekit.io/4afsv20kjs/empImg_Bi_CID4Ly.jpg'" class="myImg rounded-circle">
+           
+        </div>
+        <div class="cell" data-title="User Name"  >
+            {{ user.username | titlecase}}
+           
+        </div>
+        <div class="cell" data-title="Email">
+            {{ user.email}}
+        </div>
+        <div class="cell" data-title="Phone">
+            {{ user.phone}}
+        </div>
+        <div class="cell" data-title="Date Of Birth" *ngIf="user.dateOfBirth!=''">
+          {{ user.dateOfBirth | date:'mediumDate' }}
+       </div>
+       <div class="cell" data-title="Date Of Birth" *ngIf="user.dateOfBirth==''">
+            NA
+      </div>
+      <div class="cell" data-title="Quiz Played" >
+        {{user.results.length}}
+      </div>
+      <div class="cell" data-title="Edit" >        
+        <i routerLink="/edit-single-user/{{user.userId}}" class="fas fa-pen" style="font-size: 18px; cursor: pointer;" ></i>
+      </div>
+             
+      </div>
+          
+    </div>
+</div> 
+
+<!-- pagination -->
+<pagination-controls *ngIf="!isLoading" (pageChange)="p=$event" style="margin-top: -10px;margin-bottom: 20px;"></pagination-controls>
+

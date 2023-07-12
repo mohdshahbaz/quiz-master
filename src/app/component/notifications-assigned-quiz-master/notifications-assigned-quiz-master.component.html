@@ -1,0 +1,65 @@
+
+<div class="container-fluid dash_cus"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="user_info">
+                    <div class="col-sm-12">
+                        <h2>Send Notification To Group</h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                            <div class="form-group row">
+                                <label for="newName" class="col-md-3 col-form-label">Title</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control cus_input" name="title" placeholder="Enter Title...." ngModel required #titleRef="ngModel">
+                                    <div *ngIf="titleRef.errors?.required  && titleRef.touched" class="errorDiv">
+                                      *Title is required!
+                                  </div>
+                                  </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="newName" class="col-md-3 col-form-label">Message</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control cus_input"  name="message" ngModel placeholder="Enter Message...." required #messageRef="ngModel">
+                                    <div *ngIf="messageRef.errors?.required  && messageRef.touched" class="errorDiv">
+                                      *Message is required!
+                                  </div>
+                                  </div>
+                            </div>
+
+                            <div class="form-group row">
+                            <label for="newName" class="col-md-3 col-form-label">Send To</label>
+                                <div class="col-md-9">                                
+                                    <select class="custom-select" id="inputGroupSelect01" name="groupId" ngModel>                                
+                                        <option  [ngValue]="group.groupId" *ngFor="let group of allStudentsGroups">{{group.groupName | titlecase}}</option>                          
+                                    </select>
+                                </div>
+                            </div>            
+
+                            <div class="form-group row">
+                                <label for="newName" class="col-md-3 col-form-label"></label>
+                                <div class="col-md-9">
+                                    <!-- <input type="submit" value="Send" class="form-control cus_input_btn"> -->
+                                    <button type="submit" class="form-control cus_input_btn" [disabled]="!form.valid">Send</button>
+                                </div>
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>		
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Please Wait....</p>
+</ngx-spinner>

@@ -8,26 +8,40 @@
 
   <div class="table">
 
-    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover text-center">
       <thead>
         <tr>
           <th>Group ID</th>
           <th>Group Name</th>
           <th>Students</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let group of groups">
           <td>{{ group.groupId }}</td>
-          <td>{{ group.groupName }}</td>
-          <td>
+          <td>{{ group.groupName | titlecase}}</td>
+          <!-- <td>
             <div *ngFor="let student of group.students">
               {{ student.username }}
             </div>
+          </td> -->
+          <td>
+            <button class="btn" (click)="viewStudents(group.students)">View Students</button>
           </td>
+          <td>
+            <button mat-icon-button [routerLink]="['/edit-students-group',group.groupId]">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </td>
         </tr>
       </tbody>
     </table>
 
   </div>
 </div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 
+template="<img src='../../../assets/loading-36.gif' height='200px' width='200px' />">
+    <p style="font-size: 20px; color: white;padding-top: 100px;" > Loading Groups... </p>
+</ngx-spinner>

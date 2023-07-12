@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
-  startAge: number;
-  endAge: number;
+  start: number;
+  end: number;
 }
 
 @Component({
@@ -15,13 +15,26 @@ export class SelectAgeDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<SelectAgeDialogComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+      @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+       
+      }
 
   ngOnInit(): void {
   }
 
+  checkAgeNotEmpty()
+  {
+    if(this.data.start.toString().length == 0 || this.data.end.toString().length == 0 || +this.data.end<=(+this.data.start))
+    {
+      return true; //disable = true
+    }
+    else{
+      return false
+    }
+  }
+
   onCancelClick(): void {
-    debugger;
+    // debugger;
     this.dialogRef.close();
   }
 

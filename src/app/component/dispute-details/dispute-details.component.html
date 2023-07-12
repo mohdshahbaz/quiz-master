@@ -1,0 +1,23 @@
+<div class="text-right mb-2">
+    <button mat-raised-button id="model-cancel-button" class="btn btn-danger" (click)="closeModel()">X</button>  
+</div>
+
+<div class="container">
+    <div class="row">
+     
+        <div class="col-md-5 d-flex justify-content-center ">
+           <h4> Description : </h4>
+        </div>
+        <div class="col-md-6 d-flex justify-content-start mt-1 ">
+            <b> {{ disputeDesc }} </b>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row border border-success m-1 mt-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" >
+            <img src={{disputeImage}} alt="disputeImage" height="100%" width="100%" >
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

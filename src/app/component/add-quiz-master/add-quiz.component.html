@@ -9,6 +9,9 @@
         
         <form [formGroup]="addQuizForm" (ngSubmit)="createQuizMaster()">
             <div>
+                Name    :<input type="text" formControlName="name" placeholder="Type your Full Name" required>
+            </div>
+            <div>
                 Email ID    :<input type="text" formControlName="email" placeholder="Type your email" required>
             </div>
             <div *ngIf="addQuizFormControls.email.invalid && (addQuizFormControls.email.dirty || addQuizFormControls.email.touched)" class="error" role="alert">
@@ -59,7 +62,7 @@
                 </div>
             </div>
             <p style="font-weight: 900;">
-                Are you a Quizeee quiz master
+                Add as a Quizeee quiz master ?
             </p>
             <div class='save'>
                 <div class="radio">

@@ -10,7 +10,9 @@ import { QuizzesService } from 'src/app/services/quizzes.service';
   styleUrls: ['./add-questions-dialog.component.css']
 })
 export class AddQuestionsDialogComponent implements OnInit {
+
   questions: any;
+  quesAvail = false;
 
   constructor(private quizMasterService: QuizMasterService,
     private quizzesService: QuizzesService,
@@ -20,18 +22,36 @@ export class AddQuestionsDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestions();
-    console.log(this.data.selectedQuestionsId);
+    console.log("Selected Questions : ",this.data.selectedQuestionsId);
   }
 
   getQuestions() {
     const postData = {
-      quizMasterId: "105",
+      quizMasterId: JSON.parse(localStorage.getItem('quizMaster'))['quizMasterId'],
       categoryName: this.data.selectedCategory
     }
 
     this.quizzesService.getQuestions(postData).subscribe(result => {
       if(result['status']) {
-        this.questions = result['questions'];
+        var allQuestions = [];
+        result['questions'].forEach(ques=>{
+          const index = this.data.selectedQuestionsId.findIndex(i=>i==ques.questionId);
+          if(index!=-1)
+          {
+            allQuestions.push(ques);
+          }
+
+          if(ques.questionStatus==0)
+          {
+           allQuestions.push(ques);
+          }
+        });
+        this.questions = allQuestions;
+        console.log(this.questions);
+        if(this.questions.length!=0)
+        {
+          this.quesAvail = true;
+        }
       }
     });
   }

@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="container-fluid" >
+    <div class="card outer-card">
+        <form (submit)="editQuestion(form)" #form="ngForm">
+            <div class="card inner-card-1">
+                <h1 class="text-center"><u>Edit Question </u></h1>
+                <div>
+                    Question Name: 
+                    <input type="text" name="quesText" [(ngModel)]="singleQues.quesText" required placeholder="Enter Question Name....">
+                </div>
+
+                <div class="mt-2">
+                    Options:
+                    <input type="text" name="option1" [(ngModel)]="singleQues.options[0]" required placeholder="Enter Option 1....">
+                </div>
+                <div style="margin-top:1px;">
+                    <p></p>
+                    <input type="text" name="option2" [(ngModel)]="singleQues.options[1]" required placeholder="Enter Option 2....">
+                </div>
+                <div style="margin-top:1px;">
+                   <p></p>
+                    <input type="text" name="option3" [(ngModel)]="singleQues.options[2]" required placeholder="Enter Option 3....">
+                </div>
+                <div style="margin-top:1px;">
+                    <p></p>
+                     <input type="text" name="option4" [(ngModel)]="singleQues.options[3]" required placeholder="Enter Option 4....">
+                 </div>
+
+                <div class="mt-2">
+                    Question Image:
+                    <img class="myImg" src={{singleQues.quesImgUrl}} alt="questionImage" onerror="this.src='../../../assets/Question-Mark.jpg'" width="150">
+                  
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <i class="fas fa-pen" style="font-size: 18px; cursor: pointer;" ></i>
+                        </label>                      
+                        <input id="file-input" type="file" (change)="selectImage($event)" />
+                      </div>
+                    <!-- <input type="file" (change)="selectImage($event)" name="quesImg" [(ngModel)]="singleQues.quesImgUrl" placeholder="Enter Option 4...."> -->
+                </div>
+                
+                <div class='custom-width mt-2'>
+                    Solution:
+                    <input type="text" name="solution" [(ngModel)]="singleQues.solution" placeholder="Enter Solution Link/Text....">
+                </div>
+                
+                <div class="mt-2">
+                    Right Option:
+                    <select class="select-dropdown" name="rightOption" [(ngModel)]="singleQues.rightOption">
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                        <option value="3">4</option>
+                    </select>
+                </div>
+<!-- 
+                <div>
+                    Select Category: 
+                    <select class="select-dropdown"  name="quizCategory" [(ngModel)]="defaultCategory" #mySelect
+                    (change)='onSelectedCategory(mySelect.value,1)' >
+                        <option [ngValue]="categ.category" *ngFor="let categ of allCategories">{{categ.category | titlecase}}</option>                     
+                    </select>
+                </div>
+
+                <div>
+                    Select Sub Category: 
+                    <select class="select-dropdown" name="quizSubCategory" [(ngModel)]="defaultSubCategory" #mySelect1
+                    (change)='onSelectedSubCategory(mySelect1.value)'>
+                    <option value="0" disabled *ngIf="allSubCategories.length==0">First Select Category</option>
+                        <option [ngValue]="subCateg.name" *ngFor="let subCateg of allSubCategories">{{subCateg.name | titlecase}}</option> 
+                    </select>
+                </div>
+
+                <div>
+                    Area of Interest:
+                    <select class="select-dropdown" name="areaOfInterest" [(ngModel)]="defaultAOI" #mySelect2
+                    (change)='onSelectedAreaOfInterest(mySelect2.value)' >
+                        <option value="0" disabled *ngIf="allAreaOfInterest.length==0">First Select SubCategory</option>
+                        <option [ngValue]="area" *ngFor="let area of allAreaOfInterest">{{area | titlecase}}</option> 
+                    </select>
+                </div> -->
+
+                <div></div>              
+                <div class=" text-center myBtn ">
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success">Update </button>
+                </div>
+            </div>  
+        </form>
+
+    </div>
+</div>
+
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Saving Question...</p>
+</ngx-spinner>

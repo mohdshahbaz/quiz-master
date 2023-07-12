@@ -1,0 +1,136 @@
+<!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+<div class="text-center">
+  <h3 style="font-weight: 600;font-size:x-large;">  Existing Students : </h3>
+</div>
+
+<div class="main-content-container">
+
+  <!-- <div class="header container">
+      <p class='header-text'>All Users</p>
+      <div class="add-search">
+          <div class="form-group">
+
+              <input class="search-input" type="text" placeholder="Search" [(ngModel)]="query">
+          </div>
+      </div>
+  </div> -->
+
+  <div class="cards">
+      <div *ngFor="let user of studentsInGroup ">
+          <div class="card">
+              <div class="card-head">
+                  <h1 style="visibility: hidden;">Hid</h1>
+                  <img class="profile-avatar" [src]="user.profilePic != null ? 'https://quizeee-app-api.herokuapp.com/api/download/' + user.profilePic : '../../assets/profile-avatar.png'" onerror="this.src='https://ik.imagekit.io/4afsv20kjs/empImg_Bi_CID4Ly.jpg'">
+                  <mat-icon>more_vert</mat-icon>
+              </div>
+              <div>
+                  <h3 class="username">Username: <span style="font-weight: bold;">{{user.username}}</span></h3>
+                  <div class="myEmail">
+                    <h3 class="email">Email ID: {{user.email}}</h3>
+                </div>
+              </div>
+              <div class="password">
+                  <h3>Phone : </h3>
+                  <h3 class="psswd">{{user.phone}}</h3>
+              </div>
+              <div class="actions">
+             
+                  <button type="button" (click)="removeStudent(user.userId,user)" class="btn" style="background-color: darkred; color: white;font-weight: 600;" >Remove X </button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="sticky-btn">
+  </div>
+
+</div>
+
+<hr class="my-3">
+
+<div class="text-center myDiv ">
+  <h3 style="font-weight: 600;font-size:x-large;"> Search Remaining Students : </h3>
+  <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">          
+          <div class="row">
+        <input type="text" class="form-control col-md-10" placeholder="Search by email or phone" [(ngModel)]="searchIdentity">
+        <button (click)="searchSingleStudent()" class="col-md-2" style="background-color: var(--primary-blue);color: white;">
+            <i class="fas fa-search"></i>
+        </button>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+  </div>
+</div>
+
+<div class="main-content-container">
+
+        <div class="cards">
+            <div class="card" *ngIf="showFilteredStudent">
+                <div class="card-head">
+                    <h1 style="visibility: hidden;">Hid</h1>
+                    <img class="profile-avatar" [src]="filteredStudent.profilePic != null ? 'https://quizeee-app-api.herokuapp.com/api/download/' + filteredStudent.profilePic : '../../assets/profile-avatar.png'" onerror="this.src='https://ik.imagekit.io/4afsv20kjs/empImg_Bi_CID4Ly.jpg'">
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+                <div>
+                    <h3 class="username">Username: <span style="font-weight: bold;">{{filteredStudent.username}}</span></h3>
+                    <div class="myEmail">
+                      <h3 class="email">Email ID: {{filteredStudent.email}}</h3>
+                  </div>
+                </div>
+                <div class="password">
+                    <h3>Phone : </h3>
+                    <h3 class="psswd">{{filteredStudent.phone}}</h3>
+                </div>
+                <div class="actions">
+               
+                    <button type="button" (click)="addStudent(filteredStudent.userId,filteredStudent)" class="btn" >Add User</button>
+                </div>
+            </div>
+        </div>
+    
+
+  <!-- <div class="cards">
+      <div *ngFor="let user of remainingUsers ">
+          <div class="card">
+              <div class="card-head">
+                  <h1 style="visibility: hidden;">Hid</h1>
+                  <img class="profile-avatar" [src]="user.profilePic != null ? 'https://quizeee-app-api.herokuapp.com/api/download/' + user.profilePic : '../../assets/profile-avatar.png'" onerror="this.src='https://ik.imagekit.io/4afsv20kjs/empImg_Bi_CID4Ly.jpg'">
+                  <mat-icon>more_vert</mat-icon>
+              </div>
+              <div>
+                  <h3 class="username">Username: <span style="font-weight: bold;">{{user.username}}</span></h3>
+                  <div class="myEmail">
+                    <h3 class="email">Email ID: {{user.email}}</h3>
+                </div>
+              </div>
+              <div class="password">
+                  <h3>Phone : </h3>
+                  <h3 class="psswd">{{user.phone}}</h3>
+              </div>
+              <div class="actions">
+             
+                  <button type="button" (click)="addStudent(user.userId,user)" class="btn" >Add User</button>
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+  <div class="sticky-btn">
+    <button class="btn btn-sticky" (click)="submitEditedGroup()">Submit Group</button>
+  </div>
+
+</div>
+
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Saving Changes....</p>
+</ngx-spinner>

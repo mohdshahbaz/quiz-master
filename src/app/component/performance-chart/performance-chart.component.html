@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 my-5" style="">
+             <!-- bar chart (for users)-->
+            <div class="chart-wrapper">
+                <canvas baseChart 
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [colors]="barChartColors"
+                [chartType]="barChartType">
+            </canvas>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row text-center mb-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"  style="background-color: rgb(213, 213, 233)">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" colspan="2">Performance Analytics</th>
+                    <!-- <th scope="col">Handle</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let legend of allLegends">
+                    <td>{{legend.label}}</td>
+                    <td>{{legend.percentage}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

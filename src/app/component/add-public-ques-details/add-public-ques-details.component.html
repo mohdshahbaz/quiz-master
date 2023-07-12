@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="container-fluid text-center" >
+    <div class="card outer-card " >
+        <form (submit)="addQuestion(form)" #form="ngForm">
+            <div class="card inner-card-1">
+                <h1 class="text-center"><u>Add Questions</u></h1>
+                <div>
+                    Select Category: 
+                    <select class="select-dropdown"  name="quizCategory" ngModel #mySelect
+                    (change)='onSelectedCategory(mySelect.value,1)' >
+                        <option [ngValue]="categ.category" *ngFor="let categ of allCategories">{{categ.category | titlecase}}</option>                     
+                    </select>
+                </div>
+
+                <div>
+                    Select Sub Category: 
+                    <select class="select-dropdown" name="quizSubCategory" [(ngModel)]="defaultSubCategory" #mySelect1
+                    (change)='onSelectedSubCategory(mySelect1.value)'>
+                    <option value="0" disabled *ngIf="allSubCategories.length==0">First Select Category</option>
+                        <option [ngValue]="subCateg.name" *ngFor="let subCateg of allSubCategories">{{subCateg.name | titlecase}}</option> 
+                    </select>
+                </div>
+
+                <div>
+                    Area of Interest:
+                    <select class="select-dropdown" name="areaOfInterest" [(ngModel)]="defaultAOI" #mySelect2
+                    (change)='onSelectedAreaOfInterest(mySelect2.value)' >
+                        <option value="0" disabled *ngIf="allAreaOfInterest.length==0">First Select SubCategory</option>
+                        <option [ngValue]="area" *ngFor="let area of allAreaOfInterest">{{area | titlecase}}</option> 
+                    </select>
+                </div>
+
+                <div style="margin-top: -10px;">
+                    Number of Qns:
+                    <input type="number" placeholder="Enter no.of questions" name="noOfQuestions" ngModel min="1" oninput="validity.valid||(value='');">
+                </div>
+          
+                <div class=" text-center myBtn ">
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success">Continue <i class="fas fa-arrow-alt-circle-right"></i></button>
+                </div>
+            </div>  
+        </form>
+
+    </div>
+</div>

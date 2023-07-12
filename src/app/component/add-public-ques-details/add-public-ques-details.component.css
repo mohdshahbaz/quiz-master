@@ -1,0 +1,152 @@
+.container-fluid {
+    height: calc(100vh - 64px);
+    overflow: auto;
+}
+
+.outer-card {
+    margin-top: 10px;
+    background-color: var(--light-blue);
+    border-radius: 20px;
+    width: 800px;
+    margin-left: 160px;
+}
+
+.inner-card-1, .inner-card-2 {
+    margin: 1px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    padding: 30px;
+    justify-content: space-between;
+    height: 580px;
+    width: 630px;
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.inner-card-1 > div, .inner-card-2 > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner-card-1 > div > input, select {
+    width: 250px;
+}
+
+.inner-card-2 > div > input {
+    width: 250px;
+}
+
+.inner-card-2 > div > div:first-child {
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner-card-2 > div > div:last-child {
+    width: 265px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner-card-2 > div > select {
+    width: 250px;
+}
+
+input, select {
+    background-color: var(--primary-blue);
+    color: var(--yellow-color);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+input::placeholder, select::placeholder {
+    color: var(--yellow-color);
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 25px;
+    background-color: var(--yellow-color);
+    color: var(--primary-blue);
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 150px;
+}
+
+@media(max-width: 768px) {
+    .container-fluid {
+        height: calc(100vh - 54.781px);
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    .inner-card-1, .inner-card-2 {
+        width: auto;
+        height: auto;
+    }
+
+    .inner-card-1 > div, .inner-card-2 > div {
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .inner-card-2 > div > div {
+        flex-direction: column;
+    }
+
+    select, input, .btn {
+       width: 220px !important;
+    }
+
+    .rqst-ctg-btn {
+        margin-top: 10px;
+    }
+
+    .action-btn > * {
+        margin: 10px;
+    }
+}
+
+.myBtn
+{
+    margin-left: 38%;
+    margin-top: 0px;
+}
+
+
+@media(max-width: 500px) {
+    .outer-card {
+        margin-top: 10px;
+        background-color: var(--light-blue);
+        border-radius: 20px;   
+        width: max-content;
+        margin-left: 0px;        
+    }
+}

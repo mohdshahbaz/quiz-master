@@ -1,0 +1,90 @@
+<div class="wrapper ">
+        
+<div class="table2 mt-4" style="margin-bottom: -10px;" >                                           
+    <div class="row2">      
+        <div class="cell2">
+            <h2>All Performances</h2>      
+        </div>
+        <div class="cell2" >
+        <input type="text" [(ngModel)]="filteredStatus" class="form-control"  placeholder="Find Quiz by Name/Category....">
+        </div>    
+        <div class="cell2" >
+            <!-- <button (click)="newFaculties()" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true" ></i> New Coaches</button> -->
+        </div>       
+                        
+    </div>   
+    </div>
+
+    <!-- spinnner element is defined with id loading -->
+    <div class="d-flex justify-content-center mt-5" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+        <span class="sr-only" id="loading"></span>
+    </div>
+    <br>
+    Loading....
+    </div>
+
+    <div class="table shadow mt-3 p-3 mb-5" *ngIf="!isLoading">
+      
+      <div class="row header" >   
+        <div class="cell" style="cursor: pointer;">
+         QuizID
+        </div>
+        <div class="cell">
+         Quiz Name
+        </div>
+        <div class="cell">
+            Category
+        </div>
+        <div class="cell">
+            ResultID
+        </div>
+        <div class="cell">
+           Score
+        </div>
+        <div class="cell">
+            Response Time
+        </div>
+        <div class="cell">
+            Correct Questions
+        </div>
+        <div class="cell">
+            Wrong Questions
+        </div>
+      
+      </div>
+      
+      <div class="row" *ngFor="let student of allPerformances | nameFilter : filteredStatus | paginate: { itemsPerPage: 5, currentPage: p };let i = index;">
+      
+        <div class="cell" data-title="QuizID"  >
+            {{ student.quizId }}
+        </div>
+        <div class="cell" data-title="Quiz Name"  >
+            {{ student.quizTitle | titlecase}}           
+        </div>
+        <div class="cell" data-title="Quiz Category"  >
+            {{ student.quizCategory | titlecase}}           
+        </div>
+        <div class="cell" data-title="Result ID">
+            {{ student.resultId}}           
+        </div>
+        <div class="cell" data-title="Score">
+            {{ student.score}}
+        </div>
+        <div class="cell" data-title="Response Time">
+            {{ student.responseTime}} Sec
+        </div>
+        <div class="cell" data-title="Correct Questions">
+            {{ student.correctQues}}
+        </div>
+        <div class="cell" data-title="Wrong Questions">
+            {{ student.wrongQues}}
+        </div>
+             
+      </div>
+          
+    </div>
+</div> 
+
+<!-- pagination -->
+<pagination-controls *ngIf="!isLoading" (pageChange)="p=$event" style="margin-top: -10px;margin-bottom: 20px;"></pagination-controls>

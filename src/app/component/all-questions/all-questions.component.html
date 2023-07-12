@@ -1,0 +1,36 @@
+<div class="container text-center">
+    
+    <div class="table ">
+
+        <table datatable [dtOptions]='dtOptions' [dtTrigger]="dtTrigger" class="row-border hover">
+           
+            <thead>
+                <tr>
+                    <th>Quiz Master Id</th>
+                    <th>Master Name</th>
+                    <th>QuestionID</th>
+                    <th>Question</th>
+                    <th>Category</th>
+                    <th>Status</th>                        
+                    <th></th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let publicQues of allPublicQuestions">
+                    <td>{{ publicQues.quizMasterId }}</td>
+                    <td>{{ publicQues.quizMasterName | titlecase}}</td>
+                    <td>{{ publicQues.questionId }}</td>
+                    <td>{{ publicQues.quesText}}</td>        
+                    <td>{{ publicQues.quizCategory | titlecase}}</td>      
+                    <td>{{ (publicQues.questionStatus!=0?(publicQues.questionStatus==1?'PUBLIC':'PRACTICE'):'UNUSED')}}</td>       
+                    <td>
+                        <button *ngIf="publicQues.questionStatus==0" type="button" (click)="moveQuestionToPractice(publicQues.quizMasterId,publicQues.questionId)" [disabled]="publicQues.questionStatus!=1" class="btn">Set To Practice</button>
+                        <button *ngIf="publicQues.questionStatus==1" type="button" (click)="moveQuestionToPractice(publicQues.quizMasterId,publicQues.questionId)" [disabled]="publicQues.questionStatus!=1" class="btn">Set To Practice</button>
+                        <button *ngIf="publicQues.questionStatus==2" type="button" (click)="moveQuestionToPublic(publicQues.quizMasterId,publicQues.questionId)" [disabled]="publicQues.questionStatus!=2" class="btn">Set To Public</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

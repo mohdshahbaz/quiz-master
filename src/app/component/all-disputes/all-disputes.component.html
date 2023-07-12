@@ -1,0 +1,26 @@
+<table class="table text-center mt-5 ">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">UserID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Report Date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dispute of allDisputes;let i = index;">
+        <th scope="row">{{i+1}}</th>
+        <td>{{dispute.userId}}</td>
+        <td>{{dispute.name | titlecase}}</td>
+        <td>{{dispute.email }}</td>
+        <td>{{dispute.phone }}</td>
+        <td>{{dispute.reportDate | date:'medium'}}</td>
+        <td> <button class="btn btn-primary" (click)="showDisputeDetails(dispute.description,dispute.screenShot)">Show Details</button> </td>
+        
+      </tr>
+     
+    </tbody>
+  </table>
