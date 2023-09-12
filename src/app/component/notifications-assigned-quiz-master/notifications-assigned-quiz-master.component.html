@@ -31,9 +31,12 @@
 
                             <div class="form-group row">
                             <label for="newName" class="col-md-3 col-form-label">Send To</label>
-                                <div class="col-md-9">                                
-                                    <select class="custom-select" id="inputGroupSelect01" name="groupId" ngModel>                                
-                                        <option  [ngValue]="group.groupId" *ngFor="let group of allStudentsGroups">{{group.groupName | titlecase}}</option>                          
+                                <div class="col-md-9">
+                                    <!-- <select class="custom-select" id="inputGroupSelect01" name="groupId" ngModel>
+                                        <option  [ngValue]="group.groupId" *ngFor="let group of allStudentsGroups">{{group.groupName | titlecase}}</option>
+                                    </select> -->
+                                    <select class="custom-select" id="inputGroupSelect01" name="quizId" ngModel>
+                                        <option  [ngValue]="quiz.quizId" *ngFor="let quiz of allQuizMasterQuizes">{{quiz.quizId}} | {{quiz.quizTitle}}</option>
                                     </select>
                                 </div>
                             </div>            

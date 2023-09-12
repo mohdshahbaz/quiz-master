@@ -69,7 +69,7 @@ export class AuthService {
       //checking if that data key exists
       if(!authUserInfo)
       {
-          return;
+        return;
       }
       else{
         //emitting login details to BehaviourSubject
