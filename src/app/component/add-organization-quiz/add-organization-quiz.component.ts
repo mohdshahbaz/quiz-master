@@ -62,13 +62,14 @@ export class AddOrganizationQuizComponent implements OnInit {
       quizCategory: ['', Validators.required],
       quizSubCategory: ['', Validators.required],
       areaOfInterest: ['', Validators.required],
-      startTime: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endTime: ['', Validators.required],
-      endDate: ['', Validators.required],
+      startTime: [''],
+      startDate: [''],
+      endTime: [''],
+      endDate: [''],
       noOfQuestions: ['', Validators.required],
       difficultyLevel: ['', Validators.required],
-      timePerQues: ['', Validators.required],
+      timePerQues: [''],
+      price: ['',Validators.required],
     });
   }
 
@@ -79,8 +80,8 @@ export class AddOrganizationQuizComponent implements OnInit {
   onSelectedCategory(value:string){
     const arr = value.split(':');
     //value -> 0:d or 1:science (that's why splitting)
-   console.log("Selected value is :",value.split(':')[1]);    
-   this.defaultCategory = value.split(':')[1].trim(); 
+   console.log("Selected value is :",value.split(':')[1]);
+   this.defaultCategory = value.split(':')[1].trim();
  
    //now we will set the Subcategory based on above selected category
                                                 //0 or 1 etc
@@ -93,7 +94,7 @@ export class AddOrganizationQuizComponent implements OnInit {
   onSelectedSubCategory(value:string){
     //value -> 0:physics or 1:chemistry (that's why splitting)
     const arr = value.split(':');
-    console.log("Selected SubCategory is :",value.split(':')[1]);   
+    console.log("Selected SubCategory is :",value.split(':')[1]);
     console.log(this.allSubCategories,arr);
     this.defaultSubCategory = value.split(':')[1].trim();
    
@@ -107,11 +108,10 @@ export class AddOrganizationQuizComponent implements OnInit {
     this.defaultAOI = this.allAreaOfInterest[0];
   }
 
-
   onSelectedAreaOfInterest(value:string){
     //value -> 0:d or 1:science (that's why splitting)
-    console.log("Selected AreaOfInterest is :",value.split(':')[1]);   
-    this.defaultAOI = value.split(':')[1].trim();  
+    console.log("Selected AreaOfInterest is :",value.split(':')[1]);
+    this.defaultAOI = value.split(':')[1].trim();
   }
 
   openSelectGroupDialog() {
@@ -199,37 +199,63 @@ export class AddOrganizationQuizComponent implements OnInit {
       this.spinner.hide();
       this.toastr.error('Selected questions should be equal to no of questions entered!');
     } else {
+      //Calculate startdate and end date
+      //StartDate -> Date before current date
+      var yesterdayDate = new Date();
+      yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+      var yesterdayYr = yesterdayDate.getFullYear().toString();
+      var yesterdayMonth = (yesterdayDate.getMonth()+1).toString();
+      if(yesterdayMonth.length==1){
+        yesterdayMonth = "0"+yesterdayMonth;
+      }
+      var yesterdayDt = yesterdayDate.getDate().toString();
+      this.addNewQuizForm.value.startDate = yesterdayYr+'-'+yesterdayMonth+'-'+yesterdayDt;
+      this.addNewQuizForm.value.startTime = "11:00";
+      // console.log("Date : "+yesterdayDate.getDate(), yesterdayDate.getMonth()+1, yesterdayDate.getFullYear()); 
+      //EndDate -> Date after 2 year
+      var futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + 700);
+      var futureDayYr = futureDate.getFullYear().toString();
+      var futureDayMonth = (futureDate.getMonth()+1).toString();
+      if(futureDayMonth.length==1){
+        futureDayMonth = "0"+futureDayMonth;
+      }
+      var futuredayDt = futureDate.getDate().toString();
+      this.addNewQuizForm.value.endDate = futureDayYr+'-'+futureDayMonth+'-'+futuredayDt;
+      this.addNewQuizForm.value.endTime = "11:00";
+      
+      this.addNewQuizForm.value.timePerQues = 10;
       console.log(this.addNewQuizForm.value);
 
       this.quizzesService.createAssignedQuiz(this.addNewQuizForm.value).subscribe(res=>{
         if(res["status"])
         {
           this.publicQuestionService.changeQuestionsStatusToPublic({quizMasterId:this.quizMasterId,questionIDs:postData['questions']}).subscribe(quesRes=>{
-            if(quesRes["status"])
-            {
-              this.spinner.hide();
-          this.toastr.info(res["message"],"Success",{
-            timeOut:2500,
-            progressBar:true,
-            progressAnimation:'increasing',
-            positionClass:'toast-top-right'
-          });
-  
+          if(quesRes["status"])
+          {
+            this.spinner.hide();
+            this.toastr.info(res["message"],"Success",{
+              timeOut:2500,
+              progressBar:true,
+              progressAnimation:'increasing',
+              positionClass:'toast-top-right'
+            });
+
           this.addNewQuizForm.reset();
           this.age = null;
-  
+
           this.routerBtn.navigate(['/all-quizzes/'+this.quizMasterId]);
         }
         else{
           this.spinner.hide();
-         this.toastr.error(quesRes["message"],"Error Occured",{
-           timeOut:2500,
-           progressBar:true,
-           progressAnimation:'increasing',
-           positionClass:'toast-top-right'
-         })
+          this.toastr.error(quesRes["message"],"Error Occured",{
+            timeOut:2500,
+            progressBar:true,
+            progressAnimation:'increasing',
+            positionClass:'toast-top-right'
+          })
         }
-      })          
+      })
         }else{
           this.spinner.hide();
           this.toastr.error(res["message"],"Error Occured",{
@@ -240,7 +266,7 @@ export class AddOrganizationQuizComponent implements OnInit {
           })
         }
       });
-      
+
     }
   }
 
