@@ -169,6 +169,8 @@ export class AddOrganizationQuizComponent implements OnInit {
       data: {
         selectedQuestionsId: this.selectedQuestionsId,
         selectedCategory: this.addNewQuizForm.controls['quizCategory'].value,
+        selectedSubCategory: this.addNewQuizForm.controls['quizSubCategory'].value,
+        selectedAOI: this.addNewQuizForm.controls['areaOfInterest'].value,
       }
     });
 

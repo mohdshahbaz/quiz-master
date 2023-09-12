@@ -5,7 +5,10 @@
     </div>
     <div mat-dialog-content>
         <div *ngFor="let question of questions" class="questions">
-            <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)" [checked]="toggleCheckbox(question.questionId)">{{question.quesText}}</mat-checkbox>
+            <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)" 
+                [checked]="toggleCheckbox(question.questionId)">
+                {{question.quesText}} -- {{question.quizCategory | titlecase}} -- {{question.quizSubCategory | titlecase}} -- {{question.areaOfInterest | titlecase}}
+            </mat-checkbox>
         </div>
         <div class="spacer"></div>
         <div mat-dialog-actions>
