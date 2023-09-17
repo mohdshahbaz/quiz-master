@@ -1,20 +1,50 @@
 <div class="dialog-container">
-    <h1 mat-dailog-title class="title">Select Questions</h1>
-    <div *ngIf="!quesAvail">
-        <h3>**No Questions Available for this Category selection**</h3>
-    </div>
-    <div mat-dialog-content>
-        <div *ngFor="let question of questions" class="questions">
-            <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)" 
+  <h1 mat-dailog-title class="title">Select Questions</h1>
+  <div *ngIf="!quesAvail">
+    <h3>**No Questions Available for this Category selection**</h3>
+  </div>
+  <div mat-dialog-content>
+    <!-- <div *ngFor="let question of questions" class="questions"> -->
+    <!-- <mat-checkbox class="checkbox" color="primary" [value]="question.questionId" (change)="onCheckboxChange($event)" 
                 [checked]="toggleCheckbox(question.questionId)">
                 {{question.quesText}} -- {{question.quizCategory | titlecase}} -- {{question.quizSubCategory | titlecase}} -- {{question.areaOfInterest | titlecase}}
-            </mat-checkbox>
-        </div>
-        <div class="spacer"></div>
-        <div mat-dialog-actions>
-            <button mat-button (click)="onCancelClick()">Cancel</button>
-            <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-        </div>
-    </div>
+            </mat-checkbox> -->
 
+    <div class="text-left questions">
+      <div class="table ">
+        <table datatable [dtOptions]='dtOptions' [dtTrigger]="dtTrigger" class="row-border hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Question</th>
+              <th>Quiz Category</th>
+              <th>Quiz SubCategory</th>
+              <th>Area of Interest</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let trans of questions;let i = index;">
+              <td>
+                <mat-checkbox class="checkbox" color="primary" [value]="trans.questionId"
+                  (change)="onCheckboxChange($event)" [checked]="toggleCheckbox(trans.questionId)">
+
+                </mat-checkbox>
+              </td>
+              <td>{{ trans.quesText}}</td>
+              <td>{{ trans.quizCategory | titlecase }}</td>
+              <td>{{ trans.quizSubCategory | titlecase}}</td>
+              <td>{{ trans.areaOfInterest | titlecase}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- </div> -->
+    <div class="spacer"></div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancel</button>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    </div>
+  </div>
 </div>

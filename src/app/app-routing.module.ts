@@ -41,6 +41,7 @@ import { ShowBannerComponent } from './component/show-banner/show-banner.compone
 import { EditUserComponent } from './component/edit-user/edit-user.component';
 import { RescheduleAssignedQuizComponent } from './component/reschedule-assigned-quiz/reschedule-assigned-quiz.component';
 import { MetricsComponent } from './metrics/metrics.component';
+import { AllTransactionsComponent } from './all-transactions/all-transactions.component';
 
 
 const routes: Routes = [
@@ -182,6 +183,11 @@ const routes: Routes = [
   {
     path: 'all-payment-requests',
     component: AllPaymentRequestsComponent,
+    canActivate: [AuthGuard,AdminRouteProtectGuard]
+  },
+  {
+    path: 'all-transactions',
+    component: AllTransactionsComponent,
     canActivate: [AuthGuard,AdminRouteProtectGuard]
   },
   {

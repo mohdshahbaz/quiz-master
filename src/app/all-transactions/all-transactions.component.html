@@ -1,0 +1,40 @@
+<div class="container text-center">    
+    <div class="table ">
+        <table datatable [dtOptions]='dtOptions' [dtTrigger]="dtTrigger" class="row-border hover">           
+            <thead>
+                <tr>
+                    <!-- <th>S.No.</th> -->
+                    <th>PaymentID</th>
+                    <th>Quiz ID</th>
+                    <th>Quiz Title</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Transaction Date</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let trans of allTransactions;let i = index;">
+                    <!-- <td>{{ (i+1) }}</td> -->
+                    <td>{{ trans.paymentId }}</td>
+                    <td>{{ trans.quizId }}</td>
+                    <td>{{ trans.quizTitle }}</td>
+                    <td >{{ trans.userName | titlecase}}</td>
+                    <td>{{ trans.email }}</td>
+                    <td>{{ trans.phone}}</td>
+                    <td>{{ trans.price | currency:'INR' }}</td>
+                    <td>{{ (trans.paymentStatus)}}</td>
+                    <td>{{ (trans.transactionTimeStamp) | date:'mediumDate'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 
+type = "ball-atom" [fullScreen] = "true">
+    <p style="font-size: 20px; color: white" > Loading Transactions... </p>
+</ngx-spinner>

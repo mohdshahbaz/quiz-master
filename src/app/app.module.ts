@@ -84,6 +84,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditUserComponent } from './component/edit-user/edit-user.component';
 import { RescheduleAssignedQuizComponent } from './component/reschedule-assigned-quiz/reschedule-assigned-quiz.component';
 import { MetricsComponent } from './metrics/metrics.component';
+import { AllTransactionsComponent } from './all-transactions/all-transactions.component';
 //Installed Using : 
 // >npm i ngx-spinner@v11.0.2
 
@@ -141,7 +142,8 @@ import { MetricsComponent } from './metrics/metrics.component';
     ShowBannerComponent,
     EditUserComponent,
     RescheduleAssignedQuizComponent,
-    MetricsComponent
+    MetricsComponent,
+    AllTransactionsComponent
   ],
   imports: [
     BrowserModule,

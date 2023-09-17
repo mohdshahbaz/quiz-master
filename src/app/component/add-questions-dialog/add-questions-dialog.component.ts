@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit,AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { data } from 'jquery';
+import { DataTableDirective } from 'angular-datatables';
 import { QuizMasterService } from 'src/app/services/quiz-master.service';
 import { QuizzesService } from 'src/app/services/quizzes.service';
 
@@ -13,6 +14,15 @@ export class AddQuestionsDialogComponent implements OnInit {
 
   questions: any;
   quesAvail = false;
+
+  @ViewChild(DataTableDirective)
+
+  dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+  allTransactions = [];
+
+  isDtInitialized:boolean = false;
 
   constructor(private quizMasterService: QuizMasterService,
     private quizzesService: QuizzesService,
