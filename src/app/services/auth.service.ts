@@ -14,7 +14,7 @@ export class AuthService {
 
   isProfileImageChanged = new BehaviorSubject<boolean>(false);
 
-  serverUrl = "https://quizeeeapp.onrender.com/api/";
+  serverUrl = "http://82.180.160.159:8080/api/";
 
   constructor(
     private http: HttpClient

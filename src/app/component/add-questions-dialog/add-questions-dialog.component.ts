@@ -20,7 +20,6 @@ export class AddQuestionsDialogComponent implements OnInit {
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  allTransactions = [];
 
   isDtInitialized:boolean = false;
 

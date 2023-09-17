@@ -29,7 +29,7 @@ export class AddEditBannerComponent implements OnInit {
       this.bannerService.getSingleBanner(+this.bannerId).subscribe(res=>{
         this.bannerDetails = res["banner"];
         console.log(this.bannerDetails);
-        this.bannerImage = "https://quizeeeapp.onrender.com/api/download/"+this.bannerDetails.bannerImg;
+        this.bannerImage = "http://82.180.160.159:8080/api/download/"+this.bannerDetails.bannerImg;
         this.myBannerImage = this.bannerDetails.bannerImg;
       });
     });
@@ -56,7 +56,7 @@ export class AddEditBannerComponent implements OnInit {
       if(res["status"])
       {
         this.toast.success(res["message"]);
-         this.bannerImage = "https://quizeeeapp.onrender.com/api/download/"+res["imageUrl"];
+         this.bannerImage = "http://82.180.160.159:8080/api/download/"+res["imageUrl"];
          this.myBannerImage = res["imageUrl"];
          this.spinner.hide();
       }
