@@ -21,6 +21,7 @@
                 <a [routerLink]="'/create-new-group'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">CREATE NEW GROUP</a>
                 <a [routerLink]="'/all-master-questions'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin"> MASTER'S QUESTIONS</a>
                 <a [routerLink]="'/all-group-notifications'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">NOTIFICATIONS</a>
+                <a [routerLink]="'/metrics'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">METRICS</a>
                 <a [routerLink]="'/all-students-performances'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">STUDENTS PERFORMANCE</a>
                 <a [routerLink]="'/selected-requests'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >CATEGORY</a>
                 <a [routerLink]="'/all-banner'" routerLinkActive='selected' *ngIf="authUserTypeAdmin" >AD MANAGEMENT</a>

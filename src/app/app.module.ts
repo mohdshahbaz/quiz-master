@@ -83,6 +83,7 @@ import { ShowBannerComponent } from './component/show-banner/show-banner.compone
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditUserComponent } from './component/edit-user/edit-user.component';
 import { RescheduleAssignedQuizComponent } from './component/reschedule-assigned-quiz/reschedule-assigned-quiz.component';
+import { MetricsComponent } from './metrics/metrics.component';
 //Installed Using : 
 // >npm i ngx-spinner@v11.0.2
 
@@ -139,7 +140,8 @@ import { RescheduleAssignedQuizComponent } from './component/reschedule-assigned
     PerformanceChartComponent,
     ShowBannerComponent,
     EditUserComponent,
-    RescheduleAssignedQuizComponent
+    RescheduleAssignedQuizComponent,
+    MetricsComponent
   ],
   imports: [
     BrowserModule,

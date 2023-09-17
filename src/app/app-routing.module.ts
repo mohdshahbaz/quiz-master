@@ -40,6 +40,7 @@ import { PerformanceChartComponent } from './component/performance-chart/perform
 import { ShowBannerComponent } from './component/show-banner/show-banner.component';
 import { EditUserComponent } from './component/edit-user/edit-user.component';
 import { RescheduleAssignedQuizComponent } from './component/reschedule-assigned-quiz/reschedule-assigned-quiz.component';
+import { MetricsComponent } from './metrics/metrics.component';
 
 
 const routes: Routes = [
@@ -126,6 +127,11 @@ const routes: Routes = [
   {
     path: 'add-organization-quiz',
     component: AddOrganizationQuizComponent,
+    canActivate: [AuthGuard,RouteProtectOrganizationGuard]
+  },
+  {
+    path: 'metrics',
+    component: MetricsComponent,
     canActivate: [AuthGuard,RouteProtectOrganizationGuard]
   },
   {

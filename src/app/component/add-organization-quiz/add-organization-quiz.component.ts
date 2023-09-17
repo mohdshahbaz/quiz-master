@@ -70,6 +70,7 @@ export class AddOrganizationQuizComponent implements OnInit {
       difficultyLevel: ['', Validators.required],
       timePerQues: [''],
       price: ['',Validators.required],
+      discountPercentage: ['',Validators.required],
     });
   }
 
