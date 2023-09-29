@@ -40,10 +40,10 @@ export class AddOrganizationQuizComponent implements OnInit {
     public dialog: MatDialog,
     private requestCategoryService: RequestCategoryService,
     private toastr: ToastrService,
-    private spinner:NgxSpinnerService,
-    private routerBtn:Router,
-    private quizzesService:QuizzesService,
-    private publicQuestionService:PublicQuestionsService,
+    private spinner: NgxSpinnerService,
+    private routerBtn: Router,
+    private quizzesService: QuizzesService,
+    private publicQuestionService: PublicQuestionsService,
   ) {
 
   }
@@ -51,14 +51,14 @@ export class AddOrganizationQuizComponent implements OnInit {
   ngOnInit(): void {
 
     //get all categories 
-    this.requestCategoryService.getAllSelectedRequests().subscribe(resCategories=>{
+    this.requestCategoryService.getAllSelectedRequests().subscribe(resCategories => {
       this.allCategories = resCategories["allRequests"];
       console.log("All Categories : ", this.allCategories);
     });
-  
+
     this.quizMasterId = +JSON.parse(localStorage.getItem('quizMaster'))['quizMasterId'];
     this.addNewQuizForm = this.fb.group({
-      quizTitle: ['',Validators.required],
+      quizTitle: ['', Validators.required],
       quizCategory: ['', Validators.required],
       quizSubCategory: ['', Validators.required],
       areaOfInterest: ['', Validators.required],
@@ -69,49 +69,49 @@ export class AddOrganizationQuizComponent implements OnInit {
       noOfQuestions: ['', Validators.required],
       difficultyLevel: ['', Validators.required],
       timePerQues: [''],
-      price: ['',Validators.required],
-      discountPercentage: ['',Validators.required],
+      price: ['', Validators.required],
+      discountPercentage: ['', Validators.required],
     });
   }
 
   get addNewQuizFormControls(): any {
     return this.addNewQuizForm['controls'];
   }
-  
-  onSelectedCategory(value:string){
+
+  onSelectedCategory(value: string) {
     const arr = value.split(':');
     //value -> 0:d or 1:science (that's why splitting)
-   console.log("Selected value is :",value.split(':')[1]);
-   this.defaultCategory = value.split(':')[1].trim();
- 
-   //now we will set the Subcategory based on above selected category
-                                                //0 or 1 etc
-   this.allSubCategories = this.allCategories[value.split(':')[0]].subCategory;
- 
-   //Updating Area of interest also
-   this.onSelectedSubCategory("0:"+this.allSubCategories[0].name);
+    console.log("Selected value is :", value.split(':')[1]);
+    this.defaultCategory = value.split(':')[1].trim();
+
+    //now we will set the Subcategory based on above selected category
+    //0 or 1 etc
+    this.allSubCategories = this.allCategories[value.split(':')[0]].subCategory;
+
+    //Updating Area of interest also
+    this.onSelectedSubCategory("0:" + this.allSubCategories[0].name);
   }
 
-  onSelectedSubCategory(value:string){
+  onSelectedSubCategory(value: string) {
     //value -> 0:physics or 1:chemistry (that's why splitting)
     const arr = value.split(':');
-    console.log("Selected SubCategory is :",value.split(':')[1]);
-    console.log(this.allSubCategories,arr);
+    console.log("Selected SubCategory is :", value.split(':')[1]);
+    console.log(this.allSubCategories, arr);
     this.defaultSubCategory = value.split(':')[1].trim();
-   
-   //  findIndex
-    const index = this.allSubCategories.findIndex(f=>f.name.trim()==arr[1].trim());
-     console.log(index,this.allSubCategories[index]);
+
+    //  findIndex
+    const index = this.allSubCategories.findIndex(f => f.name.trim() == arr[1].trim());
+    console.log(index, this.allSubCategories[index]);
     //now we will set the AreaOfInterest based on above selected SubCategory
-                                                  //0 or 1
+    //0 or 1
     this.allAreaOfInterest = this.allSubCategories[index].areaOfInterest;
     console.log(this.allSubCategories[index].areaOfInterest);
     this.defaultAOI = this.allAreaOfInterest[0];
   }
 
-  onSelectedAreaOfInterest(value:string){
+  onSelectedAreaOfInterest(value: string) {
     //value -> 0:d or 1:science (that's why splitting)
-    console.log("Selected AreaOfInterest is :",value.split(':')[1]);
+    console.log("Selected AreaOfInterest is :", value.split(':')[1]);
     this.defaultAOI = value.split(':')[1].trim();
   }
 
@@ -134,7 +134,7 @@ export class AddOrganizationQuizComponent implements OnInit {
     debugger;
     const dialogRef = this.dialog.open(RequestCategoryDialogComponent, {
       width: '400px',
-      data: {quizMasterId:this.quizMasterId,masterType:0}
+      data: { quizMasterId: this.quizMasterId, masterType: 0 }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -207,69 +207,66 @@ export class AddOrganizationQuizComponent implements OnInit {
       var yesterdayDate = new Date();
       yesterdayDate.setDate(yesterdayDate.getDate() - 1);
       var yesterdayYr = yesterdayDate.getFullYear().toString();
-      var yesterdayMonth = (yesterdayDate.getMonth()+1).toString();
-      if(yesterdayMonth.length==1){
-        yesterdayMonth = "0"+yesterdayMonth;
+      var yesterdayMonth = (yesterdayDate.getMonth() + 1).toString();
+      if (yesterdayMonth.length == 1) {
+        yesterdayMonth = "0" + yesterdayMonth;
       }
       var yesterdayDt = yesterdayDate.getDate().toString();
-      this.addNewQuizForm.value.startDate = yesterdayYr+'-'+yesterdayMonth+'-'+yesterdayDt;
+      this.addNewQuizForm.value.startDate = yesterdayYr + '-' + yesterdayMonth + '-' + yesterdayDt;
       this.addNewQuizForm.value.startTime = "11:00";
       // console.log("Date : "+yesterdayDate.getDate(), yesterdayDate.getMonth()+1, yesterdayDate.getFullYear()); 
       //EndDate -> Date after 2 year
       var futureDate = new Date();
       futureDate.setDate(futureDate.getDate() + 700);
       var futureDayYr = futureDate.getFullYear().toString();
-      var futureDayMonth = (futureDate.getMonth()+1).toString();
-      if(futureDayMonth.length==1){
-        futureDayMonth = "0"+futureDayMonth;
+      var futureDayMonth = (futureDate.getMonth() + 1).toString();
+      if (futureDayMonth.length == 1) {
+        futureDayMonth = "0" + futureDayMonth;
       }
       var futuredayDt = futureDate.getDate().toString();
-      this.addNewQuizForm.value.endDate = futureDayYr+'-'+futureDayMonth+'-'+futuredayDt;
+      this.addNewQuizForm.value.endDate = futureDayYr + '-' + futureDayMonth + '-' + futuredayDt;
       this.addNewQuizForm.value.endTime = "11:00";
-      
+
       this.addNewQuizForm.value.timePerQues = 10;
       console.log(this.addNewQuizForm.value);
 
-      this.quizzesService.createAssignedQuiz(this.addNewQuizForm.value).subscribe(res=>{
-        if(res["status"])
-        {
-          this.publicQuestionService.changeQuestionsStatusToPublic({quizMasterId:this.quizMasterId,questionIDs:postData['questions']}).subscribe(quesRes=>{
-          if(quesRes["status"])
-          {
-            this.spinner.hide();
-            this.toastr.info(res["message"],"Success",{
-              timeOut:2500,
-              progressBar:true,
-              progressAnimation:'increasing',
-              positionClass:'toast-top-right'
-            });
+      this.quizzesService.createAssignedQuiz(this.addNewQuizForm.value).subscribe(res => {
+        if (res["status"]) {
+          this.publicQuestionService.changeQuestionsStatusToPublic({ quizMasterId: this.quizMasterId, questionIDs: postData['questions'] }).subscribe(quesRes => {
+            if (quesRes["status"]) {
+              this.spinner.hide();
+              this.toastr.info(res["message"], "Success", {
+                timeOut: 2500,
+                progressBar: true,
+                progressAnimation: 'increasing',
+                positionClass: 'toast-top-right'
+              });
 
-          this.addNewQuizForm.reset();
-          this.age = null;
+              this.addNewQuizForm.reset();
+              this.age = null;
 
-          this.routerBtn.navigate(['/all-quizzes/'+this.quizMasterId]);
-        }
-        else{
-          this.spinner.hide();
-          this.toastr.error(quesRes["message"],"Error Occured",{
-            timeOut:2500,
-            progressBar:true,
-            progressAnimation:'increasing',
-            positionClass:'toast-top-right'
+              this.routerBtn.navigate(['/all-quizzes/' + this.quizMasterId]);
+            }
+            else {
+              this.spinner.hide();
+              this.toastr.error(quesRes["message"], "Error Occured", {
+                timeOut: 2500,
+                progressBar: true,
+                progressAnimation: 'increasing',
+                positionClass: 'toast-top-right'
+              })
+            }
           })
-        }
-      })
-        }else{
+        } else {
           this.spinner.hide();
-          this.toastr.error(res["message"],"Error Occured",{
-            timeOut:2500,
-            progressBar:true,
-            progressAnimation:'increasing',
-            positionClass:'toast-top-right'
+          this.toastr.error(res["message"], "Error Occured", {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
           })
         }
       });
-
     }
   }
 

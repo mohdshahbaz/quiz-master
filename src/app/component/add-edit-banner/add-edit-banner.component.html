@@ -15,27 +15,24 @@
        </div>
     </div>
 
-        <div class="form-group row text-center">
-    
-            <div class="col-md-10">              
+        <div class="form-group row text-center">    
+            <div class="col-md-10">
                 <img src={{bannerImage}} alt="bannerImage" onerror="this.src='https://images.unsplash.com/photo-1624455375091-9746420d4809?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'"
-                     height="220px" width="300px">           
+                     height="220px" width="300px">
             </div>
-              <div class="col-md-10">
+            <div class="col-md-10">
                 {{bannerFileName}}
             </div>
-            
         </div>
 
         <div class="form-group row">
           <div class="col-sm-10">
             <label for="" style="font-weight: 600;">Change Banner Image : </label>
-            <input type="file" class="form-control" name="bannerImage" ngModel (change)="selectImage($event)" >
-          
+            <input type="file" class="form-control" name="bannerImage" ngModel (change)="selectImage($event)" >          
           </div>
         </div>
       <br>
-        
+
       <div class="form-group row">
         <div class="col-sm-10 text-center">
           <button type="submit" class="btn" style="background-color: #F06528; width: 200px;border-radius: 10px; color: white;">Save</button>
@@ -46,13 +43,6 @@
     </div>
   </div>
   
-  <ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="ball-scale-multiple"
->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
   <p style="font-size: 20px; color: white">Uploading New Image....</p>
 </ngx-spinner>
-
-

@@ -111,19 +111,11 @@
                     <button type="button" class="btn btn-primary" (click)="openAddQuestionsDialog()">ADD QUESTIONS</button>
                     <button class="btn btn-primary" type="submit" [disabled]="!addNewQuizForm.valid">SUBMIT</button>
                 </div>
-
             </div>
-
         </form>
     </div>
 </div>
 
-<ngx-spinner
-bdColor="rgba(51,51,51,0.8)"
-size="medium"
-color="#fff"
-type="ball-scale-multiple"
->
-<p style="font-size: 20px; color: white">Creating New Quiz....</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Creating New Quiz....</p>
 </ngx-spinner>
-

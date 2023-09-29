@@ -38,7 +38,6 @@ export class AddEditBannerComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
  
   selectImage(event)
   {
@@ -101,8 +100,6 @@ export class AddEditBannerComponent implements OnInit {
         })
       }
     });
-
   }
-
 
 }
