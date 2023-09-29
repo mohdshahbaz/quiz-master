@@ -45,10 +45,10 @@ export class AddQuestionsDialogComponent implements OnInit {
         var allQuestions = [];
         result['questions'].forEach(ques=>{
           const index = this.data.selectedQuestionsId.findIndex(i=>i==ques.questionId);
-          if(index!=-1)
-          {
-            allQuestions.push(ques);
-          }
+          // if(index!=-1)
+          // {
+          //   allQuestions.push(ques);
+          // }
 
           if(ques.questionStatus==0)
           {
@@ -65,8 +65,7 @@ export class AddQuestionsDialogComponent implements OnInit {
     });
   }
 
-  onCheckboxChange(e) {
-   
+  onCheckboxChange(e) {   
     if (e.checked) {
       this.data.selectedQuestionsId.push(e.source.value);
     } else {

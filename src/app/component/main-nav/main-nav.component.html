@@ -18,7 +18,7 @@
                 <a [routerLink]="['/all-quizzes',quizMasterId]" routerLinkActive='selected' *ngIf="!authUserTypeAdmin">ALL QUIZZES</a>
                 <a [routerLink]="'/add-new-quiz'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && quizMasterPublic">ADD NEW QUIZ</a>
                 <a [routerLink]="'/add-organization-quiz'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">ADD ORGANIZATION QUIZ</a>
-                <a [routerLink]="'/create-new-group'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">CREATE NEW GROUP</a>
+                <!-- <a [routerLink]="'/create-new-group'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">CREATE NEW GROUP</a> -->
                 <a [routerLink]="'/all-master-questions'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin"> MASTER'S QUESTIONS</a>
                 <a [routerLink]="'/all-group-notifications'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">NOTIFICATIONS</a>
                 <a [routerLink]="'/metrics'" routerLinkActive='selected' *ngIf="!authUserTypeAdmin && !quizMasterPublic">METRICS</a>
